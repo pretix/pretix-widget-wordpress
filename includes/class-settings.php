@@ -38,7 +38,18 @@ class Settings extends Base{
     public function register_settings() {
         \register_setting(
             'pretix_ticket_settings_group',
-            'pretix_ticket_url'
+            'pretix_ticket_shop_url',
+	        'pretix_ticket_display',
+            'pretix_ticket_display_sub_event_id',
+	        'pretix_ticket_allocated_voucher',
+	        'pretix_ticket_disable_voucher',
+	        'pretix_ticket_default_language',
+	        'pretix_ticket_filter_by_product_id',
+	        'pretix_ticket_filter_by_category_id',
+	        'pretix_ticket_filter_by_variation_id',
+	        'pretix_ticket_button_text',
+	        'pretix_ticket_debug_skip_ssl_check',
+	        'pretix_ticket_custom_css'
         );
     }
 
