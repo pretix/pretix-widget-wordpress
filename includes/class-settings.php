@@ -75,6 +75,7 @@ class Settings extends Base {
                 ['pretix_ticket_allocated_voucher', ''],
                 ['pretix_ticket_disable_voucher', false],
                 ['pretix_ticket_default_language', \get_locale()],
+                ['pretix_ticket_filter_by_event', ''],
                 ['pretix_ticket_filter_by_product_id', ''],
                 ['pretix_ticket_filter_by_category_id', ''],
                 ['pretix_ticket_filter_by_variation_id', ''],

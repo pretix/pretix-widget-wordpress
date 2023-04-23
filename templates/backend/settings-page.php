@@ -39,6 +39,10 @@
 				</select>
 			</fieldset>
 			<fieldset>
+				<label for="pretix_ticket_filter_by_event"><?php _e('Filter by event series', $this->get_name()); ?></label>
+				<input type="text" name="pretix_ticket_filter_by_event" id="pretix_ticket_filter_by_event" value="<?php echo \esc_attr( \get_option( 'pretix_ticket_filter_by_event' ) ); ?>" class="regular-text">
+			</fieldset>
+			<fieldset>
 				<label for="pretix_ticket_filter_by_sub_event_id"><?php _e('Filter by sub event', $this->get_name()); ?></label>
 				<input type="text" name="pretix_ticket_filter_by_sub_event_id" id="pretix_ticket_filter_by_sub_event_id" value="<?php echo \esc_attr( \get_option( 'pretix_ticket_filter_by_sub_event_id' ) ); ?>" class="regular-text">
 			</fieldset>
