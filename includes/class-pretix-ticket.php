@@ -21,10 +21,12 @@ final class Pretix_Ticket extends Base{
     // Method to display the Pretix ticket using shortcode
     public function display_pretix_ticket( $settings = array() ): string {
         $output = '';
+        $defaults = $this->settings->get_settings();
 
-        $settings								= shortcode_atts(
+         $settings								= shortcode_atts(
             array(
-                'display'				=> 'full',
+                'display'				=> 'widget',
+                'show'                  => $defaults['pretix_ticket_display']
             ),
             $settings,
             'pretix_ticket'
