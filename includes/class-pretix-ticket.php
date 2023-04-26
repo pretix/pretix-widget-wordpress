@@ -36,16 +36,16 @@ final class Pretix_Ticket extends Base {
         $settings = shortcode_atts(
             array(
                 'mode'              => 'widget',
-                'display'           => $defaults['pretix_ticket_display'],
-                'shop_url'          => rtrim($defaults['pretix_ticket_shop_url'], '/'),
-                'event'             => rtrim($defaults['pretix_ticket_filter_by_event'], '/'),
-                'items'             => $defaults['pretix_ticket_filter_by_product_id'],
-                'categories'        => $defaults['pretix_ticket_filter_by_category_id'],
-                'variations'        => $defaults['pretix_ticket_filter_by_variation_id'],
-                'disable_voucher'   => $defaults['pretix_ticket_disable_voucher'],
-                'allocated_voucher' => $defaults['pretix_ticket_allocated_voucher'],
-                'language'          => $defaults['pretix_ticket_default_language'],
-                'button_text'       => $defaults['pretix_ticket_button_text'],
+                'display'           => isset($defaults['pretix_ticket_display']) ? $defaults['pretix_ticket_display'] : 'list',
+                'shop_url'          => isset($defaults['pretix_ticket_shop_url']) ? rtrim($defaults['pretix_ticket_shop_url'], '/') : '',
+                'event'             => isset($defaults['pretix_ticket_filter_by_event']) ? rtrim($defaults['pretix_ticket_filter_by_event'], '/') : '',
+                'items'             => isset($defaults['pretix_ticket_filter_by_product_id']) ? $defaults['pretix_ticket_filter_by_product_id'] : '',
+                'categories'        => isset($defaults['pretix_ticket_filter_by_category_id']) ? $defaults['pretix_ticket_filter_by_category_id'] : '',
+                'variations'        => isset($defaults['pretix_ticket_filter_by_variation_id']) ? $defaults['pretix_ticket_filter_by_variation_id'] : '',
+                'disable_voucher'   => isset($defaults['pretix_ticket_disable_voucher']) ? $defaults['pretix_ticket_disable_voucher'] : '',
+                'allocated_voucher' => isset($defaults['pretix_ticket_allocated_voucher']) ? $defaults['pretix_ticket_allocated_voucher'] : '',
+                'language'          => isset($defaults['pretix_ticket_default_language']) ? $defaults['pretix_ticket_default_language'] : '',
+                'button_text'       => isset($defaults['pretix_ticket_button_text']) ? $defaults['pretix_ticket_button_text'] : '',
             ),
             $settings,
             'pretix_ticket'
@@ -53,7 +53,7 @@ final class Pretix_Ticket extends Base {
 
         // add debug settings
         if ($this->debug) {
-            $settings['skip_ssl_check'] = $defaults['pretix_ticket_debug_skip_ssl_check'];
+            $settings['skip_ssl_check'] = isset($defaults['pretix_ticket_debug_skip_ssl_check']) ? $defaults['pretix_ticket_debug_skip_ssl_check'] : false;
         }
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');

@@ -15,8 +15,8 @@ class Settings extends Base {
 
     public function add_plugin_menu() {
         add_menu_page(
-            'Pretix Ticket',
-            'Pretix Ticket',
+            'pretix tickets',
+            'pretix tickets',
             'manage_options',
             'pretix_ticket',
             array($this, 'render_plugin_page'),
@@ -71,14 +71,18 @@ class Settings extends Base {
 	            // 0 = name, 1 = default value, ...
                 ['pretix_ticket_shop_url', ''],
                 ['pretix_ticket_display', 'list'],
-                ['pretix_ticket_display_sub_event_id', ''],
+	            /*
                 ['pretix_ticket_allocated_voucher', ''],
+	            */
                 ['pretix_ticket_disable_voucher', false],
                 ['pretix_ticket_default_language', \get_locale()],
+	            /*
                 ['pretix_ticket_filter_by_event', ''],
+	            ['pretix_ticket_filter_by_sub_event_id', ''],
                 ['pretix_ticket_filter_by_product_id', ''],
                 ['pretix_ticket_filter_by_category_id', ''],
                 ['pretix_ticket_filter_by_variation_id', ''],
+	            */
                 ['pretix_ticket_button_text', __('Buy Ticket!', $this->get_name())],
                 ['pretix_ticket_debug_skip_ssl_check', false],
                 ['pretix_ticket_custom_css', '']
@@ -117,8 +121,8 @@ class Settings extends Base {
     public function render_plugin_page() {
         ?>
 		<div class="wrap">
-			<h1>Pretix Ticket</h1>
-			<p>This is the main page for the Pretix Ticket plugin.</p>
+			<h1>pretix tickets</h1>
+			<p>This is the main page for the pretix Ticket plugin.</p>
 		</div>
         <?php
     }

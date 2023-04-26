@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Pretix Ticket
+Plugin Name: pretix tickets
 Plugin URI: https://pretix.eu/
 Description: Display pretix ticketing on your WordPress website
 Version: 1.0.0
@@ -10,7 +10,7 @@ License: GPL2
 */
 
 // Define an autoloader function
-function my_autoloader($class_name) {
+function pretix_tickets_autoloader($class_name) {
     // Strip namespace
     $class_name = strtolower(substr($class_name, strlen('Pretix_Ticket\\')));
     // Convert the class name to a file path
@@ -23,7 +23,7 @@ function my_autoloader($class_name) {
 }
 
 // Register the autoloader function
-spl_autoload_register('my_autoloader');
+spl_autoload_register('pretix_tickets_autoloader');
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-pretix-ticket.php';
 
