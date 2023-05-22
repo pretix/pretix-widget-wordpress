@@ -11,6 +11,7 @@ final class Pretix_Ticket extends Base {
         add_shortcode('pretix_ticket_button', array($this, 'display_pretix_ticket_button'));
         add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_assets'));
         add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
+        add_action('init', array($this, 'register_blocks'));
 
         $this->settings = new Settings($this);
         $this->gebud    = defined('WP_DEBUG') && WP_DEBUG ? WP_DEBUG : false;
@@ -119,8 +120,41 @@ final class Pretix_Ticket extends Base {
         return $arguments;
     }
 
+    public function register_blocks() {
+        // Register the pretix-tickets-button block
+        register_block_type('pretix-ticket/button', array(
+            'editor_script' => 'pretix-tickets-button',
+            'render_callback' => 'render_pretix_tickets_button_block',
+        ));
+
+        // Register the pretix-tickets-widget block
+        register_block_type('pretix-tickets/widget', array(
+            'editor_script' => 'pretix-tickets-widget',
+            'render_callback' => 'render_pretix_tickets_widget_block',
+        ));
+    }
+
     // Method to load assets for the Gutenberg block
-    public function enqueue_block_assets() {}
+    public function enqueue_block_assets() {
+        // Enqueue the JavaScript build for the pretix-tickets-button block
+        wp_enqueue_script(
+            'pretix-tickets-button',
+            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-tickets-button.build.js',
+            array('wp-blocks', 'wp-element'),
+            '1.0.0',
+            true
+        );
+
+        // Enqueue the JavaScript build for the pretix-tickets-widget block
+        wp_enqueue_script(
+            'pretix-tickets-widget',
+            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-tickets-widget.build.js',
+            array('wp-blocks', 'wp-element'),
+            '1.0.0',
+            true
+        );
+    }
+
 
     // Method to load assets only when the shortcode is used or the Gutenberg block is displayed
     public function load_assets() {

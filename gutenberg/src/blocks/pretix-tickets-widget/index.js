@@ -3,7 +3,7 @@ const { __ } = wp.i18n;
 const { TextControl, ToggleControl } = wp.components;
 const { serverSideRender } = wp;
 
-registerBlockType('pretix-tickets/pretix-tickets-widget', {
+registerBlockType('pretix-tickets/widget', {
 	title: __('Pretix Tickets Widget', 'pretix-tickets'),
 	description: __('A widget for displaying pretix tickets.', 'pretix-tickets'),
 	icon: 'tickets-alt',
