@@ -3,9 +3,9 @@ const { __ } = wp.i18n;
 const { TextControl, ToggleControl } = wp.components;
 const { serverSideRender } = wp;
 
-registerBlockType('pretix-tickets/widget', {
-	title: __('Pretix Tickets Widget', 'pretix-tickets'),
-	description: __('A widget for displaying pretix tickets.', 'pretix-tickets'),
+registerBlockType('pretix-widget/widget', {
+	title: __('Pretix Widget Widget', 'pretix-widget'),
+	description: __('A widget for displaying pretix widget.', 'pretix-widget'),
 	icon: 'tickets-alt',
 	category: 'widgets',
 	attributes: {
@@ -48,28 +48,28 @@ registerBlockType('pretix-tickets/widget', {
 		return (
 			<div>
 				<TextControl
-					label={__('Pretix Event Slug', 'pretix-tickets')}
+					label={__('Pretix Event Slug', 'pretix-widget')}
 					value={pretixEvent}
 					onChange={handlePretixEventChange}
-					help={__('Enter the pretix event slug.', 'pretix-tickets')}
+					help={__('Enter the pretix event slug.', 'pretix-widget')}
 				/>
 				<TextControl
-					label={__('Pretix Subevent Slug', 'pretix-tickets')}
+					label={__('Pretix Subevent Slug', 'pretix-widget')}
 					value={subEvent}
 					onChange={handleSubEventChange}
-					help={__('Enter the pretix subevent slug.', 'pretix-tickets')}
+					help={__('Enter the pretix subevent slug.', 'pretix-widget')}
 				/>
 				<TextControl
-					label={__('Pretix Variant', 'pretix-tickets')}
+					label={__('Pretix Variant', 'pretix-widget')}
 					value={variant}
 					onChange={handleVariantChange}
-					help={__('Enter the pretix variant.', 'pretix-tickets')}
+					help={__('Enter the pretix variant.', 'pretix-widget')}
 				/>
 				<ToggleControl
-					label={__('Hide Event Title', 'pretix-tickets')}
+					label={__('Hide Event Title', 'pretix-widget')}
 					checked={hideEventTitle}
 					onChange={handleHideEventTitleChange}
-					help={__('Hide the event title above the tickets widget.', 'pretix-tickets')}
+					help={__('Hide the event title above the tickets widget.', 'pretix-widget')}
 				/>
 			</div>
 		);

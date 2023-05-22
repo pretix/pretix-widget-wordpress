@@ -1,6 +1,6 @@
 <?php
 
-namespace Pretix_Ticket;
+namespace Pretix_Widget;
 
 use function add_menu_page;
 use function register_setting;
@@ -15,10 +15,10 @@ class Settings extends Base {
 
     public function add_plugin_menu() {
         add_menu_page(
-            'pretix tickets',
-            'pretix tickets',
+            'pretix widget',
+            'pretix widget',
             'manage_options',
-            'pretix_ticket',
+            'pretix_widget',
             array($this, 'render_plugin_page'),
             'dashicons-tickets-alt'
         );
@@ -28,11 +28,11 @@ class Settings extends Base {
 
     public function add_settings_page() {
         add_submenu_page(
-            'pretix_ticket',
+            'pretix_widget',
             'General Settings',
             'Settings',
             'manage_options',
-            'pretix_ticket_settings',
+            'pretix_widget_settings',
             array($this, 'render_settings_page')
         );
 
@@ -52,7 +52,7 @@ class Settings extends Base {
 				$def = isset($setting[1]) ? $setting[1] : '';
 				// register_setting( string $option_group, string $option_name, array $args = array() )
                 register_setting(
-                    'pretix_ticket_settings_group_'.$group,
+                    'pretix_widget_settings_group_'.$group,
                     $name,
 	                [
 						'default' => $def,
@@ -69,23 +69,23 @@ class Settings extends Base {
             'defaults' => [
 				// settings of that group
 	            // 0 = name, 1 = default value, ...
-                ['pretix_ticket_shop_url', ''],
-                ['pretix_ticket_display', 'list'],
+                ['pretix_widget_shop_url', ''],
+                ['pretix_widget_display', 'list'],
 	            /*
-                ['pretix_ticket_allocated_voucher', ''],
+                ['pretix_widget_allocated_voucher', ''],
 	            */
-                ['pretix_ticket_disable_voucher', false],
-                ['pretix_ticket_default_language', \get_locale()],
+                ['pretix_widget_disable_voucher', false],
+                ['pretix_widget_default_language', \get_locale()],
 	            /*
-                ['pretix_ticket_filter_by_event', ''],
-	            ['pretix_ticket_filter_by_sub_event_id', ''],
-                ['pretix_ticket_filter_by_product_id', ''],
-                ['pretix_ticket_filter_by_category_id', ''],
-                ['pretix_ticket_filter_by_variation_id', ''],
+                ['pretix_widget_filter_by_event', ''],
+	            ['pretix_widget_filter_by_sub_event_id', ''],
+                ['pretix_widget_filter_by_product_id', ''],
+                ['pretix_widget_filter_by_category_id', ''],
+                ['pretix_widget_filter_by_variation_id', ''],
 	            */
-                ['pretix_ticket_button_text', __('Buy Ticket!', $this->get_name())],
-                ['pretix_ticket_debug_skip_ssl_check', false],
-                ['pretix_ticket_custom_css', '']
+                ['pretix_widget_button_text', __('Buy Ticket!', $this->get_name())],
+                ['pretix_widget_debug_skip_ssl_check', false],
+                ['pretix_widget_custom_css', '']
             ]
         ] : $this->map;
 	}
@@ -121,7 +121,7 @@ class Settings extends Base {
     public function render_plugin_page() {
         ?>
 		<div class="wrap">
-			<h1>pretix tickets</h1>
+			<h1>pretix widget</h1>
 			<p>This is the main page for the pretix Ticket plugin.</p>
 		</div>
         <?php

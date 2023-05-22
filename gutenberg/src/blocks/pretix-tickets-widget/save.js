@@ -11,7 +11,7 @@ const Save = ({ attributes }) => {
 		
 		const fetchData = async () => {
 			try {
-				const res = await serverSideRender.getBlocksContent(`[pretix_tickets_widget event="${pretixEvent}" subevent="${subEvent}" variant="${variant}" hide_event_title="${hideEventTitle}"]`);
+				const res = await serverSideRender.getBlocksContent(`[pretix_widget_widget event="${pretixEvent}" subevent="${subEvent}" variant="${variant}" hide_event_title="${hideEventTitle}"]`);
 				setResponse(res);
 			} catch (err) {
 				setResponse(err.message);
@@ -24,7 +24,7 @@ const Save = ({ attributes }) => {
 	}, [pretixEvent, subEvent, variant, hideEventTitle]);
 	
 	return (
-		<div className="pretix-tickets-widget" dangerouslySetInnerHTML={{ __html: response }} />
+		<div className="pretix-widget-widget" dangerouslySetInnerHTML={{ __html: response }} />
 	);
 };
 

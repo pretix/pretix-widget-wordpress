@@ -1,2 +1,2 @@
-# pretix-ticket
+# pretix-widget
 Dennis

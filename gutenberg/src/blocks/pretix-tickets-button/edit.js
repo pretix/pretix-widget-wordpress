@@ -16,9 +16,9 @@ export default function Edit({ attributes, setAttributes }) {
 		<div {...blockProps}>
 			<Button
 				isPrimary
-				onClick={() => handleButtonTextChange(prompt(__('Please enter the button text:', 'pretix-tickets')))}
+				onClick={() => handleButtonTextChange(prompt(__('Please enter the button text:', 'pretix-widget')))}
 			>
-				{buttonText ? buttonText : __('Click to set button text', 'pretix-tickets')}
+				{buttonText ? buttonText : __('Click to set button text', 'pretix-widget')}
 			</Button>
 		</div>
 	);

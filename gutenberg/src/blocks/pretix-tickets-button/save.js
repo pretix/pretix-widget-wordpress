@@ -6,7 +6,7 @@ export default function Save({ attributes }) {
 	
 	return (
 		<div {...blockProps}>
-			<button className="pretix-tickets-button">
+			<button className="pretix-widget-button">
 				{buttonText}
 			</button>
 		</div>

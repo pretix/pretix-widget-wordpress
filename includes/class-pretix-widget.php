@@ -1,14 +1,14 @@
 <?php
 
-namespace Pretix_Ticket;
+namespace Pretix_Widget;
 
-final class Pretix_Ticket extends Base {
+final class Pretix_Widget extends Base {
     private $settings;
     private $debug = false;
 
     public function __construct() {
-        add_shortcode('pretix_ticket', array($this, 'display_pretix_ticket'));
-        add_shortcode('pretix_ticket_button', array($this, 'display_pretix_ticket_button'));
+        add_shortcode('pretix_widget', array($this, 'display_pretix_widget'));
+        add_shortcode('pretix_widget_button', array($this, 'display_pretix_widget_button'));
         add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_assets'));
         add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
         add_action('init', array($this, 'register_blocks'));
@@ -23,38 +23,38 @@ final class Pretix_Ticket extends Base {
 
     // Define methods to handle shortcode and Gutenberg block
     // Method to display the Pretix ticket using shortcode
-    public function display_pretix_ticket_button($settings = []): string {
+    public function display_pretix_widget_button($settings = []): string {
         $settings         = ! is_array($settings) ? [] : $settings;
         $settings['mode'] = 'button';
 
-        return $this->display_pretix_ticket($settings);
+        return $this->display_pretix_widget($settings);
     }
 
-    public function display_pretix_ticket($settings = []): string {
+    public function display_pretix_widget($settings = []): string {
         $output   = '';
         $defaults = $this->settings->get_settings();
 
         $settings = shortcode_atts(
             array(
                 'mode'              => 'widget',
-                'display'           => isset($defaults['pretix_ticket_display']) ? $defaults['pretix_ticket_display'] : 'list',
-                'shop_url'          => isset($defaults['pretix_ticket_shop_url']) ? rtrim($defaults['pretix_ticket_shop_url'], '/') : '',
-                'event'             => isset($defaults['pretix_ticket_filter_by_event']) ? rtrim($defaults['pretix_ticket_filter_by_event'], '/') : '',
-                'items'             => isset($defaults['pretix_ticket_filter_by_product_id']) ? $defaults['pretix_ticket_filter_by_product_id'] : '',
-                'categories'        => isset($defaults['pretix_ticket_filter_by_category_id']) ? $defaults['pretix_ticket_filter_by_category_id'] : '',
-                'variations'        => isset($defaults['pretix_ticket_filter_by_variation_id']) ? $defaults['pretix_ticket_filter_by_variation_id'] : '',
-                'disable_voucher'   => isset($defaults['pretix_ticket_disable_voucher']) ? $defaults['pretix_ticket_disable_voucher'] : '',
-                'allocated_voucher' => isset($defaults['pretix_ticket_allocated_voucher']) ? $defaults['pretix_ticket_allocated_voucher'] : '',
-                'language'          => isset($defaults['pretix_ticket_default_language']) ? $defaults['pretix_ticket_default_language'] : '',
-                'button_text'       => isset($defaults['pretix_ticket_button_text']) ? $defaults['pretix_ticket_button_text'] : '',
+                'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
+                'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'], '/') : '',
+                'event'             => isset($defaults['pretix_widget_filter_by_event']) ? rtrim($defaults['pretix_widget_filter_by_event'], '/') : '',
+                'items'             => isset($defaults['pretix_widget_filter_by_product_id']) ? $defaults['pretix_widget_filter_by_product_id'] : '',
+                'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
+                'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
+                'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
+                'allocated_voucher' => isset($defaults['pretix_widget_allocated_voucher']) ? $defaults['pretix_widget_allocated_voucher'] : '',
+                'language'          => isset($defaults['pretix_widget_default_language']) ? $defaults['pretix_widget_default_language'] : '',
+                'button_text'       => isset($defaults['pretix_widget_button_text']) ? $defaults['pretix_widget_button_text'] : '',
             ),
             $settings,
-            'pretix_ticket'
+            'pretix_widget'
         );
 
         // add debug settings
         if ($this->debug) {
-            $settings['skip_ssl_check'] = isset($defaults['pretix_ticket_debug_skip_ssl_check']) ? $defaults['pretix_ticket_debug_skip_ssl_check'] : false;
+            $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
         }
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
@@ -121,34 +121,34 @@ final class Pretix_Ticket extends Base {
     }
 
     public function register_blocks() {
-        // Register the pretix-tickets-button block
-        register_block_type('pretix-ticket/button', array(
-            'editor_script' => 'pretix-tickets-button',
-            'render_callback' => 'render_pretix_tickets_button_block',
+        // Register the pretix-widget-button block
+        register_block_type('pretix-widget/button', array(
+            'editor_script' => 'pretix-widget-button',
+            'render_callback' => 'render_pretix_widget_button_block',
         ));
 
-        // Register the pretix-tickets-widget block
-        register_block_type('pretix-tickets/widget', array(
-            'editor_script' => 'pretix-tickets-widget',
-            'render_callback' => 'render_pretix_tickets_widget_block',
+        // Register the pretix-widget-widget block
+        register_block_type('pretix-widget/widget', array(
+            'editor_script' => 'pretix-widget-widget',
+            'render_callback' => 'render_pretix_widget_widget_block',
         ));
     }
 
     // Method to load assets for the Gutenberg block
     public function enqueue_block_assets() {
-        // Enqueue the JavaScript build for the pretix-tickets-button block
+        // Enqueue the JavaScript build for the pretix-widget-button block
         wp_enqueue_script(
-            'pretix-tickets-button',
-            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-tickets-button.build.js',
+            'pretix-widget-button',
+            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-widget-button.build.js',
             array('wp-blocks', 'wp-element'),
             '1.0.0',
             true
         );
 
-        // Enqueue the JavaScript build for the pretix-tickets-widget block
+        // Enqueue the JavaScript build for the pretix-widget-widget block
         wp_enqueue_script(
-            'pretix-tickets-widget',
-            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-tickets-widget.build.js',
+            'pretix-widget-widget',
+            plugin_dir_url(__DIR__) . 'gutenberg/dist/pretix-widget-widget.build.js',
             array('wp-blocks', 'wp-element'),
             '1.0.0',
             true
@@ -159,9 +159,9 @@ final class Pretix_Ticket extends Base {
     // Method to load assets only when the shortcode is used or the Gutenberg block is displayed
     public function load_assets() {
         global $post;
-        if (has_shortcode($post->post_content, 'pretix_ticket') || has_block('pretix-ticket/pretix-ticket-block')) {
-            wp_enqueue_style('pretix-ticket-style', $this->get_url('assets/css/style.css'), [], '1.0.0', 'all');
-            wp_enqueue_script('pretix-ticket-script', $this->get_url('assets/js/script.js'), [], '1.0.0', true);
+        if (has_shortcode($post->post_content, 'pretix_widget') || has_block('pretix-widget/pretix-widget-block')) {
+            wp_enqueue_style('pretix-widget-style', $this->get_url('assets/css/style.css'), [], '1.0.0', 'all');
+            wp_enqueue_script('pretix-widget-script', $this->get_url('assets/js/script.js'), [], '1.0.0', true);
         }
     }
 

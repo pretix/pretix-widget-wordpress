@@ -4,9 +4,9 @@ const { __ } = wp.i18n;
 const Edit = wp.blockEditor.Edit;
 const Save = wp.blockEditor.Save;
 
-registerBlockType('pretix-tickets/button', {
-	title: __('Pretix Tickets Button', 'pretix-tickets'),
-	description: __('A button for pretix tickets.', 'pretix-tickets'),
+registerBlockType('pretix-widget/button', {
+	title: __('Pretix Widget Button', 'pretix-widget'),
+	description: __('A button for pretix widget.', 'pretix-widget'),
 	category: 'widgets',
 	icon: 'tickets-alt',
 	supports: {

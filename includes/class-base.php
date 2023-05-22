@@ -1,5 +1,5 @@
 <?php
-namespace Pretix_Ticket;
+namespace Pretix_Widget;
 
 class Base{
     private $path;

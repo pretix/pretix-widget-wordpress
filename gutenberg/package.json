@@ -1,5 +1,5 @@
 {
-	"name": "pretix-tickets",
+	"name": "pretix-widget",
 	"version": "1.0.0",
 	"description": "Your plugin description",
 	"main": "index.js",
