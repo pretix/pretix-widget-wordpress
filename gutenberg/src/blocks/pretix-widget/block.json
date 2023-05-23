@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "pretix/widget",
+	"title": "Pretix Widget",
+	"description": "A widget for displaying pretix widget.",
+	"icon": "tickets-alt",
+	"category": "widgets",
+	"textdomain": "pretix-widget",
+	"editorScript": "pretix-widget-editor-script",
+	"editorStyle": "pretix-widget-editor-style",
+	"style": "pretix-widget-style",
+	"keywords": [
+		"tickets",
+		"ecommerce"
+	],
+	"supports": {
+		"anchor": true,
+		"align": true,
+		"html": false,
+		"reusable": false,
+		"customClassName": false,
+		"multiple": false,
+		"inserter": true
+	},
+	"attributes": {
+		"pretixEvent": {
+			"type": "string",
+			"default": ""
+		},
+		"subEvent": {
+			"type": "string",
+			"default": ""
+		},
+		"variant": {
+			"type": "string",
+			"default": ""
+		},
+		"hideEventTitle": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

@@ -55,6 +55,11 @@ class Render extends Base {
         return ob_get_clean();
     }
 
+    // blocks
+    public function block_pretix_widget(): string {
+        return '<pretix-widget class="wp-block-pretix-widget">x</pretix-widget>';
+    }
+
     // helper functions
     private function get_arguments_inline($settings) {
         $arguments = [];

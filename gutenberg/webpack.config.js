@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'pretix-widget-widget': './src/blocks/pretix-widget-widget/index.js',
+		'pretix-widget': './src/blocks/pretix-widget/index.js',
 		'pretix-widget-button': './src/blocks/pretix-widget-button/index.js',
 	},
 	output: {
