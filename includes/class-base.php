@@ -25,4 +25,8 @@ class Base{
         $sub = trim($sub, '/');
         return $sub !== '' ? $url . $sub : $url;
     }
+
+    public function get_short_locale(string $locale) {
+        return substr($locale, 0, 2);
+    }
 }
