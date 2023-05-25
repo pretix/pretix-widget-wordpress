@@ -41,6 +41,8 @@ class Render extends Base {
             'pretix_widget'
         );
 
+        $this->enqueue_assets($settings);
+
         // add debug settings
         if ($this->parent->debug) {
             $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
@@ -56,20 +58,76 @@ class Render extends Base {
     }
 
     // blocks
-    public function block_pretix_widget(): string {
-        return '<pretix-widget class="wp-block-pretix-widget">x</pretix-widget>';
+    public function block_pretix_widget(array $settings = []): string {
+        $output   = '';
+        $defaults = $this->parent->settings->get_settings();
+
+        $settings = array_merge(array(
+            'mode'              => 'widget',
+            'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
+            'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'],'/') : '',
+            'event'             => isset($defaults['pretix_widget_filter_by_event']) ? rtrim($defaults['pretix_widget_filter_by_event'], '/') : '',
+            'items'             => isset($defaults['pretix_widget_filter_by_product_id']) ? $defaults['pretix_widget_filter_by_product_id'] : '',
+            'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
+            'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
+            'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
+            'allocated_voucher' => isset($defaults['pretix_widget_allocated_voucher']) ? $defaults['pretix_widget_allocated_voucher'] : '',
+            'language'          => isset($defaults['pretix_widget_default_language']) ? $defaults['pretix_widget_default_language'] : '',
+            'button_text'       => isset($defaults['pretix_widget_button_text']) ? $defaults['pretix_widget_button_text'] : '',
+        ), $settings);
+
+        // add debug settings
+        if ($this->parent->debug) {
+            $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
+        }
+
+        $template  = $this->get_path('templates/frontend/block-' . $settings['mode'] . '.php');
+        $language  = $this->get_short_locale($settings['language']);
+        $arguments = $this->get_arguments_inline($settings);
+        ob_start();
+        file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+
+        if(defined( 'REST_REQUEST' ) && REST_REQUEST){
+            // block is doing the loading
+        }else{
+            // frontend
+            $this->enqueue_assets($settings);
+        }
+
+        return ob_get_clean();
     }
 
     // helper functions
+    //@todo css is relative the set shop url and event - add curl and caching
+    private function enqueue_assets($settings){
+
+        wp_enqueue_style('pretix-widget-frontend',
+            $this->get_url('assets/css/widget.v1.css'),
+            array(),
+            fileatime($this->get_path('assets/css/widget.v1.css'))
+        );
+
+        wp_enqueue_script('pretix-widget-frontend', $this->get_url('assets/js/widget.v1.'.$settings['language'].'.js'),
+            array(),
+            fileatime($this->get_path('assets/js/widget.v1.'.$settings['language'].'.js')),
+            true);
+    }
+
+    private function enqueue_assets_inline($settings){
+        echo '<link rel="stylesheet" type="text/css" href="'.$this->get_url('assets/css/widget.v1.css').'">';
+        echo '<script type="text/javascript" src="'.$this->get_url('assets/js/widget.v1.'.$settings['language'].'.js').'" async></script>';
+    }
+
+
     private function get_arguments_inline($settings) {
         $arguments = [];
 
         $arguments['list'] = 'list-type="' . $settings['display'] . '"';
         // URL -----------------------------------------------------------------
-        $arguments['url'] = 'event="' . $settings['shop_url'] . '/';
+        $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/';
 
         if ( ! empty($settings['event'])) {
-            $arguments['url'] .= sanitize_text_field($settings['event']) . '/';
+            $arguments['url'] .= rtrim(sanitize_text_field($settings['event']), '/') . '/';
         }
 
         $arguments['url'] .= '"';

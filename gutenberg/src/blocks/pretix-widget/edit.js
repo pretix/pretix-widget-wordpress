@@ -1,3 +1,4 @@
+const {useEffect, useState} = wp.element;
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 const { TextControl, ToggleControl, SelectControl, PanelBody, ToolbarGroup } = wp.components;
@@ -11,11 +12,16 @@ const {
 	store
 } = wp.blockEditor;
 
-export default function Edit({ attributes, setAttributes }) {
-	const { align, ...otherAttributes } = attributes;
+export default function Edit(props) {
+	const {
+		attributes,
+		setAttributes,
+	} = props;
+	
 	// add defaults to attributes
 	const {
-		mode = 'Widget',
+		align,
+		mode = 'widget',
 		display = 'list',
 		shop_url = '',
 		event = '',
@@ -32,13 +38,22 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ [key]: value });
 	}
 	
+	useEffect(() => {
+		//window.PretixWidget.readyStateChange(); // Trigger the readyStateChange function after ServerSideRender is done
+		const script = document.createElement("script");
+		script.src = 'https://pretix.eu/widget/v1.'+language+'.js';
+		script.async = true;
+		document.body.appendChild(script);
+		
+	}, []);
+	
 	return (
 		<>
 			<BlockControls>
 				<ToolbarGroup>
 					<SelectControl
 						label={__('Align', 'pretix-widget')}
-						value={attributes.align}
+						value={align}
 						options={[
 							{ value: 'left', label: __('Left', 'pretix-widget') },
 							{ value: 'center', label: __('Center', 'pretix-widget') },
@@ -56,11 +71,53 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__('Mode', 'pretix-widget')}
 						value={mode}
 						options={[
-							{ value: 'Widget', label: __('Widget', 'pretix-widget') },
-							{ value: 'Button', label: __('Button', 'pretix-widget') },
+							{ value: 'widget', label: __('Widget', 'pretix-widget') },
+							{ value: 'button', label: __('Button', 'pretix-widget') },
 						]}
 						onChange={(value) => handleChange('mode', value)}
 					/>
+					{mode === 'button' && (
+						<TextControl
+							label={__('Button Text', 'pretix-widget')}
+							value={button_text}
+							onChange={(value) => handleChange('button_text', value)}
+						/>
+					)}
+					<TextControl
+						label={__('Shop URL', 'pretix-widget')}
+						value={shop_url}
+						onChange={(value) => handleChange('shop_url', value)}
+						type="url"
+					/>
+					<TextControl
+						label={__('Event', 'pretix-widget')}
+						value={event}
+						onChange={(value) => handleChange('event', value)}
+					/>
+					<TextControl
+						label={__('Items', 'pretix-widget')}
+						value={items}
+						onChange={(value) => handleChange('items', value)}
+						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+					/>
+					<TextControl
+						label={__('Categories', 'pretix-widget')}
+						value={categories}
+						onChange={(value) => handleChange('categories', value)}
+						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+					/>
+					<TextControl
+						label={__('Variations', 'pretix-widget')}
+						value={variations}
+						onChange={(value) => handleChange('variations', value)}
+						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+					/>
+					<TextControl
+						label={__('Allocated Voucher', 'pretix-widget')}
+						value={allocated_voucher}
+						onChange={(value) => handleChange('allocated_voucher', value)}
+					/>
+					
 					<SelectControl
 						label={__('Display', 'pretix-widget')}
 						value={display}

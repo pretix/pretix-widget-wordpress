@@ -16,29 +16,56 @@
 	],
 	"supports": {
 		"anchor": true,
-		"align": true,
-		"html": false,
-		"reusable": false,
-		"customClassName": false,
-		"multiple": false,
-		"inserter": true
+		"align": true
 	},
 	"attributes": {
-		"pretixEvent": {
+		"align": {
 			"type": "string",
 			"default": ""
 		},
-		"subEvent": {
+		"mode": {
+			"type": "string",
+			"default": "widget"
+		},
+		"display": {
+			"type": "string",
+			"default": "list"
+		},
+		"shop_url": {
 			"type": "string",
 			"default": ""
 		},
-		"variant": {
+		"event": {
 			"type": "string",
 			"default": ""
 		},
-		"hideEventTitle": {
+		"items": {
+			"type": "string",
+			"default": ""
+		},
+		"categories": {
+			"type": "string",
+			"default": ""
+		},
+		"variations": {
+			"type": "string",
+			"default": ""
+		},
+		"disable_voucher": {
 			"type": "boolean",
 			"default": false
+		},
+		"language": {
+			"type": "string",
+			"default": "en"
+		},
+		"allocated_voucher": {
+			"type": "string",
+			"default": ""
+		},
+		"button_text": {
+			"type": "string",
+			"default": ""
 		}
 	}
 }
