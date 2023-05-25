@@ -74,7 +74,9 @@ class Render extends Base {
             'allocated_voucher' => isset($defaults['pretix_widget_allocated_voucher']) ? $defaults['pretix_widget_allocated_voucher'] : '',
             'language'          => isset($defaults['pretix_widget_default_language']) ? $defaults['pretix_widget_default_language'] : '',
             'button_text'       => isset($defaults['pretix_widget_button_text']) ? $defaults['pretix_widget_button_text'] : '',
-        ), $settings);
+        ), array_filter($settings, function ($value) {
+            return !empty($value);
+        }));
 
         // add debug settings
         if ($this->parent->debug) {
@@ -87,12 +89,10 @@ class Render extends Base {
         ob_start();
         file_exists($template) ? require $template : error_log('Template not found: ' . $template);
 
-        if(defined( 'REST_REQUEST' ) && REST_REQUEST){
-            // block is doing the loading
-        }else{
+        if(!defined( 'REST_REQUEST' ) || !REST_REQUEST){
             // frontend
-            $this->enqueue_assets($settings);
-        }
+            //$this->enqueue_assets($settings);
+        } // else: rest api
 
         return ob_get_clean();
     }

@@ -14,17 +14,17 @@ const {
 
 export default function Edit(props) {
 	const {
+		clientId,
 		attributes,
 		setAttributes,
 	} = props;
-	
+
 	// add defaults to attributes
 	const {
 		align,
 		mode = 'widget',
 		display = 'list',
 		shop_url = '',
-		event = '',
 		items = '',
 		categories = '',
 		variations = '',
@@ -34,18 +34,64 @@ export default function Edit(props) {
 		button_text = 'Buy Ticket!',
 	} = attributes;
 	
-	function handleChange(key, value) {
+	const [loading, setLoading] = useState(false);
+	
+	const handleChange = (key, value) => {
 		setAttributes({ [key]: value });
 	}
 	
-	useEffect(() => {
-		//window.PretixWidget.readyStateChange(); // Trigger the readyStateChange function after ServerSideRender is done
-		const script = document.createElement("script");
-		script.src = 'https://pretix.eu/widget/v1.'+language+'.js';
-		script.async = true;
-		document.body.appendChild(script);
+	const insertScriptAssets = () =>{
+		const scriptId = 'pretix-widget-script-' + clientId;
+		let script = document.getElementById(scriptId);
+		if(script){
+			document.body.removeChild(script);
+		}
+		script = document.createElement("script");
+		script.id = scriptId;
+		window.PretixWidget = null;
 		
-	}, []);
+		const url = new URL(shop_url);
+		script.src = `https://${url.hostname}/widget/v1.${language}.js?timestamp=${Date.now()}`;
+		script.async = true;
+		script.onload = () => {
+			window.PretixWidget.buildWidgets();
+		};
+		document.body.appendChild(script);
+		setLoading(false);
+	}
+	
+	const insertCSSAssets = () =>{
+		const linkId = 'pretix-widget-style-' + clientId;
+		let link = document.getElementById(linkId);
+		if(link){
+			document.body.removeChild(link);
+		}
+		link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = `https://pretix.eu/demo/democon/widget/v1.css?timestamp=${Date.now()}`;
+		document.head.appendChild(link);
+	}
+	
+	useEffect(() => {
+		console.log('mount');
+		setLoading(true);
+		insertScriptAssets();
+		insertCSSAssets();
+	},[]);
+	
+	useEffect(() => {
+		console.log('language');
+		if(!loading) insertScriptAssets();
+	},[language]);
+	
+	useEffect(() => {
+		console.log('update');
+		console.log(window.PretixWidget);
+		if(window.PretixWidget){
+			window.PretixWidget.buildWidgets();
+		}
+		insertCSSAssets();
+	},[attributes]);
 	
 	return (
 		<>
@@ -89,11 +135,12 @@ export default function Edit(props) {
 						onChange={(value) => handleChange('shop_url', value)}
 						type="url"
 					/>
+					{/*
 					<TextControl
 						label={__('Event', 'pretix-widget')}
 						value={event}
 						onChange={(value) => handleChange('event', value)}
-					/>
+					/>*/}
 					<TextControl
 						label={__('Items', 'pretix-widget')}
 						value={items}
@@ -123,6 +170,8 @@ export default function Edit(props) {
 						value={display}
 						options={[
 							{ value: 'list', label: __('List', 'pretix-widget') },
+							{ value: 'calendar', label: __('Calendar', 'pretix-widget') },
+							{ value: 'week', label: __('Week', 'pretix-widget') },
 							{ value: 'grid', label: __('Grid', 'pretix-widget') },
 						]}
 						onChange={(value) => handleChange('display', value)}
@@ -143,11 +192,11 @@ export default function Edit(props) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			
-			<ServerSideRender
-				block="pretix/widget"
-				attributes={attributes}
-			/>
+			<div className="wp-block-pretix-widget">
+				{mode === 'button' ? <>Button</> :
+					<pretix-widget event={shop_url} list-type={display} voucher={allocated_voucher}></pretix-widget>
+				}
+			</div>
 		</>
 	);
 }
