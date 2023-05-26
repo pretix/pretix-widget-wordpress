@@ -1,8 +1,7 @@
 const {useEffect, useState} = wp.element;
-const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
-const { TextControl, ToggleControl, SelectControl, PanelBody, ToolbarGroup } = wp.components;
-const { serverSideRender: ServerSideRender } = wp;
+const { TextControl, ToggleControl, SelectControl, PanelBody, Placeholder, Spinner } = wp.components;
+import ServerSideRender from './components/server_side_renderer';
 
 const {
 	InnerBlocks,
@@ -33,6 +32,8 @@ export default function Edit(props) {
 		language = 'en',
 		button_text = 'Buy Ticket!',
 	} = attributes;
+	
+	const blockProps = useBlockProps();
 	
 	const [loading, setLoading] = useState(false);
 	
@@ -72,45 +73,27 @@ export default function Edit(props) {
 		document.head.appendChild(link);
 	}
 	
-	useEffect(() => {
-		console.log('mount');
-		setLoading(true);
-		insertScriptAssets();
-		insertCSSAssets();
-	},[]);
+	const EmptyResponsePlaceholder = () => <Placeholder label={'Empty'}/>;
+	const ErrorResponsePlaceholder = () => <Placeholder label={'Error'}/>;
 	
-	useEffect(() => {
-		console.log('language');
-		if(!loading) insertScriptAssets();
-	},[language]);
-	
-	useEffect(() => {
-		console.log('update');
-		console.log(window.PretixWidget);
-		if(window.PretixWidget){
-			window.PretixWidget.buildWidgets();
-		}
-		insertCSSAssets();
-	},[attributes]);
+	// server side render trigger
+	const TriggerWhenLoadingFinished = countChildren => {
+		return () => {
+			useEffect( () => {
+				// Call action when the loading component unmounts because loading is finished.
+				return () => {
+					if(window.PretixWidget){
+						window.PretixWidget.buildWidgets();
+					}
+				};
+			} );
+			
+			return (<Placeholder label={'Loading...'}/>);
+		};
+	};
 	
 	return (
 		<>
-			<BlockControls>
-				<ToolbarGroup>
-					<SelectControl
-						label={__('Align', 'pretix-widget')}
-						value={align}
-						options={[
-							{ value: 'left', label: __('Left', 'pretix-widget') },
-							{ value: 'center', label: __('Center', 'pretix-widget') },
-							{ value: 'right', label: __('Right', 'pretix-widget') },
-							{ value: 'wide', label: __('Wide', 'pretix-widget') },
-							{ value: 'full', label: __('Full', 'pretix-widget') },
-						]}
-						onChange={(value) => setAttributes({ align: value })}
-					/>
-				</ToolbarGroup>
-			</BlockControls>
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'pretix-widget')} initialOpen={true}>
 					<SelectControl
@@ -192,10 +175,15 @@ export default function Edit(props) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="wp-block-pretix-widget">
-				{mode === 'button' ? <>Button</> :
-					<pretix-widget event={shop_url} list-type={display} voucher={allocated_voucher}></pretix-widget>
-				}
+			
+			<div {...blockProps}>
+				<ServerSideRender
+					block="pretix/widget"
+					attributes={attributes}
+					LoadingResponsePlaceholder={TriggerWhenLoadingFinished( attributes )}
+					EmptyResponsePlaceholder={EmptyResponsePlaceholder}
+					ErrorResponsePlaceholder={ErrorResponsePlaceholder}
+				/>
 			</div>
 		</>
 	);

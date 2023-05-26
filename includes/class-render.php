@@ -89,9 +89,9 @@ class Render extends Base {
         ob_start();
         file_exists($template) ? require $template : error_log('Template not found: ' . $template);
 
-        if(!defined( 'REST_REQUEST' ) || !REST_REQUEST){
+        if(!defined( 'REST_REQUEST' )){
             // frontend
-            //$this->enqueue_assets($settings);
+            $this->enqueue_assets($settings);
         } // else: rest api
 
         return ob_get_clean();

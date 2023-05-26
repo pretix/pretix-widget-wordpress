@@ -1,1 +1,1 @@
-<div class="pretix-widget-compat" <?php echo $arguments; ?>></div>
+<pretix-widget <?php echo $arguments; ?>></pretix-widget>

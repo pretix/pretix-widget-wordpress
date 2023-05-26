@@ -16,12 +16,14 @@
 	],
 	"supports": {
 		"anchor": true,
-		"align": true
+		"align": [
+			"full",
+			"wide"
+		]
 	},
 	"attributes": {
 		"align": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"mode": {
 			"type": "string",
