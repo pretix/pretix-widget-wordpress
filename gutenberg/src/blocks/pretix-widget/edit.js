@@ -82,9 +82,8 @@ export default function Edit(props) {
 			useEffect( () => {
 				// Call action when the loading component unmounts because loading is finished.
 				return () => {
-					if(window.PretixWidget){
-						window.PretixWidget.buildWidgets();
-					}
+					insertScriptAssets();
+					insertCSSAssets();
 				};
 			} );
 			
