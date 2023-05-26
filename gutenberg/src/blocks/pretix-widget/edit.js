@@ -52,13 +52,13 @@ export default function Edit(props) {
 		window.PretixWidget = null;
 		
 		const url = new URL(shop_url);
-		script.src = `https://${url.hostname}/widget/v1.${language}.js?timestamp=${Date.now()}`;
+		const _url = url.hostname;
+		script.src = `https://${_url}/widget/v1.${language}.js?timestamp=${Date.now()}`;
 		script.async = true;
 		script.onload = () => {
 			window.PretixWidget.buildWidgets();
 		};
 		document.body.appendChild(script);
-		setLoading(false);
 	}
 	
 	const insertCSSAssets = () =>{
@@ -69,7 +69,9 @@ export default function Edit(props) {
 		}
 		link = document.createElement("link");
 		link.rel = "stylesheet";
-		link.href = `https://pretix.eu/demo/democon/widget/v1.css?timestamp=${Date.now()}`;
+		const url = new URL(shop_url);
+		const _url = url.hostname + url.pathname.replace(/\/$/, '')
+		link.href = `https://${_url}/widget/v1.css?timestamp=${Date.now()}`;
 		document.head.appendChild(link);
 	}
 	
