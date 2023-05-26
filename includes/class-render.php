@@ -100,7 +100,25 @@ class Render extends Base {
     // helper functions
     //@todo css is relative the set shop url and event - add curl and caching
     private function enqueue_assets($settings){
+        wp_enqueue_style('pretix-widget-frontend',
+            $settings['shop_url'].'/widget/v1.css',
+            array(),
+            1
+        );
 
+        $parsedUrl = parse_url($settings['shop_url']);
+        $domain = $parsedUrl['host'];
+
+        wp_enqueue_script('pretix-widget-frontend',
+            'https://'.$domain.'/widget/v1.'.$settings['language'].'.js',
+            array(),
+            1,
+            true);
+
+        // href="https://staging.pretix.eu/widgettest/testevent/widget/v1.css">
+        // src="https://staging.pretix.eu/widget/v1.<?php echo $language; 
+        //@todo cached version later here
+        /*
         wp_enqueue_style('pretix-widget-frontend',
             $this->get_url('assets/css/widget.v1.css'),
             array(),
@@ -110,7 +128,7 @@ class Render extends Base {
         wp_enqueue_script('pretix-widget-frontend', $this->get_url('assets/js/widget.v1.'.$settings['language'].'.js'),
             array(),
             fileatime($this->get_path('assets/js/widget.v1.'.$settings['language'].'.js')),
-            true);
+            true);*/
     }
 
     private function enqueue_assets_inline($settings){
