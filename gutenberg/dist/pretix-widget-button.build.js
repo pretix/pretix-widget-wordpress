@@ -1,2 +1,0 @@
-(()=>{var t=wp.blocks.registerBlockType,e=wp.i18n.__,i=wp.blockEditor.Edit,r=wp.blockEditor.Save;t("pretix-widget/button",{title:e("Pretix Widget Button","pretix-widget"),description:e("A button for pretix widget.","pretix-widget"),category:"widgets",icon:"tickets-alt",supports:{html:!1},attributes:{buttonText:{type:"string",default:""}},edit:i,save:r})})();
-//# sourceMappingURL=pretix-widget-button.build.js.map
