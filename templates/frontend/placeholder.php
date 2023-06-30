@@ -1,0 +1,1 @@
+<div class="pretix-widget-placeholder error"><?php echo $this->get_error_html(); ?></div>

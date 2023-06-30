@@ -4,9 +4,11 @@ namespace Pretix_Widget;
 class Render extends Base {
     private $parent;
     private $map = [];
+    private $errors = [];
 
     public function __construct($parent) {
         $this->parent = $parent;
+
     }
 
     // shortcodes
@@ -41,8 +43,6 @@ class Render extends Base {
             'pretix_widget'
         );
 
-        $this->enqueue_assets($settings);
-
         // add debug settings
         if ($this->parent->debug) {
             $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
@@ -52,7 +52,12 @@ class Render extends Base {
         $language  = $this->get_short_locale($settings['language']);
         $arguments = $this->get_arguments_inline($settings);
         ob_start();
-        file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+        if($this->validate_args($settings)){
+            file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+            $this->enqueue_assets($settings);
+        }else{
+            require $this->get_path('templates/frontend/placeholder.php');
+        }
 
         return ob_get_clean();
     }
@@ -87,12 +92,15 @@ class Render extends Base {
         $language  = $this->get_short_locale($settings['language']);
         $arguments = $this->get_arguments_inline($settings);
         ob_start();
-        file_exists($template) ? require $template : error_log('Template not found: ' . $template);
-
-        if(!defined( 'REST_REQUEST' )){
-            // frontend
-            $this->enqueue_assets($settings);
-        } // else: rest api
+        if($this->validate_args($settings)){
+            file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+            if(!defined( 'REST_REQUEST' )){
+                // frontend
+                $this->enqueue_assets($settings);
+            } // else: rest api
+        }else{
+            require $this->get_path('templates/frontend/placeholder.php');
+        }
 
         return ob_get_clean();
     }
@@ -185,5 +193,38 @@ class Render extends Base {
         $arguments = implode(' ', $arguments);
 
         return $arguments;
+    }
+
+    private function set_error(string $message){
+        $this->errors[] = $message;
+    }
+
+    private function get_errors(){
+        return $this->errors;
+    }
+
+    private function get_error_html(){
+        $html = '';
+        foreach($this->get_errors() as $error){
+            $html .= '<p>'.$error.'</p>';
+        }
+        return $html;
+    }
+
+    private function validate_args(array $args): bool{
+        $error = [];
+
+        if(!isset($args['shop_url']) || !$this->validate_shop_url($args['shop_url'])){
+            $this->set_error(__('Shop URL missing.', 'pretix-widget'));
+        }
+
+        return empty($this->get_errors()) ? true : false;
+    }
+
+    // validator
+    private function validate_shop_url(string $value): bool{
+        if(!filter_var($value, FILTER_VALIDATE_URL)) return false;
+        if(empty($value)) return false;
+        return  true;
     }
 }

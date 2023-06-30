@@ -51,7 +51,7 @@ final class Pretix_Widget extends Base {
     // Method to load assets only when the shortcode is used or the Gutenberg block is displayed
     public function load_assets() {
         global $post;
-        if (has_shortcode($post->post_content, 'pretix_widget') || has_block('pretix-widget/widget')) {
+        if (has_shortcode($post->post_content, 'pretix_widget') || has_block('pretix/widget')) {
             wp_enqueue_style('pretix-widget-style', $this->get_url('assets/css/style.css'), [], '1.0.0', 'all');
             wp_enqueue_script('pretix-widget-script', $this->get_url('assets/js/script.js'), [], '1.0.0', true);
         }

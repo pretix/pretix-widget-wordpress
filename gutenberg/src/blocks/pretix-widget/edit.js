@@ -23,7 +23,7 @@ export default function Edit(props) {
 		align,
 		mode = 'widget',
 		display = 'list',
-		shop_url = '',
+		shop_url,
 		items = '',
 		categories = '',
 		variations = '',
@@ -41,38 +41,49 @@ export default function Edit(props) {
 		setAttributes({ [key]: value });
 	}
 	
+	function isValidUrl(url) {
+		// Regular expression for URL validation
+		var urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+		return urlPattern.test(url);
+	}
+	
 	const insertScriptAssets = () =>{
-		const scriptId = 'pretix-widget-script-' + clientId;
-		let script = document.getElementById(scriptId);
-		if(script){
-			document.body.removeChild(script);
+		if(isValidUrl(shop_url)){
+			const scriptId = 'pretix-widget-script-' + clientId;
+			let script = document.getElementById(scriptId);
+			if(script){
+				document.body.removeChild(script);
+			}
+			script = document.createElement("script");
+			script.id = scriptId;
+			window.PretixWidget = null;
+			
+			const url = new URL(shop_url);
+			const _url = url.hostname;
+			script.src = `https://${_url}/widget/v1.${language}.js?timestamp=${Date.now()}`;
+			script.async = true;
+			script.onload = () => {
+				window.PretixWidget.buildWidgets();
+			};
+			document.body.appendChild(script);
 		}
-		script = document.createElement("script");
-		script.id = scriptId;
-		window.PretixWidget = null;
 		
-		const url = new URL(shop_url);
-		const _url = url.hostname;
-		script.src = `https://${_url}/widget/v1.${language}.js?timestamp=${Date.now()}`;
-		script.async = true;
-		script.onload = () => {
-			window.PretixWidget.buildWidgets();
-		};
-		document.body.appendChild(script);
 	}
 	
 	const insertCSSAssets = () =>{
-		const linkId = 'pretix-widget-style-' + clientId;
-		let link = document.getElementById(linkId);
-		if(link){
-			document.body.removeChild(link);
+		if(isValidUrl(shop_url)) {
+			const linkId = 'pretix-widget-style-' + clientId;
+			let link = document.getElementById(linkId);
+			if (link) {
+				document.body.removeChild(link);
+			}
+			link = document.createElement("link");
+			link.rel = "stylesheet";
+			const url = new URL(shop_url);
+			const _url = url.hostname + url.pathname.replace(/\/$/, '')
+			link.href = `https://${_url}/widget/v1.css?timestamp=${Date.now()}`;
+			document.head.appendChild(link);
 		}
-		link = document.createElement("link");
-		link.rel = "stylesheet";
-		const url = new URL(shop_url);
-		const _url = url.hostname + url.pathname.replace(/\/$/, '')
-		link.href = `https://${_url}/widget/v1.css?timestamp=${Date.now()}`;
-		document.head.appendChild(link);
 	}
 	
 	const EmptyResponsePlaceholder = () => <Placeholder label={'Empty'}/>;
@@ -144,13 +155,13 @@ export default function Edit(props) {
 						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
 					/>
 					<TextControl
-						label={__('Allocated Voucher', 'pretix-widget')}
+						label={__('Pre-selected voucher', 'pretix-widget')}
 						value={allocated_voucher}
 						onChange={(value) => handleChange('allocated_voucher', value)}
 					/>
 					
 					<SelectControl
-						label={__('Display', 'pretix-widget')}
+						label={__('Event selection mode', 'pretix-widget')}
 						value={display}
 						options={[
 							{ value: 'auto', label: __('Auto', 'pretix-widget') },
@@ -161,7 +172,7 @@ export default function Edit(props) {
 						onChange={(value) => handleChange('display', value)}
 					/>
 					<ToggleControl
-						label={__('Disable Voucher', 'pretix-widget')}
+						label={__('Disable voucher input', 'pretix-widget')}
 						checked={disable_voucher}
 						onChange={(value) => handleChange('disable_voucher', value)}
 					/>
@@ -181,7 +192,7 @@ export default function Edit(props) {
 				<ServerSideRender
 					block="pretix/widget"
 					attributes={attributes}
-					LoadingResponsePlaceholder={TriggerWhenLoadingFinished( attributes )}
+					LoadingResponsePlaceholder={TriggerWhenLoadingFinished(attributes)}
 					EmptyResponsePlaceholder={EmptyResponsePlaceholder}
 					ErrorResponsePlaceholder={ErrorResponsePlaceholder}
 				/>

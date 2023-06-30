@@ -10,11 +10,11 @@
             <?php \settings_fields( $this->get_settings_group_slug() ); ?>
             <?php \do_settings_sections( $this->get_settings_group_slug() ); ?>
 			<fieldset>
-				<label for="pretix_widget_shop_url"><?php _e('Shop Url', $this->get_name()); ?></label>
+				<label for="pretix_widget_shop_url"><?php _e('Shop URL', $this->get_name()); ?></label>
 				<input type="text" name="pretix_widget_shop_url" id="pretix_widget_shop_url" value="<?php echo \esc_attr( \get_option( 'pretix_widget_shop_url' ) ); ?>" class="regular-text">
 			</fieldset>
 			<fieldset>
-				<label for="pretix_widget_display"><?php _e('Display tickets', $this->get_name()); ?></label>
+				<label for="pretix_widget_display"><?php _e('Event selection mode', $this->get_name()); ?></label>
 				<select name="pretix_widget_display" id="pretix_widget_display">
                     <?php $selected = \get_option('pretix_widget_display', 'list'); ?>
 					<option value="list" <?php echo ($selected === 'list') ? 'selected' : ''; ?>><?php _e('List', $this->get_name()); ?></option>
