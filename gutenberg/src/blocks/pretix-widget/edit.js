@@ -153,10 +153,10 @@ export default function Edit(props) {
 						label={__('Display', 'pretix-widget')}
 						value={display}
 						options={[
+							{ value: 'auto', label: __('Auto', 'pretix-widget') },
 							{ value: 'list', label: __('List', 'pretix-widget') },
 							{ value: 'calendar', label: __('Calendar', 'pretix-widget') },
 							{ value: 'week', label: __('Week', 'pretix-widget') },
-							{ value: 'grid', label: __('Grid', 'pretix-widget') },
 						]}
 						onChange={(value) => handleChange('display', value)}
 					/>
