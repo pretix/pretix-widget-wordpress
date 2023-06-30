@@ -15,7 +15,7 @@ final class Pretix_Widget extends Base {
         add_shortcode('pretix_widget', array($this->render, 'shortcode_pretix_widget'));
         add_shortcode('pretix_widget_button', array($this->render, 'shortcode_pretix_widget_button'));
         add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_assets'));
-        add_action('enqueue_block_assets', array($this, 'enqueue_block_assets'));
+        add_action('enqueue_block_assets', array($this, 'enqueue_block_editor_assets'));
 
         $this->register_blocks();
     }
@@ -40,6 +40,25 @@ final class Pretix_Widget extends Base {
             array('wp-blocks', 'wp-element'),
             filemtime($this->get_path('gutenberg/dist/pretix-widget.build.js')),
             true
+        );
+
+    }
+
+    public function enqueue_block_editor_assets() {
+        // Enqueue the JavaScript build for the pretix-widget-button block
+        wp_enqueue_script(
+            'pretix-widget',
+            $this->get_url('gutenberg/dist/pretix-widget.build.js'),
+            array('wp-blocks', 'wp-element'),
+            filemtime($this->get_path('gutenberg/dist/pretix-widget.build.js')),
+            true
+        );
+
+        wp_enqueue_style(
+            'pretix-widget',
+            $this->get_url('assets/css/editor.css'),
+            array(),
+            filemtime($this->get_path('assets/css/editor.css'))
         );
     }
 

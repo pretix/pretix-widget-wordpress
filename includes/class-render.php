@@ -116,7 +116,7 @@ class Render extends Base {
             true);
 
         // href="https://staging.pretix.eu/widgettest/testevent/widget/v1.css">
-        // src="https://staging.pretix.eu/widget/v1.<?php echo $language; 
+        // src="https://staging.pretix.eu/widget/v1.<?php echo $language;
         //@todo cached version later here
         /*
         wp_enqueue_style('pretix-widget-frontend',
