@@ -4,6 +4,7 @@ namespace Pretix_Widget;
 class Base{
     private $path;
     private $url;
+    private $errors = [];
 
     public function get_name(){
         $plugin_basename = plugin_basename(__FILE__);
@@ -28,5 +29,19 @@ class Base{
 
     public function get_short_locale(string $locale) {
         return substr($locale, 0, 2);
+    }
+
+    public function get_errors(){
+        return $this->errors;
+    }
+
+    public function set_error($error){
+        if ( is_array( $error ) || is_object( $error ) ) {
+            error_log( print_r( $error, true ) );
+            $this->errors[] = $error;
+        } else {
+            error_log( $error );
+            $this->errors[] = array_merge($this->errors, $error);
+        }
     }
 }

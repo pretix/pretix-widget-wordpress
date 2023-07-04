@@ -12,9 +12,10 @@ License: GPL2
 // Define an autoloader function
 function pretix_widget_autoloader($class_name) {
     // Strip namespace
-    $class_name = strtolower(substr($class_name, strlen('Pretix_Widget\\')));
+    $class_name = str_replace('\\', '/', strtolower(substr($class_name, strlen('Pretix_Widget\\'))));
+
     // Convert the class name to a file path
-    $file_path = plugin_dir_path( __FILE__ ) . 'includes/class-' . $class_name . '.php';
+    $file_path = plugin_dir_path( __FILE__ ) . 'includes/' . $class_name . '.php';
 
     // If the file exists, include it
     if (file_exists($file_path)) {
@@ -25,7 +26,7 @@ function pretix_widget_autoloader($class_name) {
 // Register the autoloader function
 spl_autoload_register('pretix_widget_autoloader');
 
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-pretix-widget.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/pretix-widget.php';
 
 function pretix_widget_init() {
     $pretix_widget = new Pretix_Widget\Pretix_Widget();

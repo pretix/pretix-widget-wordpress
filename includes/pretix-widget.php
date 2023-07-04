@@ -12,8 +12,8 @@ final class Pretix_Widget extends Base {
         $this->render = new Render($this);
         $this->debug    = defined('WP_DEBUG') && WP_DEBUG ? WP_DEBUG : false;
 
-        add_shortcode('pretix_widget', array($this->render, 'shortcode_pretix_widget'));
-        add_shortcode('pretix_widget_button', array($this->render, 'shortcode_pretix_widget_button'));
+        add_shortcode('pretix_widget', array($this->render, 'shortcode_widget'));
+        add_shortcode('pretix_widget_button', array($this->render, 'shortcode_button'));
         add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
 
         $this->register_blocks();
@@ -26,7 +26,7 @@ final class Pretix_Widget extends Base {
     public function register_blocks() {
         // Register the pretix-widget-widget block
         register_block_type( $this->get_path('gutenberg/src/blocks/pretix-widget/block.json'),
-            array('render_callback' => array($this->render, 'block_pretix_widget'))
+            array('render_callback' => array($this->render, 'block'))
         );
     }
 
