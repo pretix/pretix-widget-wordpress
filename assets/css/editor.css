@@ -1,1 +1,17 @@
+/* default look of the widget in the editor */
+.wp-block-pretix-widget pretix-widget{
+	min-height:100px;
+	display:flex;
+	border: 1px solid #ddd;
+}
+
+/* prevent clicks on the widget in the editor */
 .wp-block-pretix-widget *{pointer-events:none !important;}
+
+/* error block */
+.wp-block-pretix-widget .pretix-widget-placeholder{
+	min-height:100px;
+	display:flex;
+	flex-direction: column;
+	border: 1px solid #ddd;
+}
