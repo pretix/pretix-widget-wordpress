@@ -8,9 +8,11 @@ use function register_setting;
 class Settings extends Base {
     private $parent;
     private $map = [];
+	public $languages = null;
 
     public function __construct($parent) {
         $this->parent = $parent;
+		$this->languages = new Languages($this);
     }
 
     public function add_plugin_menu() {
@@ -128,6 +130,7 @@ class Settings extends Base {
     }
 
     public function render_settings_page() {
+        $languages = $this->languages->get_list();
         require_once($this->get_path('templates/backend/settings-page.php'));
     }
 

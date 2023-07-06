@@ -118,7 +118,7 @@ class Render extends Base {
         $domain = $parsedUrl['host'];
 
         wp_enqueue_script('pretix-widget-frontend',
-            'https://'.$domain.'/widget/v1.'.$settings['language'].'.js',
+            'https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js',
             array(),
             1,
             true);

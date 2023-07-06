@@ -11,12 +11,12 @@
             <?php \do_settings_sections( $this->get_settings_group_slug() ); ?>
 			<fieldset>
 				<label for="pretix_widget_shop_url"><?php _e('Shop URL', $this->get_name()); ?></label>
-				<input type="text" name="pretix_widget_shop_url" id="pretix_widget_shop_url" value="<?php echo \esc_attr( \get_option( 'pretix_widget_shop_url' ) ); ?>" class="regular-text">
+				<input type="text" name="pretix_widget_shop_url" id="pretix_widget_shop_url" value="<?php echo esc_attr( get_option( 'pretix_widget_shop_url' ) ); ?>" class="regular-text">
 			</fieldset>
 			<fieldset>
 				<label for="pretix_widget_display"><?php _e('Event selection mode', $this->get_name()); ?></label>
 				<select name="pretix_widget_display" id="pretix_widget_display">
-                    <?php $selected = \get_option('pretix_widget_display', 'list'); ?>
+                    <?php $selected = get_option('pretix_widget_display', 'list'); ?>
 					<option value="list" <?php echo ($selected === 'list') ? 'selected' : ''; ?>><?php _e('List', $this->get_name()); ?></option>
 					<option value="calendar_week" <?php echo ($selected === 'calendar_week') ? 'selected' : ''; ?>><?php _e('Calendar (Week)', $this->get_name()); ?></option>
 					<option value="calendar_month" <?php echo ($selected === 'calendar_month') ? 'selected' : ''; ?>><?php _e('Calendar (Month)', $this->get_name()); ?></option>
@@ -24,29 +24,31 @@
 			</fieldset>
 			<fieldset>
 				<label for="pretix_widget_disable_voucher"><?php _e('Disable voucher input', $this->get_name()); ?></label>
-				<input type="checkbox" name="pretix_widget_disable_voucher" id="pretix_widget_disable_voucher" <?php checked( 'on', \get_option( 'pretix_widget_disable_voucher' ) ); ?>>
+				<input type="checkbox" name="pretix_widget_disable_voucher" id="pretix_widget_disable_voucher" <?php checked( 'on', get_option( 'pretix_widget_disable_voucher' ) ); ?>>
 			</fieldset>
 			<fieldset>
 				<label for="pretix_widget_default_language"><?php _e('Default language', $this->get_name()); ?></label>
 				<select name="pretix_widget_default_language" id="pretix_widget_default_language">
-                    <?php $selected = \get_option('pretix_widget_default_language', 'de'); ?>
-					<option value="de" <?php echo ($selected === 'de') ? 'selected' : ''; ?>><?php _e('German', $this->get_name()); ?></option>
-					<option value="en" <?php echo ($selected === 'en') ? 'selected' : ''; ?>><?php _e('English', $this->get_name()); ?></option>
+                    <?php $selected = get_option('pretix_widget_default_language', 'de'); ?>
+					<?php
+                    foreach($languages as $lang){
+						echo '<option value="'.$lang['code'].'"'.($selected === $lang['code'] ? ' selected' : '').'>'.__($lang['name'], $this->get_name()).'</option>';
+					}?>
 				</select>
 			</fieldset>
 			<fieldset>
 				<label for="pretix_widget_button_text"><?php _e('Button text', $this->get_name()); ?></label>
-				<input type="text" name="pretix_widget_button_text" id="pretix_widget_button_text" value="<?php echo \esc_attr( \get_option( 'pretix_widget_button_text' ) ); ?>" class="regular-text">
+				<input type="text" name="pretix_widget_button_text" id="pretix_widget_button_text" value="<?php echo esc_attr( get_option( 'pretix_widget_button_text' ) ); ?>" class="regular-text">
 			</fieldset>
 			<fieldset>
 				<label for="pretix_widget_custom_css"><?php _e('Custom CSS', $this->get_name()); ?></label>
-				<textarea name="pretix_widget_custom_css" id="pretix_widget_custom_css" rows="10" cols="50" class="large-text"><?php echo \esc_html( \get_option( 'pretix_widget_custom_css' ) ); ?></textarea>
+				<textarea name="pretix_widget_custom_css" id="pretix_widget_custom_css" rows="10" cols="50" class="large-text"><?php echo esc_html( get_option( 'pretix_widget_custom_css' ) ); ?></textarea>
 			</fieldset>
             <?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) : ?>
 				<h2>Debug Settings</h2>
 				<fieldset>
 					<label for="pretix_widget_debug_skip_ssl_check"><?php _e('Debug skip SSL check', $this->get_name()); ?></label>
-					<input type="checkbox" name="pretix_widget_debug_skip_ssl_check" id="pretix_widget_debug_skip_ssl_check" <?php checked( 'on', \get_option( 'pretix_widget_debug_skip_ssl_check' ) ); ?>>
+					<input type="checkbox" name="pretix_widget_debug_skip_ssl_check" id="pretix_widget_debug_skip_ssl_check" <?php checked( 'on', get_option( 'pretix_widget_debug_skip_ssl_check' ) ); ?>>
 				</fieldset>
             <?php endif; ?>
 		</form>

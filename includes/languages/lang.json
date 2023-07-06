@@ -1,0 +1,248 @@
+[
+	{
+		"code": "en",
+		"locale": "en_GB",
+		"name": "English",
+		"supported": true
+	},
+	{
+		"code": "ar",
+		"locale": "ar",
+		"name": "Arabic",
+		"supported": true
+	},
+	{
+		"code": "ca",
+		"locale": "ca",
+		"name": "Catalan",
+		"supported": false
+	},
+	{
+		"code": "cs",
+		"locale": "cs_CZ",
+		"name": "Czech",
+		"supported": true
+	},
+	{
+		"code": "da",
+		"locale": "da_DK",
+		"name": "Danish",
+		"supported": true
+	},
+	{
+		"code": "de",
+		"locale": "de_DE",
+		"name": "German",
+		"supported": true
+	},
+	{
+		"code": "de_informal",
+		"locale": "de_DE",
+		"name": "German (Informal)",
+		"supported": true
+	},
+	{
+		"code": "el",
+		"locale": "el",
+		"name": "Greek",
+		"supported": true
+	},
+	{
+		"code": "es",
+		"locale": "es_ES",
+		"name": "Spanish",
+		"supported": true
+	},
+	{
+		"code": "fi",
+		"locale": "fi",
+		"name": "Finnish",
+		"supported": false
+	},
+	{
+		"code": "fr",
+		"locale": "fr_FR",
+		"name": "French",
+		"supported": true
+	},
+	{
+		"code": "gl",
+		"locale": "gl_ES",
+		"name": "Galician",
+		"supported": false
+	},
+	{
+		"code": "he",
+		"locale": "he_IL",
+		"name": "Hebrew",
+		"supported": false
+	},
+	{
+		"code": "hr",
+		"locale": "hr",
+		"name": "Croatian",
+		"supported": false
+	},
+	{
+		"code": "hu",
+		"locale": "hu_HU",
+		"name": "Hungarian",
+		"supported": false
+	},
+	{
+		"code": "it",
+		"locale": "it_IT",
+		"name": "Italian",
+		"supported": true
+	},
+	{
+		"code": "ja",
+		"locale": "ja",
+		"name": "Japanese",
+		"supported": false
+	},
+	{
+		"code": "ko",
+		"locale": "ko_KR",
+		"name": "Korean",
+		"supported": false
+	},
+	{
+		"code": "lt",
+		"locale": "lt_LT",
+		"name": "Lithuanian",
+		"supported": false
+	},
+	{
+		"code": "lv",
+		"locale": "lv",
+		"name": "Latvian",
+		"supported": true
+	},
+	{
+		"code": "nan",
+		"locale": "nan",
+		"name": "Min Nan Chinese",
+		"supported": false
+	},
+	{
+		"code": "nb_no",
+		"locale": "nb_NO",
+		"name": "Norwegian Bokmål",
+		"supported": false
+	},
+	{
+		"code": "nl",
+		"name": "Dutch",
+		"locale": "nl_NL",
+		"supported": true
+	},
+	{
+		"code": "nl_be",
+		"name": "Dutch (Belgium)",
+		"locale": "nl_BE",
+		"supported": false
+	},
+	{
+		"code": "nl_informal",
+		"name": "Dutch (Informal)",
+		"locale": "nl_NL_formal",
+		"supported": true
+	},
+	{
+		"code": "pl",
+		"name": "Polish",
+		"locale": "pl_PL",
+		"supported": false
+	},
+	{
+		"code": "pl_informal",
+		"name": "Polish (Informal)",
+		"locale": "pl_PL",
+		"supported": false
+	},
+	{
+		"code": "pt",
+		"name": "Portuguese",
+		"locale": "pt_PT",
+		"supported": false
+	},
+	{
+		"code": "pt_br",
+		"name": "Portuguese (Brazil)",
+		"locale": "pt_BR",
+		"supported": false
+	},
+	{
+		"code": "pt_pt",
+		"name": "Portuguese (Portugal)",
+		"locale": "pt_PT",
+		"supported": true
+	},
+	{
+		"code": "ro",
+		"name": "Romanian",
+		"locale": "ro_RO",
+		"supported": true
+	},
+	{
+		"code": "ru",
+		"name": "Russian",
+		"locale": "ru_RU",
+		"supported": true
+	},
+	{
+		"code": "si",
+		"name": "Sinhala",
+		"locale": "si_LK",
+		"supported": false
+	},
+	{
+		"code": "sl",
+		"name": "Slovenian",
+		"locale": "sl_SI",
+		"supported": false
+	},
+	{
+		"code": "sv",
+		"name": "Swedish",
+		"locale": "sv_SE",
+		"supported": false
+	},
+	{
+		"code": "th",
+		"name": "Thai",
+		"locale": "th",
+		"supported": false
+	},
+	{
+		"code": "tr",
+		"name": "Turkish",
+		"locale": "tr_TR",
+		"supported": true
+	},
+	{
+		"code": "uk",
+		"name": "Ukrainian",
+		"locale": "uk",
+		"supported": true
+	},
+	{
+		"code": "vi",
+		"name": "Vietnamese",
+		"locale": "vi",
+		"supported": false
+	},
+	{
+		"code": "zh_hans",
+		"name": "Chinese (Simplified)",
+		"locale": "zh_CN",
+		"supported": true
+	},
+	{
+		"code": "zh_hant",
+		"name": "Chinese (Traditional)",
+		"locale": "zh_TW",
+		"supported": true
+	}
+]

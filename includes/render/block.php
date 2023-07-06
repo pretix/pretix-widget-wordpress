@@ -63,7 +63,7 @@ class Block extends \Pretix_Widget\Base {
         $domain = $parsedUrl['host'];
 
         wp_enqueue_script('pretix-widget-frontend',
-            'https://'.$domain.'/widget/v1.'.$settings['language'].'.js',
+            'https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js',
             array(),
             1,
             true);
@@ -71,7 +71,7 @@ class Block extends \Pretix_Widget\Base {
 
     private function enqueue_assets_inline($settings){
         echo '<link rel="stylesheet" type="text/css" href="'.$this->get_url('assets/css/widget.v1.css').'">';
-        echo '<script type="text/javascript" src="'.$this->get_url('assets/js/widget.v1.'.$settings['language'].'.js').'" async></script>';
+        echo '<script type="text/javascript" src="'.$this->get_url('assets/js/widget.v1.'.str_replace('_', '-', $settings['language']).'.js').'" async></script>';
     }
 
 

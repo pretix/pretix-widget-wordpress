@@ -28,10 +28,16 @@ spl_autoload_register('pretix_widget_autoloader');
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/pretix-widget.php';
 
+function pretix_widget_load_text_domain() {
+    load_plugin_textdomain( 'pretix-widget', false, basename( dirname( __FILE__ ) ) . '/includes/languages' );
+}
+
 function pretix_widget_init() {
     $pretix_widget = new Pretix_Widget\Pretix_Widget();
     add_action( 'admin_menu', array( $pretix_widget, 'add_plugin_menu' ) );
     add_action( 'wp_enqueue_scripts', array( $pretix_widget, 'load_assets' ) );
+    add_action( 'plugins_loaded', 'pretix_widget_load_text_domain' );
 }
 
 add_action( 'init', 'pretix_widget_init' );
+

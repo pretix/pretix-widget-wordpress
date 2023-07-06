@@ -4,6 +4,7 @@ namespace Pretix_Widget;
 class Base{
     private $path;
     private $url;
+    public $debug = false;
     private $errors = [];
 
     public function get_name(){
