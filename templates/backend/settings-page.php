@@ -17,9 +17,10 @@
 				<label for="pretix_widget_display"><?php _e('Event selection mode', $this->get_name()); ?></label>
 				<select name="pretix_widget_display" id="pretix_widget_display">
                     <?php $selected = get_option('pretix_widget_display', 'list'); ?>
+					<option value="auto" <?php echo ($selected === 'auto') ? 'selected' : ''; ?>><?php _e('Auto', $this->get_name()); ?></option>
 					<option value="list" <?php echo ($selected === 'list') ? 'selected' : ''; ?>><?php _e('List', $this->get_name()); ?></option>
-					<option value="calendar_week" <?php echo ($selected === 'calendar_week') ? 'selected' : ''; ?>><?php _e('Calendar (Week)', $this->get_name()); ?></option>
-					<option value="calendar_month" <?php echo ($selected === 'calendar_month') ? 'selected' : ''; ?>><?php _e('Calendar (Month)', $this->get_name()); ?></option>
+					<option value="week" <?php echo ($selected === 'week') ? 'selected' : ''; ?>><?php _e('Calendar Week', $this->get_name()); ?></option>
+					<option value="calendar" <?php echo ($selected === 'calendar') ? 'selected' : ''; ?>><?php _e('Calendar Month', $this->get_name()); ?></option>
 				</select>
 			</fieldset>
 			<fieldset>
@@ -27,9 +28,9 @@
 				<input type="checkbox" name="pretix_widget_disable_voucher" id="pretix_widget_disable_voucher" <?php checked( 'on', get_option( 'pretix_widget_disable_voucher' ) ); ?>>
 			</fieldset>
 			<fieldset>
-				<label for="pretix_widget_default_language"><?php _e('Default language', $this->get_name()); ?></label>
-				<select name="pretix_widget_default_language" id="pretix_widget_default_language">
-                    <?php $selected = get_option('pretix_widget_default_language', 'de'); ?>
+				<label for="pretix_widget_language"><?php _e('Default language', $this->get_name()); ?></label>
+				<select name="pretix_widget_language" id="pretix_widget_language">
+                    <?php $selected = get_option('pretix_widget_language', 'de'); ?>
 					<?php
                     foreach($languages as $lang){
 						echo '<option value="'.$lang['code'].'"'.($selected === $lang['code'] ? ' selected' : '').'>'.__($lang['name'], $this->get_name()).'</option>';

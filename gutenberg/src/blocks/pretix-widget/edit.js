@@ -11,7 +11,18 @@ const {
 	store
 } = wp.blockEditor;
 
-const defaults = pretixWidgetDefaults ?? [];
+// inject defaults from php
+const defaults = {};
+
+if(pretixWidgetDefaults){
+	for (const key in pretixWidgetDefaults) {
+		if (pretixWidgetDefaults.hasOwnProperty(key)) {
+			defaults[key] = pretixWidgetDefaults[key] === '' ? null : pretixWidgetDefaults[key];
+		}
+	}
+}
+
+// inject languages from php
 const languages = pretixWidgetLanguages ? Object.values(pretixWidgetLanguages) : [
 	{
 		"code": "en",
@@ -37,20 +48,20 @@ export default function Edit(props) {
 	// add defaults to attributes
 	const {
 		align,
-		mode = 'widget',
-		display = 'list',
-		shop_url,
-		items = '',
-		categories = '',
-		variations = '',
-		disable_voucher = false,
-		allocated_voucher = '',
-		language = 'en',
-		button_text = 'Buy Ticket!',
+		mode,
+		items,
+		categories,
+		variations,
+		allocated_voucher,
+		// settings which can be overwritten by defaults from the wp settings page on first insert
+		display =  defaults.pretix_widget_display ?? 'list',
+		shop_url = defaults.pretix_widget_shop_url.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_shop_url : '',
+		disable_voucher = defaults.pretix_widget_disable_voucher ?? false,
+		language = defaults.pretix_widget_language ?? 'en',
+		button_text = defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
 	} = attributes;
-	
+
 	const blockProps = useBlockProps();
-	
 	const [loading, setLoading] = useState(false);
 	
 	const handleChange = (key, value) => {
@@ -183,8 +194,8 @@ export default function Edit(props) {
 						options={[
 							{ value: 'auto', label: __('Auto', 'pretix-widget') },
 							{ value: 'list', label: __('List', 'pretix-widget') },
-							{ value: 'calendar', label: __('Calendar', 'pretix-widget') },
-							{ value: 'week', label: __('Week', 'pretix-widget') },
+							{ value: 'week', label: __('Calendar Week', 'pretix-widget') },
+							{ value: 'calendar', label: __('Calendar Month', 'pretix-widget') },
 						]}
 						onChange={(value) => handleChange('display', value)}
 					/>

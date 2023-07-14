@@ -30,12 +30,10 @@
 			"default": "widget"
 		},
 		"display": {
-			"type": "string",
-			"default": "list"
+			"type": "string"
 		},
 		"shop_url": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"event": {
 			"type": "string",
@@ -54,20 +52,17 @@
 			"default": ""
 		},
 		"disable_voucher": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"language": {
-			"type": "string",
-			"default": "en"
+			"type": "string"
 		},
 		"allocated_voucher": {
 			"type": "string",
 			"default": ""
 		},
 		"button_text": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		}
 	}
 }
