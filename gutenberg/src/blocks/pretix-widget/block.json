@@ -29,6 +29,10 @@
 			"type": "string",
 			"default": "widget"
 		},
+		"subevent": {
+			"type": "string",
+			"default": ""
+		},
 		"display": {
 			"type": "string"
 		},

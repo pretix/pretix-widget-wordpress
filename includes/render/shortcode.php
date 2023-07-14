@@ -32,8 +32,8 @@ class Shortcode extends \Pretix_Widget\Base {
                 'mode'              => 'widget',
                 'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
                 'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'], '/') : '',
-                'event'             => isset($defaults['pretix_widget_filter_by_event']) ? rtrim($defaults['pretix_widget_filter_by_event'], '/') : '',
-                'items'             => isset($defaults['pretix_widget_filter_by_product_id']) ? $defaults['pretix_widget_filter_by_product_id'] : '',
+                'subevent'             => isset($defaults['pretix_widget_subevent']) ? rtrim($defaults['pretix_widget_subevent'], '/') : '',
+                'items'             => isset($defaults['pretix_widget_filter_by_item_id']) ? $defaults['pretix_widget_filter_by_item_id'] : '',
                 'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
                 'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
                 'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
@@ -69,13 +69,13 @@ class Shortcode extends \Pretix_Widget\Base {
     //@todo css is relative the set shop url and event - add curl and caching
     private function enqueue_assets($settings){
         wp_enqueue_style('pretix-widget-frontend',
-            $settings['shop_url'].'/widget/v1.css',
+            rtrim($settings['shop_url'],'/').'/widget/v1.css',
             array(),
             1
         );
 
         $parsedUrl = parse_url($settings['shop_url']);
-        $domain = $parsedUrl['host'];
+        $domain = rtrim($parsedUrl['host'], '/');
 
         wp_enqueue_script('pretix-widget-frontend',
             'https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js',
@@ -89,25 +89,23 @@ class Shortcode extends \Pretix_Widget\Base {
         echo '<script type="text/javascript" src="'.$this->get_url('assets/js/widget.v1.'.$settings['language'].'.js').'" async></script>';
     }
 
-
     private function get_arguments_inline($settings) {
         $arguments = [];
 
         $arguments['list'] = 'list-type="' . $settings['display'] . '"';
         // URL -----------------------------------------------------------------
-        $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/';
-
-        if ( ! empty($settings['event'])) {
-            $arguments['url'] .= rtrim(sanitize_text_field($settings['event']), '/') . '/';
-        }
-
-        $arguments['url'] .= '"';
+        $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/"';
         // URL -----------------------------------------------------------------
 
+        if ( ! empty($settings['subevent'])) {
+            $arguments['subevent'] =  'subevent="' .$settings['subevent'] . '"';
+        }
+
         if ( ! empty($settings['items'])) {
-            $arguments['products'] = 'items="';
-            $arguments['products'] .= preg_replace('/[^0-9,]/', '', $settings['items']);
-            $arguments['products'] .= '"';
+            $arguments['items'] = 'items="';
+            // button mode supports strings, widget mode only numbers
+            $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace('/[^0-9,]/', '', $settings['items']) : $settings['items'];
+            $arguments['items'] .= '"';
         }
 
         if ( ! empty($settings['categories'])) {

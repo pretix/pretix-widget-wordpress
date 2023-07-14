@@ -49,6 +49,7 @@ export default function Edit(props) {
 	const {
 		align,
 		mode,
+		subevent,
 		items,
 		categories,
 		variations,
@@ -158,12 +159,12 @@ export default function Edit(props) {
 						onChange={(value) => handleChange('shop_url', value)}
 						type="url"
 					/>
-					{/*
+					{
 					<TextControl
-						label={__('Event', 'pretix-widget')}
-						value={event}
-						onChange={(value) => handleChange('event', value)}
-					/>*/}
+						label={__('Sub-Event', 'pretix-widget')}
+						value={subevent}
+						onChange={(value) => handleChange('subevent', value)}
+					/>}
 					<TextControl
 						label={__('Items', 'pretix-widget')}
 						value={items}
@@ -205,7 +206,7 @@ export default function Edit(props) {
 						onChange={(value) => handleChange('disable_voucher', value)}
 					/>
 					<SelectControl
-						label={__('Default Language', 'pretix-widget')}
+						label={__('Language', 'pretix-widget')}
 						value={language}
 						options={languages.map(({ code, name }) => ({
 							value: code,

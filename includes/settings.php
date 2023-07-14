@@ -79,9 +79,8 @@ class Settings extends Base {
                 ['pretix_widget_disable_voucher', false],
                 ['pretix_widget_language', \get_locale()],
 	            /*
-                ['pretix_widget_filter_by_event', ''],
-	            ['pretix_widget_filter_by_sub_event_id', ''],
-                ['pretix_widget_filter_by_product_id', ''],
+                ['pretix_widget_subevent', ''],
+                ['pretix_widget_filter_by_item_id', ''],
                 ['pretix_widget_filter_by_category_id', ''],
                 ['pretix_widget_filter_by_variation_id', ''],
 	            */

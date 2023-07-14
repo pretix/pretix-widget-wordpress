@@ -30,8 +30,8 @@ class Render extends Base {
                 'mode'              => 'widget',
                 'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
                 'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'], '/') : '',
-                'event'             => isset($defaults['pretix_widget_filter_by_event']) ? rtrim($defaults['pretix_widget_filter_by_event'], '/') : '',
-                'items'             => isset($defaults['pretix_widget_filter_by_product_id']) ? $defaults['pretix_widget_filter_by_product_id'] : '',
+                'subevent'             => isset($defaults['pretix_widget_subevent']) ? rtrim($defaults['pretix_widget_subevent'], '/') : '',
+                'items'             => isset($defaults['pretix_widget_filter_by_item_id']) ? $defaults['pretix_widget_filter_by_item_id'] : '',
                 'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
                 'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
                 'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
@@ -71,8 +71,8 @@ class Render extends Base {
             'mode'              => 'widget',
             'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
             'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'],'/') : '',
-            'event'             => isset($defaults['pretix_widget_filter_by_event']) ? rtrim($defaults['pretix_widget_filter_by_event'], '/') : '',
-            'items'             => isset($defaults['pretix_widget_filter_by_product_id']) ? $defaults['pretix_widget_filter_by_product_id'] : '',
+            'subevent'             => isset($defaults['pretix_widget_subevent']) ? rtrim($defaults['pretix_widget_subevent'], '/') : '',
+            'items'             => isset($defaults['pretix_widget_filter_by_item_id']) ? $defaults['pretix_widget_filter_by_item_id'] : '',
             'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
             'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
             'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
@@ -152,8 +152,8 @@ class Render extends Base {
         // URL -----------------------------------------------------------------
         $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/';
 
-        if ( ! empty($settings['event'])) {
-            $arguments['url'] .= rtrim(sanitize_text_field($settings['event']), '/') . '/';
+        if ( ! empty($settings['subevent'])) {
+            $arguments['url'] .= rtrim(sanitize_text_field($settings['subevent']), '/') . '/';
         }
 
         $arguments['url'] .= '"';
