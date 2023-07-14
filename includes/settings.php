@@ -22,7 +22,8 @@ class Settings extends Base {
             'manage_options',
             'pretix_widget',
             array($this, 'render_plugin_page'),
-            'dashicons-tickets-alt'
+            'data:image/svg+xml;base64,' . base64_encode(file_get_contents($this->get_path('assets/images/RGB-pretix-logo-light-icon.svg'))),
+            //'dashicons-tickets-alt'
         );
 
         $this->add_settings_page();
