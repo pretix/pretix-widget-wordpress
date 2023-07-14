@@ -11,7 +11,7 @@ class Languages extends Base {
         $this->debug      = $this->parent->debug;
     }
 
-    public function get(string $code){
+    public function get(string $code): mixed{
         $filtered = array_filter($this->get_list(), function ($lang) use ($code) {
             return $lang['code'] === $code;
         });
@@ -21,7 +21,7 @@ class Languages extends Base {
         return $result ?: null;
     }
 
-    public function get_by_locale(string $locale){
+    public function get_by_locale(string $locale): mixed{
         $filtered = array_filter($this->get_list(), function ($lang) use ($locale) {
             return $lang['locale'] === $locale;
         });
@@ -31,15 +31,15 @@ class Languages extends Base {
         return $result ?: null;
     }
 
-    public function get_list(){
+    public function get_list(): array{
         return empty($this->list) ? $this->get_file() : $this->list;
     }
 
-    public function get_current(){
+    public function get_current(): string{
         return get_locale();
     }
 
-    private function get_file(){
+    private function get_file(): array{
         $file = $this->get_path('includes/languages/lang.json');
         if (file_exists($file)){
             $this->list = json_decode(file_get_contents($file), true);

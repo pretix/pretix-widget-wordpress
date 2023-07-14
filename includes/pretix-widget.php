@@ -10,6 +10,7 @@ final class Pretix_Widget extends Base {
     public function __construct() {
         $this->settings = new Settings($this);
         $this->render = new Render($this);
+        $this->languages = new Languages($this);
         $this->debug    = defined('WP_DEBUG') && WP_DEBUG ? WP_DEBUG : false;
 
         add_shortcode('pretix_widget', array($this->render, 'shortcode_widget'));
@@ -39,6 +40,11 @@ final class Pretix_Widget extends Base {
             filemtime($this->get_path('gutenberg/dist/pretix-widget.build.js')),
             true
         );
+
+        // inject the pretix-widget settings for the block
+        wp_localize_script('pretix-widget', 'pretixWidgetDefaults', $this->settings->get_settings());
+        // inject the pretix-widget language options for the block
+        wp_localize_script('pretix-widget', 'pretixWidgetLanguages', $this->languages->get_list());
 
         wp_enqueue_style(
             'pretix-widget',

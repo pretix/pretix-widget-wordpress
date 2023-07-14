@@ -11,6 +11,22 @@ const {
 	store
 } = wp.blockEditor;
 
+const defaults = pretixWidgetDefaults ?? [];
+const languages = pretixWidgetLanguages ? Object.values(pretixWidgetLanguages) : [
+	{
+		"code": "en",
+		"locale": "en_GB",
+		"name": "English",
+		"supported": true
+	},
+	{
+		"code": "de",
+		"locale": "de_DE",
+		"name": "German",
+		"supported": true
+	},
+];
+
 export default function Edit(props) {
 	const {
 		clientId,
@@ -60,7 +76,8 @@ export default function Edit(props) {
 			
 			const url = new URL(shop_url);
 			const _url = url.hostname;
-			script.src = `https://${_url}/widget/v1.${language}.js?timestamp=${Date.now()}`;
+			const filename = language.replace('_', '-');
+			script.src = `https://${_url}/widget/v1.${filename}.js?timestamp=${Date.now()}`;
 			script.async = true;
 			script.onload = () => {
 				window.PretixWidget.buildWidgets();
@@ -179,10 +196,10 @@ export default function Edit(props) {
 					<SelectControl
 						label={__('Default Language', 'pretix-widget')}
 						value={language}
-						options={[
-							{ value: 'de', label: __('German', 'pretix-widget') },
-							{ value: 'en', label: __('English', 'pretix-widget') },
-						]}
+						options={languages.map(({ code, name }) => ({
+							value: code,
+							label: name
+						}))}
 						onChange={(value) => handleChange('language', value)}
 					/>
 				</PanelBody>
