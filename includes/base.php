@@ -39,10 +39,10 @@ class Base{
     public function set_error($error){
         if ( is_array( $error ) || is_object( $error ) ) {
             error_log( print_r( $error, true ) );
-            $this->errors[] = $error;
+            $this->errors[] = array_merge($this->errors, $error);
         } else {
             error_log( $error );
-            $this->errors[] = array_merge($this->errors, $error);
+            $this->errors[] = $error;
         }
     }
 }
