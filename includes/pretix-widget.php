@@ -13,9 +13,18 @@ final class Pretix_Widget extends Base {
         $this->languages = new Languages($this);
         $this->debug    = defined('WP_DEBUG') && WP_DEBUG ? WP_DEBUG : false;
 
+        // backend
+        add_action( 'admin_menu', array( $this, 'add_plugin_menu' ) );
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_backend_assets'));
+        add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
+
+        // frontend
         add_shortcode('pretix_widget', array($this->render, 'shortcode_widget'));
         add_shortcode('pretix_widget_button', array($this->render, 'shortcode_button'));
-        add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
+        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
+
+        // misc
+        add_action( 'plugins_loaded', 'pretix_widget_load_text_domain' );
 
         $this->register_blocks();
     }
@@ -54,14 +63,21 @@ final class Pretix_Widget extends Base {
         );
     }
 
-    // Method to load assets only when the shortcode is used or the Gutenberg block is displayed
-    public function load_assets() {
+    // load assets only when the shortcode is used or the Gutenberg block is displayed
+    public function enqueue_frontend_assets() {
         global $post;
         if (has_shortcode($post->post_content, 'pretix_widget') || has_block('pretix/widget')) {
-            wp_enqueue_style('pretix-widget-style', $this->get_url('assets/css/style.css'), [], '1.0.0', 'all');
-            wp_enqueue_script('pretix-widget-script', $this->get_url('assets/js/script.js'), [], '1.0.0', true);
+            wp_enqueue_style('pretix-widget-style', $this->get_url('assets/css/style.css'), [], filemtime($this->get_path('assets/css/style.css')), 'all');
+            wp_enqueue_script('pretix-widget-script', $this->get_url('assets/js/script.js'), [], filemtime($this->get_path('assets/js/script.js')), true);
         }
     }
 
+    // load wp backend assets for plugin pages
+    public function enqueue_backend_assets() {
+        if (isset($_GET['page']) && str_contains($_GET['page'], 'pretix_widget')) {
+            wp_enqueue_style('pretix-widget-backend-style', $this->get_url('assets/css/backend.css'), [], filemtime($this->get_path('assets/css/backend.css')), 'all');
+            wp_enqueue_script('pretix-widget-backend-script', $this->get_url('assets/js/backend.js'), [], filemtime($this->get_path('assets/js/backend.js')), true);
+        }
+    }
 
 }

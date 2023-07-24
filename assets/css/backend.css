@@ -1,0 +1,122 @@
+:root {
+	--pretix-darkpurple: #3B1C4A;
+	--pretix-lightpurple: #7F4A91;
+	--pretix-success: #50A167;
+	--pretix-warning: #FFB419;
+	--pretix-alert: #C44F4F;
+	--pretix-info: #5F9CD4;
+	--pretix-inactive: #CCCCCC;
+	--pretix-secondary: #999999;
+}
+
+.pretix-widget-admin-page-wrapper{
+	padding:0;
+	margin-left:-20px;
+}
+
+.pretix-widget-admin-page-wrapper #header{
+	display:flex;
+	justify-content: flex-start;
+	align-items:center;
+	gap:20px;
+	background: white;
+	padding:20px;
+	border-bottom:1px solid var(--pretix-darkpurple);
+}
+
+.pretix-widget-admin-page-wrapper #header .submit{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right:0;
+	margin-left: auto;
+}
+
+.pretix-widget-admin-page-wrapper #content{
+	display:flex;
+	padding:20px;
+}
+
+.pretix-widget-admin-page-wrapper #content > form{
+	display:flex;
+	flex-direction: column;
+	gap:10px;
+	flex-basis:100%;
+}
+
+.pretix-widget-admin-page-wrapper #content fieldset{
+	display:flex;
+	width:100%;
+	max-width:100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap:20px;
+}
+
+.pretix-widget-admin-page-wrapper #content fieldset.column{
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.pretix-widget-admin-page-wrapper #content fieldset > label{
+	font-weight:bold;
+	flex-basis:300px;
+}
+
+.pretix-widget-admin-page-wrapper #content fieldset.column > label{
+	flex-basis:auto;
+}
+
+.pretix-widget-admin-page-wrapper #pretix_widget_custom_css{
+	max-width:600px;
+	min-height:250px;
+}
+
+@media(min-width:0){
+	.pretix-widget-admin-page-wrapper .full{
+		width:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex{
+		display:flex;
+		flex-direction:column;
+		gap:40px;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .left{
+		flex-basis:100%;
+		display:flex;
+		flex-direction:column;
+		gap:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .right{
+		flex-basis:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper .container{
+		background:white;
+		padding:20px;
+	}
+}
+
+@media(min-width:768px){
+	.pretix-widget-admin-page-wrapper  .flex{
+		flex-direction:row;
+		justify-content: space-between;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .left{
+		flex-basis:auto;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .right{
+		flex-basis:300px;
+	}
+}
+
+@media(min-width:1024px){
+	.pretix-widget-admin-page-wrapper  .flex > .right{
+		flex-basis:500px;
+	}
+}

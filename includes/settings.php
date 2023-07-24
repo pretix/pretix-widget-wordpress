@@ -23,7 +23,6 @@ class Settings extends Base {
             'pretix_widget',
             array($this, 'render_plugin_page'),
             'data:image/svg+xml;base64,' . base64_encode(file_get_contents($this->get_path('assets/images/RGB-pretix-logo-light-icon.svg'))),
-            //'dashicons-tickets-alt'
         );
 
         $this->add_settings_page();
@@ -121,17 +120,13 @@ class Settings extends Base {
 	}
 
     public function render_plugin_page() {
-        ?>
-		<div class="wrap">
-			<h1>pretix widget</h1>
-			<p>This is the main page for the pretix Ticket plugin.</p>
-		</div>
-        <?php
+        require_once($this->get_path('templates/backend/main.php'));
     }
 
     public function render_settings_page() {
         $languages = $this->languages->get_list();
-        require_once($this->get_path('templates/backend/settings-page.php'));
+
+        require_once($this->get_path('templates/backend/settings.php'));
     }
 
 }
