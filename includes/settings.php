@@ -58,11 +58,24 @@ class Settings extends Base {
                     $name,
 	                [
 						'default' => $def,
+                        'sanitize_callback' => array($this, 'sanitize'),
 	                ]
                 );
 			}
 		}
 
+    }
+
+    // Sanitize the custom CSS input
+    public function sanitize($input) {
+        // Save the custom CSS option
+        $custom_css = sanitize_textarea_field($input);
+        //update_option('pretix_widget_custom_css', $custom_css);
+        // Delete the transient
+        delete_transient('pretix_widget_custom_css');
+
+        // Return the sanitized value
+        return $input;
     }
 
 	private function get_settings_map(){
@@ -73,17 +86,8 @@ class Settings extends Base {
 	            // 0 = name, 1 = default value, ...
                 ['pretix_widget_shop_url', ''],
                 ['pretix_widget_display', 'list'],
-	            /*
-                ['pretix_widget_allocated_voucher', ''],
-	            */
                 ['pretix_widget_disable_voucher', false],
                 ['pretix_widget_language', \get_locale()],
-	            /*
-                ['pretix_widget_subevent', ''],
-                ['pretix_widget_filter_by_item_id', ''],
-                ['pretix_widget_filter_by_category_id', ''],
-                ['pretix_widget_filter_by_variation_id', ''],
-	            */
                 ['pretix_widget_button_text', __('Buy Ticket!', $this->get_name())],
                 ['pretix_widget_debug_skip_ssl_check', false],
                 ['pretix_widget_custom_css', '']
@@ -125,7 +129,6 @@ class Settings extends Base {
 
     public function render_settings_page() {
         $languages = $this->languages->get_list();
-
         require_once($this->get_path('templates/backend/settings.php'));
     }
 

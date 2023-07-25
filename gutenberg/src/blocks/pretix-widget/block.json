@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "pretix/widget",
 	"title": "pretix Widget",
-	"description": "A widget for displaying pretix widget.",
+	"description": "A widget for displaying a pretix ticket shop.",
 	"icon": "tickets-alt",
 	"category": "widgets",
 	"textdomain": "pretix-widget",

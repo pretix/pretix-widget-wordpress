@@ -82,6 +82,12 @@ class Shortcode extends \Pretix_Widget\Base {
             array(),
             1,
             true);
+
+        // custom css
+        $custom_css = $this->parent->get_custom_css();
+        if(empty($custom_css) === false){
+            wp_add_inline_style('pretix-widget-frontend', $custom_css);
+        }
     }
 
     private function enqueue_assets_inline($settings){

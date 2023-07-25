@@ -75,6 +75,14 @@ final class Pretix_Widget extends Base {
     // load wp backend assets for plugin pages
     public function enqueue_backend_assets() {
         if (isset($_GET['page']) && str_contains($_GET['page'], 'pretix_widget')) {
+            if($_GET['page'] === 'pretix_widget_settings'){
+                $settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+
+                wp_add_inline_script(
+                    'code-editor',
+                    sprintf( 'jQuery( function() { wp.codeEditor.initialize( "pretix_widget_custom_css", %s ); } );', wp_json_encode( $settings ) )
+                );
+            }
             wp_enqueue_style('pretix-widget-backend-style', $this->get_url('assets/css/backend.css'), [], filemtime($this->get_path('assets/css/backend.css')), 'all');
             wp_enqueue_script('pretix-widget-backend-script', $this->get_url('assets/js/backend.js'), [], filemtime($this->get_path('assets/js/backend.js')), true);
         }

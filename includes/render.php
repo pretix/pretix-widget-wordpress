@@ -33,4 +33,19 @@ class Render extends Base {
         return $this->_block->render($settings);
     }
 
+    // custom css handler
+    public function get_custom_css(): string{
+        $custom_css = get_transient('pretix_widget_custom_css');
+
+        if($custom_css === false){
+            $custom_css = isset($this->settings['pretix_widget_custom_css']) ? $this->settings['pretix_widget_custom_css'] : '';
+            $custom_css = wp_strip_all_tags($custom_css);
+            $custom_css = wp_kses_post($custom_css);
+            set_transient('pretix_widget_custom_css', $custom_css, 60*60*24);
+        }
+
+        return $custom_css;
+
+    }
+
 }
