@@ -45,4 +45,12 @@ class Base{
             $this->errors[] = $error;
         }
     }
+
+    public function get_error_html(){
+        $html = '';
+        foreach($this->get_errors() as $error){
+            $html .= '<p>'.$error.'</p>';
+        }
+        return $html;
+    }
 }
