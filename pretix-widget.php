@@ -1,13 +1,16 @@
 <?php
-/*
-Plugin Name: pretix widget
-Plugin URI: https://pretix.eu/
-Description: Display pretix widget on your WordPress website
-Version: 1.0.0
-Author: straightvisions GmbH
-Author URI: https://straightvisions.com/
-License: GPL2
-*/
+	/*
+	Version: 1.0.00
+	Plugin Name: pretix widget
+	Text Domain: pretix-widget
+	Description: The pretix widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.
+	Plugin URI: https://pretix.eu/
+	Author: straightvisions GmbH
+	Author URI: https://straightvisions.com
+	Domain Path: /languages
+	License: GPL-3.0-or-later
+	License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+	*/
 
 // Define an autoloader function
 function pretix_widget_autoloader($class_name) {

@@ -8,39 +8,6 @@
 		<div class="flex full">
 			<div class="left">
 				<div class="container">
-					<?php _e('<h2>Using the pretix widget shortcode</h2>
-						<p>The pretix widget shortcode allows you to easily display pretix ticket widgets on your website. With this shortcode, you can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.</p>
-						<h3>Basic Usage</h3>
-						<p>To use the pretix widget shortcode, simply add the following shortcode to any post or page where you want to display the ticket widget:</p>
-						<code>[pretix_widget]</code>
-						<h3>Customizing the Widget</h3>
-						<p>You can customize the pretix ticket widget by adding various attributes to the shortcode. Here are the available attributes and their possible values:</p>
-						<ul>
-							<li><strong>display</strong> (string): Set the display type of the widget. Possible values: \'list\', \'table\', \'calendar\'.</li>
-							<li><strong>shop_url</strong> (string): The URL of your pretix shop. Example: \'https://pretix.eu/demo\'</li>
-							<li><strong>subevent</strong> (string): The subevent you want to display tickets for. Example: \'subevent-1\'</li>
-							<li><strong>items</strong> (string): Comma-separated list of item IDs to display. Example: \'1,2,3\'</li>
-							<li><strong>categories</strong> (string): Comma-separated list of category IDs to display. Example: \'4,5,6\'</li>
-							<li><strong>variations</strong> (string): Comma-separated list of variation IDs to display. Example: \'7,8,9\'</li>
-							<li><strong>disable_voucher</strong> (boolean): Set to \'true\' to disable voucher selection.</li>
-							<li><strong>allocated_voucher</strong> (string): The voucher code to allocate to the ticket widget. Example: \'ABC123\'</li>
-							<li><strong>language</strong> (string): The language code for the widget. Example: \'en\', \'de\', \'fr\', etc.</li>
-							<li><strong>button_text</strong> (string): Custom text for the ticket booking button.</li>
-						</ul>
-						<h3>Example Usage</h3>
-						<p>Here\'s an example of how you can use the pretix widget shortcode with custom settings:</p>
-						<code>[pretix_widget display="table" shop_url="https://pretix.eu/demo" language="en" button_text="Get Tickets Now"]</code>
-						<h3>Notes</h3>
-						<ul>
-							<li>The shortcode attributes are case-sensitive.</li>
-							<li>If an attribute is not provided, the shortcode will use the default values defined in the plugin settings.</li>
-							<li>Make sure to use a valid pretix shop URL and provide the correct language code for the widget to display the tickets correctly.</li>
-							<li>If you encounter any issues or have questions, feel free to contact the website administrator.</li>
-						</ul>
-						<p>That\'s it! Now you can easily display pretix ticket widgets on your website using the [pretix_widget] shortcode and customize the ticket display to suit your needs.</p>',
-					'pretix-widget'); ?>
-				</div>
-				<div class="container">
 					<?php _e('<h2>Using the pretix widget Gutenberg block</h2>
 						<p>The pretix widget Gutenberg Block allows you to easily display pretix ticket widgets on your WordPress website using the Gutenberg editor. With this block, you can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.</p>
 						<h3>Adding the Block</h3>
@@ -84,8 +51,41 @@
 						  <li>If you encounter any issues or have questions, feel free to contact the website administrator.</li>
 						</ul>
 						<p>That\'s it! Now you can easily display pretix ticket widgets on your WordPress website using the pretix widget Gutenberg Block and customize the ticket display to suit your needs.</p>',
-					'pretix-widget');
+						'pretix-widget');
 					?>
+				</div>
+				<div class="container">
+					<?php _e('<h2>Using the pretix widget shortcode</h2>
+						<p>The pretix widget shortcode allows you to easily display pretix ticket widgets on your website. With this shortcode, you can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.</p>
+						<h3>Basic Usage</h3>
+						<p>To use the pretix widget shortcode, simply add the following shortcode to any post or page where you want to display the ticket widget:</p>
+						<code>[pretix_widget]</code>
+						<h3>Customizing the Widget</h3>
+						<p>You can customize the pretix ticket widget by adding various attributes to the shortcode. Here are the available attributes and their possible values:</p>
+						<ul>
+							<li><strong>display</strong> (string): Set the display type of the widget. Possible values: \'list\', \'table\', \'calendar\'.</li>
+							<li><strong>shop_url</strong> (string): The URL of your pretix shop. Example: \'https://pretix.eu/demo\'</li>
+							<li><strong>subevent</strong> (string): The subevent you want to display tickets for. Example: \'subevent-1\'</li>
+							<li><strong>items</strong> (string): Comma-separated list of item IDs to display. Example: \'1,2,3\'</li>
+							<li><strong>categories</strong> (string): Comma-separated list of category IDs to display. Example: \'4,5,6\'</li>
+							<li><strong>variations</strong> (string): Comma-separated list of variation IDs to display. Example: \'7,8,9\'</li>
+							<li><strong>disable_voucher</strong> (boolean): Set to \'true\' to disable voucher selection.</li>
+							<li><strong>allocated_voucher</strong> (string): The voucher code to allocate to the ticket widget. Example: \'ABC123\'</li>
+							<li><strong>language</strong> (string): The language code for the widget. Example: \'en\', \'de\', \'fr\', etc.</li>
+							<li><strong>button_text</strong> (string): Custom text for the ticket booking button.</li>
+						</ul>
+						<h3>Example Usage</h3>
+						<p>Here\'s an example of how you can use the pretix widget shortcode with custom settings:</p>
+						<code>[pretix_widget display="table" shop_url="https://pretix.eu/demo" language="en" button_text="Get Tickets Now"]</code>
+						<h3>Notes</h3>
+						<ul>
+							<li>The shortcode attributes are case-sensitive.</li>
+							<li>If an attribute is not provided, the shortcode will use the default values defined in the plugin settings.</li>
+							<li>Make sure to use a valid pretix shop URL and provide the correct language code for the widget to display the tickets correctly.</li>
+							<li>If you encounter any issues or have questions, feel free to contact the website administrator.</li>
+						</ul>
+						<p>That\'s it! Now you can easily display pretix ticket widgets on your website using the [pretix_widget] shortcode and customize the ticket display to suit your needs.</p>',
+						'pretix-widget'); ?>
 				</div>
 			</div>
 			<div class="right">

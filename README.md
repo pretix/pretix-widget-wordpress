@@ -1,2 +1,1 @@
 # pretix-widget
-Dennis
