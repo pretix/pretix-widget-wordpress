@@ -69,11 +69,15 @@ export default function Edit(props) {
 		setAttributes({ [key]: value });
 	}
 	
-	function isValidUrl(url) {
-		// Regular expression for URL validation
-		var urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-zA-Z]{2,}(\/\S*)?$/;
-		return urlPattern.test(url);
-	}
+	const isValidUrl = (url) => {
+		try {
+			new URL(url);
+			return true;
+		} catch (err) {
+			return false;
+		}
+	};
+	
 	
 	const insertScriptAssets = () =>{
 		if(isValidUrl(shop_url)){
@@ -157,6 +161,7 @@ export default function Edit(props) {
 						label={__('Shop URL', 'pretix-widget')}
 						value={shop_url}
 						onChange={(value) => handleChange('shop_url', value)}
+						placeholder="https://pretix.eu/demo"
 						type="url"
 					/>
 					{
