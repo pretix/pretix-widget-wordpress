@@ -6,9 +6,9 @@ use function add_menu_page;
 use function register_setting;
 
 class Settings extends Base {
-    private $parent;
+    private $parent = null;
+    public $languages = null;
     private $map = [];
-	public $languages = null;
 
     public function __construct($parent) {
         $this->parent = $parent;
@@ -31,11 +31,20 @@ class Settings extends Base {
     public function add_settings_page() {
         add_submenu_page(
             'pretix_widget',
-            'General Settings',
-            'Settings',
+            __('Settings', 'pretix-widget'),
+            __('Settings', 'pretix-widget'),
             'manage_options',
             'pretix_widget_settings',
             array($this, 'render_settings_page')
+        );
+
+        add_submenu_page(
+            'pretix_widget',
+            __('Cache', 'pretix-widget'),
+            __('Cache', 'pretix-widget'),
+            'manage_options',
+            'pretix_widget_cache',
+            array($this, 'render_cache_page')
         );
 
         add_action('admin_init', array($this, 'register_settings'));
@@ -69,8 +78,7 @@ class Settings extends Base {
     // Sanitize the custom CSS input
     public function sanitize($input) {
         // Save the custom CSS option
-        $custom_css = sanitize_textarea_field($input);
-        //update_option('pretix_widget_custom_css', $custom_css);
+        $input = sanitize_textarea_field($input);
         // Delete the transient
         delete_transient('pretix_widget_custom_css');
 
