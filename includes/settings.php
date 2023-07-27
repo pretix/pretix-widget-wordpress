@@ -140,4 +140,8 @@ class Settings extends Base {
         require_once($this->get_path('templates/backend/settings.php'));
     }
 
+    public function render_cache_page() {
+        require_once($this->get_path('templates/backend/cache.php'));
+    }
+
 }

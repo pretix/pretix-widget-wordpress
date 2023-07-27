@@ -74,7 +74,6 @@
                         'pretix-widget'); ?>
 				</div>
 			</div>
-
+		</div>
 	</div>
-
 </div>
