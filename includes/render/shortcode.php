@@ -66,22 +66,26 @@ class Shortcode extends \Pretix_Widget\Base {
     }
 
     // helper functions
-    //@todo css is relative the set shop url and event - add curl and caching
     private function enqueue_assets($settings){
+        // get cached shop css file
+        $file = $this->parent->cache->get(rtrim($settings['shop_url'],'/').'/widget/v1.css');
         wp_enqueue_style('pretix-widget-frontend',
-            rtrim($settings['shop_url'],'/').'/widget/v1.css',
+            $file,
             array(),
-            1
+            filemtime($this->parent->cache->get_cache_path(basename($file)))
         );
 
+        // get cached shop js file
         $parsedUrl = parse_url($settings['shop_url']);
         $domain = rtrim($parsedUrl['host'], '/');
+        $file = $this->parent->cache->get('https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js');
 
         wp_enqueue_script('pretix-widget-frontend',
-            'https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js',
+            $file,
             array(),
-            1,
-            true);
+            filemtime($this->parent->cache->get_cache_path(basename($file))),
+            true
+        );
 
         // custom css
         $custom_css = $this->parent->get_custom_css();

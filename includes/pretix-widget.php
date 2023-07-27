@@ -5,13 +5,16 @@ namespace Pretix_Widget;
 final class Pretix_Widget extends Base {
     public $settings;
     public $render;
+    public $cache;
     public $debug = false;
 
     public function __construct() {
         $this->settings = new Settings($this);
-        $this->render = new Render($this);
+        $this->cache = new Cache($this);
         $this->languages = new Languages($this);
         $this->debug    = defined('WP_DEBUG') && WP_DEBUG ? WP_DEBUG : false;
+        $this->render = new Render($this); // render class must be called last
+
 
         // backend
         add_action( 'admin_menu', array( $this, 'add_plugin_menu' ) );

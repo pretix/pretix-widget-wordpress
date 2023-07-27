@@ -6,10 +6,12 @@ class Render extends Base {
     private $errors = [];
     public $settings = [];
     public $debug = false;
+    public $cache = null;
 
     public function __construct($parent) {
         $this->parent = $parent;
         $this->debug = $this->parent->debug;
+        $this->cache = $this->parent->cache;
         $this->settings = $this->parent->settings->get_settings();
         $this->_shortcode = new Render\Shortcode($this);
         $this->_block = new Render\Block($this);
