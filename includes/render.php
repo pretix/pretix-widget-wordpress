@@ -37,6 +37,7 @@ class Render extends Base {
 
     // custom css handler
     public function get_custom_css(): string{
+        echo "get_custom_css";
         $custom_css = get_transient('pretix_widget_custom_css');
 
         if($custom_css === false){

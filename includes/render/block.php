@@ -73,6 +73,12 @@ class Block extends \Pretix_Widget\Base {
             filemtime($this->parent->cache->get_cache_path(basename($file))),
             true
         );
+
+        // custom css
+        $custom_css = $this->parent->get_custom_css();
+        if(empty($custom_css) === false){
+            wp_add_inline_style('pretix-widget-frontend', $custom_css);
+        }
     }
 
     private function enqueue_assets_inline($settings){
