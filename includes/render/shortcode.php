@@ -1,21 +1,56 @@
 <?php
+/**
+ * Version: 1.0.00
+ */
+
 namespace Pretix_Widget\Render;
 
-class Shortcode extends \Pretix_Widget\Base {
+use Pretix_Widget\Base;
+
+/**
+ * Class Shortcode
+ * This class handles the rendering of Pretix widgets using shortcodes.
+ * @version 1.0.00
+ */
+class Shortcode extends Base {
     private $parent;
 
+    /**
+     * Constructor for the Shortcode class.
+     *
+     * @param object $parent The parent object.
+     *
+     * @version 1.0.00
+     */
     public function __construct($parent) {
         $this->parent = $parent;
     }
 
-    public function render(array $settings = [], $type = 'widget'){
+    /**
+     * Renders the Pretix widget using the provided settings and type.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     * @param string $type The type of the widget (shortcode or Gutenberg block).
+     *
+     * @return string The rendered HTML for the widget.
+     * @version 1.0.00
+     */
+    public function render(array $settings = [], $type = 'widget') {
         // @todo implement error logging
         return method_exists($this, $type) ? $this->$type($settings) : 'Renderer not found';
     }
 
     // shortcodes
     // Define methods to handle shortcode and Gutenberg block
-    // Method to display the Pretix ticket using shortcode
+
+    /**
+     * Method to display the Pretix ticket using the 'button' shortcode.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     *
+     * @return string The rendered HTML for the widget using the 'button' shortcode.
+     * @version 1.0.00
+     */
     public function button($settings = []): string {
         $settings         = ! is_array($settings) ? [] : $settings;
         $settings['mode'] = 'button';
@@ -23,6 +58,14 @@ class Shortcode extends \Pretix_Widget\Base {
         return $this->widget($settings);
     }
 
+    /**
+     * Method to display the Pretix ticket using the 'widget' shortcode.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     *
+     * @return string The rendered HTML for the widget using the 'widget' shortcode.
+     * @version 1.0.00
+     */
     public function widget($settings = []): string {
         $output   = '';
         $defaults = $this->parent->settings;
@@ -31,8 +74,14 @@ class Shortcode extends \Pretix_Widget\Base {
             array(
                 'mode'              => 'widget',
                 'display'           => isset($defaults['pretix_widget_display']) ? $defaults['pretix_widget_display'] : 'list',
-                'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim($defaults['pretix_widget_shop_url'], '/') : '',
-                'subevent'             => isset($defaults['pretix_widget_subevent']) ? rtrim($defaults['pretix_widget_subevent'], '/') : '',
+                'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim(
+                    $defaults['pretix_widget_shop_url'],
+                    '/'
+                ) : '',
+                'subevent'          => isset($defaults['pretix_widget_subevent']) ? rtrim(
+                    $defaults['pretix_widget_subevent'],
+                    '/'
+                ) : '',
                 'items'             => isset($defaults['pretix_widget_filter_by_item_id']) ? $defaults['pretix_widget_filter_by_item_id'] : '',
                 'categories'        => isset($defaults['pretix_widget_filter_by_category_id']) ? $defaults['pretix_widget_filter_by_category_id'] : '',
                 'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
@@ -55,10 +104,10 @@ class Shortcode extends \Pretix_Widget\Base {
         $arguments = $this->get_arguments_inline($settings);
 
         ob_start();
-        if($this->validate_args($settings)){
+        if ($this->validate_args($settings)) {
             file_exists($template) ? require $template : error_log('Template not found: ' . $template);
             $this->enqueue_assets($settings);
-        }else{
+        } else {
             require $this->get_path('templates/frontend/error.php');
         }
 
@@ -66,39 +115,15 @@ class Shortcode extends \Pretix_Widget\Base {
     }
 
     // helper functions
-    private function enqueue_assets($settings){
-        // get cached shop css file
-        $file = $this->parent->cache->get(rtrim($settings['shop_url'],'/').'/widget/v1.css');
-        wp_enqueue_style('pretix-widget-frontend',
-            $file,
-            array(),
-            filemtime($this->parent->cache->get_cache_path(basename($file)))
-        );
 
-        // get cached shop js file
-        $parsedUrl = parse_url($settings['shop_url']);
-        $domain = rtrim($parsedUrl['host'], '/');
-        $file = $this->parent->cache->get('https://'.$domain.'/widget/v1.'.str_replace('_', '-', $settings['language']).'.js');
-
-        wp_enqueue_script('pretix-widget-frontend',
-            $file,
-            array(),
-            filemtime($this->parent->cache->get_cache_path(basename($file))),
-            true
-        );
-
-        // custom css
-        $custom_css = $this->parent->get_custom_css();
-        if(empty($custom_css) === false){
-            wp_add_inline_style('pretix-widget-frontend', $custom_css);
-        }
-    }
-
-    private function enqueue_assets_inline($settings){
-        echo '<link rel="stylesheet" type="text/css" href="'.$this->get_url('assets/css/widget.v1.css').'">';
-        echo '<script type="text/javascript" src="'.$this->get_url('assets/js/widget.v1.'.$settings['language'].'.js').'" async></script>';
-    }
-
+    /**
+     * Constructs the inline arguments for the Pretix widget based on the given settings.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     *
+     * @return string The formatted inline arguments for the Pretix widget.
+     * @version 1.0.00
+     */
     private function get_arguments_inline($settings) {
         $arguments = [];
 
@@ -108,13 +133,17 @@ class Shortcode extends \Pretix_Widget\Base {
         // URL -----------------------------------------------------------------
 
         if ( ! empty($settings['subevent'])) {
-            $arguments['subevent'] =  'subevent="' .$settings['subevent'] . '"';
+            $arguments['subevent'] = 'subevent="' . $settings['subevent'] . '"';
         }
 
         if ( ! empty($settings['items'])) {
             $arguments['items'] = 'items="';
             // button mode supports strings, widget mode only numbers
-            $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace('/[^0-9,]/', '', $settings['items']) : $settings['items'];
+            $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace(
+                '/[^0-9,]/',
+                '',
+                $settings['items']
+            ) : $settings['items'];
             $arguments['items'] .= '"';
         }
 
@@ -148,20 +177,95 @@ class Shortcode extends \Pretix_Widget\Base {
         return $arguments;
     }
 
-    private function validate_args(array $args): bool{
+    /**
+     * Validates the provided arguments for the Pretix widget.
+     *
+     * @param array $args The arguments to validate.
+     *
+     * @return bool True if the arguments are valid, false otherwise.
+     * @version 1.0.00
+     */
+    private function validate_args(array $args): bool {
         $error = [];
 
-        if(!isset($args['shop_url']) || !$this->validate_shop_url($args['shop_url'])){
+        if ( ! isset($args['shop_url']) || ! $this->validate_shop_url($args['shop_url'])) {
             $this->set_error(__('Shop URL missing.', 'pretix-widget'));
         }
 
         return empty($this->get_errors()) ? true : false;
     }
 
+    /**
+     * Validates the provided shop URL.
+     *
+     * @param string $value The shop URL to validate.
+     *
+     * @return bool True if the shop URL is valid, false otherwise.
+     * @version 1.0.00
+     */
+    private function validate_shop_url(string $value): bool {
+        if ( ! filter_var($value, FILTER_VALIDATE_URL)) {
+            return false;
+        }
+        if (empty($value)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Enqueues the shop CSS and JS files for the Pretix widget.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     *
+     * @version 1.0.00
+     */
+    private function enqueue_assets($settings) {
+        // get cached shop css file
+        $file = $this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/v1.css');
+        wp_enqueue_style(
+            'pretix-widget-frontend',
+            $file,
+            array(),
+            filemtime($this->parent->cache->get_cache_path(basename($file)))
+        );
+
+        // get cached shop js file
+        $parsedUrl = parse_url($settings['shop_url']);
+        $domain    = rtrim($parsedUrl['host'], '/');
+        $file      = $this->parent->cache->get(
+            'https://' . $domain . '/widget/v1.' . str_replace('_', '-', $settings['language']) . '.js'
+        );
+
+        wp_enqueue_script(
+            'pretix-widget-frontend',
+            $file,
+            array(),
+            filemtime($this->parent->cache->get_cache_path(basename($file))),
+            true
+        );
+
+        // custom css
+        $custom_css = $this->parent->get_custom_css();
+        if (empty($custom_css) === false) {
+            wp_add_inline_style('pretix-widget-frontend', $custom_css);
+        }
+    }
+
     // validator
-    private function validate_shop_url(string $value): bool{
-        if(!filter_var($value, FILTER_VALIDATE_URL)) return false;
-        if(empty($value)) return false;
-        return  true;
+
+    /**
+     * Enqueues the shop CSS and JS files for the Pretix widget as inline assets.
+     *
+     * @param array $settings The settings for the Pretix widget.
+     *
+     * @version 1.0.00
+     */
+    private function enqueue_assets_inline($settings) {
+        echo '<link rel="stylesheet" type="text/css" href="' . $this->get_url('assets/css/widget.v1.css') . '">';
+        echo '<script type="text/javascript" src="' . $this->get_url(
+                'assets/js/widget.v1.' . $settings['language'] . '.js'
+            ) . '" async></script>';
     }
 }

@@ -23,7 +23,7 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 1. Upload plugin-directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings -> pretix widget and enter your pretix.eu subdomain
+3. Go to Settings -> pretix widget and enter your pretix.eu shop url
 4. Insert Widget via Shortcode or Gutenberg Block anywhere you like and adjust settings
 5. You are using a caching plugin? Don't forget to flush caches now.
 

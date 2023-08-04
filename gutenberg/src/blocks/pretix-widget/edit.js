@@ -1,20 +1,23 @@
-const {useEffect, useState} = wp.element;
+/**
+ * Version: 1.0.00
+ */
+
+// Import WordPress dependencies
+const { useEffect, useState } = wp.element;
 const { __ } = wp.i18n;
-const { TextControl, ToggleControl, SelectControl, PanelBody, Placeholder, Spinner } = wp.components;
+const { TextControl, ToggleControl, SelectControl, PanelBody, Placeholder } = wp.components;
 import ServerSideRender from './components/server_side_renderer';
 
+// Destructure WordPress block editor dependencies
 const {
-	InnerBlocks,
 	useBlockProps,
 	InspectorControls,
-	BlockControls,
-	store
 } = wp.blockEditor;
 
-// inject defaults from php
+// Inject defaults from PHP
 const defaults = {};
 
-if(pretixWidgetDefaults){
+if (pretixWidgetDefaults) {
 	for (const key in pretixWidgetDefaults) {
 		if (pretixWidgetDefaults.hasOwnProperty(key)) {
 			defaults[key] = pretixWidgetDefaults[key] === '' ? null : pretixWidgetDefaults[key];
@@ -22,7 +25,7 @@ if(pretixWidgetDefaults){
 	}
 }
 
-// inject languages from php
+// Inject languages from PHP or use defaults
 const languages = pretixWidgetLanguages ? Object.values(pretixWidgetLanguages) : [
 	{
 		"code": "en",
@@ -38,14 +41,20 @@ const languages = pretixWidgetLanguages ? Object.values(pretixWidgetLanguages) :
 	},
 ];
 
+/**
+ * Edit Function
+ * This function defines the block editor interface and handling for the 'pretix/widget' block.
+ * @param {Object} props The block properties and methods.
+ * @version 1.0.00
+ */
 export default function Edit(props) {
 	const {
 		clientId,
 		attributes,
 		setAttributes,
 	} = props;
-
-	// add defaults to attributes
+	
+	// Destructure attributes and add defaults
 	const {
 		align,
 		mode,
@@ -54,21 +63,36 @@ export default function Edit(props) {
 		categories,
 		variations,
 		allocated_voucher,
-		// settings which can be overwritten by defaults from the wp settings page on first insert
-		display =  defaults.pretix_widget_display ?? 'list',
+		// Settings which can be overwritten by defaults from the WP settings page on first insert
+		display = defaults.pretix_widget_display ?? 'list',
 		shop_url = defaults.pretix_widget_shop_url.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_shop_url : '',
 		disable_voucher = defaults.pretix_widget_disable_voucher ?? false,
 		language = defaults.pretix_widget_language ?? 'en',
 		button_text = defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
 	} = attributes;
-
+	
+	// Use blockProps for block wrapper
 	const blockProps = useBlockProps();
 	const [loading, setLoading] = useState(false);
 	
+	/**
+	 * handleChange Function
+	 * Helper function to update the attribute value.
+	 * @param {string} key The key of the attribute to update.
+	 * @param {any} value The new value for the attribute.
+	 * @version 1.0.00
+	 */
 	const handleChange = (key, value) => {
 		setAttributes({ [key]: value });
 	}
 	
+	/**
+	 * isValidUrl Function
+	 * Helper function to check if a given URL is valid.
+	 * @param {string} url The URL to check.
+	 * @returns {boolean} True if the URL is valid, false otherwise.
+	 * @version 1.0.00
+	 */
 	const isValidUrl = (url) => {
 		try {
 			new URL(url);
@@ -78,12 +102,16 @@ export default function Edit(props) {
 		}
 	};
 	
-	
-	const insertScriptAssets = () =>{
-		if(isValidUrl(shop_url)){
+	/**
+	 * insertScriptAssets Function
+	 * Helper function to insert the Pretix widget script assets dynamically.
+	 * @version 1.0.00
+	 */
+	const insertScriptAssets = () => {
+		if (isValidUrl(shop_url)) {
 			const scriptId = 'pretix-widget-script-' + clientId;
 			let script = document.getElementById(scriptId);
-			if(script){
+			if (script) {
 				document.body.removeChild(script);
 			}
 			script = document.createElement("script");
@@ -100,11 +128,15 @@ export default function Edit(props) {
 			};
 			document.body.appendChild(script);
 		}
-		
 	}
 	
-	const insertCSSAssets = () =>{
-		if(isValidUrl(shop_url)) {
+	/**
+	 * insertCSSAssets Function
+	 * Helper function to insert the Pretix widget CSS assets dynamically.
+	 * @version 1.0.00
+	 */
+	const insertCSSAssets = () => {
+		if (isValidUrl(shop_url)) {
 			const linkId = 'pretix-widget-style-' + clientId;
 			let link = document.getElementById(linkId);
 			if (link) {
@@ -119,21 +151,40 @@ export default function Edit(props) {
 		}
 	}
 	
-	const EmptyResponsePlaceholder = () => <Placeholder label={'Empty'}/>;
-	const ErrorResponsePlaceholder = () => <Placeholder label={'Error'}/>;
+	/**
+	 * EmptyResponsePlaceholder Function
+	 * Placeholder component for empty responses during server-side rendering.
+	 * @returns {JSX.Element} The JSX for the empty response placeholder.
+	 * @version 1.0.00
+	 */
+	const EmptyResponsePlaceholder = () => <Placeholder label={'Empty'} />;
 	
-	// server side render trigger
+	/**
+	 * ErrorResponsePlaceholder Function
+	 * Placeholder component for error responses during server-side rendering.
+	 * @returns {JSX.Element} The JSX for the error response placeholder.
+	 * @version 1.0.00
+	 */
+	const ErrorResponsePlaceholder = () => <Placeholder label={'Error'} />;
+	
+	/**
+	 * TriggerWhenLoadingFinished Function
+	 * Wrapper function for the server-side render trigger.
+	 * @param {number} countChildren The number of children blocks.
+	 * @returns {Function} The trigger function for server-side rendering.
+	 * @version 1.0.00
+	 */
 	const TriggerWhenLoadingFinished = countChildren => {
 		return () => {
-			useEffect( () => {
+			useEffect(() => {
 				// Call action when the loading component unmounts because loading is finished.
 				return () => {
 					insertScriptAssets();
 					insertCSSAssets();
 				};
-			} );
+			});
 			
-			return (<Placeholder label={'Loading...'}/>);
+			return (<Placeholder label={'Loading...'} />);
 		};
 	};
 	
@@ -164,12 +215,12 @@ export default function Edit(props) {
 						placeholder="https://pretix.eu/demo"
 						type="url"
 					/>
-					{
-					<TextControl
-						label={__('Sub-Event', 'pretix-widget')}
-						value={subevent}
-						onChange={(value) => handleChange('subevent', value)}
-					/>}
+					{subevent &&
+						<TextControl
+							label={__('Sub-Event', 'pretix-widget')}
+							value={subevent}
+							onChange={(value) => handleChange('subevent', value)}
+						/>}
 					<TextControl
 						label={__('Items', 'pretix-widget')}
 						value={items}

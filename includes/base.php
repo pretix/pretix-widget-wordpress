@@ -1,56 +1,124 @@
 <?php
+/**
+ * Class Base
+ *
+ * This class serves as the base class for the Pretix_Widget plugin, containing common methods and properties.
+ *
+ * @package Pretix_Widget
+ * @version 1.0.00
+ */
+
 namespace Pretix_Widget;
 
-class Base{
+class Base {
+    public $debug = false;
     private $path;
     private $url;
-    public $debug = false;
     private $errors = [];
 
-    public function get_name(){
-        $plugin_basename = plugin_basename(__FILE__);
-        return explode('/', $plugin_basename)[0];
-    }
-
-    public function get_name_snake(){
+    /**
+     * Get the plugin name in snake_case.
+     *
+     * @return string The plugin name in snake_case.
+     * @since 1.0.00
+     */
+    public function get_name_snake() {
         return str_replace('-', '_', $this->get_name());
     }
 
-    public function get_path(string $sub = ''){
+    /**
+     * Get the name of the plugin.
+     *
+     * @return string The plugin name.
+     * @since 1.0.00
+     */
+    public function get_name() {
+        $plugin_basename = plugin_basename(__FILE__);
+
+        return explode('/', $plugin_basename)[0];
+    }
+
+    /**
+     * Get the path of the plugin.
+     *
+     * @param string $sub The subdirectory or file path within the plugin.
+     *
+     * @return string The full path of the plugin or the path to the subdirectory/file if specified.
+     * @since 1.0.00
+     */
+    public function get_path(string $sub = '') {
         $path = $this->path ? $this->path : plugin_dir_path(__DIR__);
-        $sub = trim($sub, '/');
+        $sub  = trim($sub, '/');
+
         return $sub !== '' ? $path . $sub : $path;
     }
 
-    public function get_url(string $sub = ''){
-        $url = $this->url ? $this->url : plugin_dir_url( __DIR__ );
+    /**
+     * Get the URL of the plugin.
+     *
+     * @param string $sub The subdirectory or file path within the plugin.
+     *
+     * @return string The full URL of the plugin or the URL to the subdirectory/file if specified.
+     * @since 1.0.00
+     */
+    public function get_url(string $sub = '') {
+        $url = $this->url ? $this->url : plugin_dir_url(__DIR__);
         $sub = trim($sub, '/');
+
         return $sub !== '' ? $url . $sub : $url;
     }
 
+    /**
+     * Get the short locale code.
+     *
+     * @param string $locale The full locale code.
+     *
+     * @return string The short locale code (first two characters).
+     * @since 1.0.00
+     */
     public function get_short_locale(string $locale) {
         return substr($locale, 0, 2);
     }
 
-    public function get_errors(){
-        return $this->errors;
-    }
-
-    public function set_error($error){
-        if ( is_array( $error ) || is_object( $error ) ) {
-            error_log( print_r( $error, true ) );
+    /**
+     * Set an error encountered during plugin execution.
+     *
+     * @param mixed $error The error message or error data to be logged.
+     *
+     * @since 1.0.00
+     */
+    public function set_error($error) {
+        if (is_array($error) || is_object($error)) {
+            error_log(print_r($error, true));
             $this->errors[] = array_merge($this->errors, $error);
         } else {
-            error_log( $error );
+            error_log($error);
             $this->errors[] = $error;
         }
     }
 
-    public function get_error_html(){
+    /**
+     * Get the HTML representation of the errors encountered during plugin execution.
+     *
+     * @return string The HTML string containing the error messages.
+     * @since 1.0.00
+     */
+    public function get_error_html() {
         $html = '';
-        foreach($this->get_errors() as $error){
-            $html .= '<p>'.$error.'</p>';
+        foreach ($this->get_errors() as $error) {
+            $html .= '<p>' . $error . '</p>';
         }
+
         return $html;
+    }
+
+    /**
+     * Get the errors encountered during plugin execution.
+     *
+     * @return array An array containing the encountered errors.
+     * @since 1.0.00
+     */
+    public function get_errors() {
+        return $this->errors;
     }
 }
