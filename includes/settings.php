@@ -130,7 +130,7 @@ class Settings extends Base {
                 // settings of that group
                 // 0 = name, 1 = default value, ...
                 ['pretix_widget_shop_url', ''],
-                ['pretix_widget_display', 'list'],
+                ['pretix_widget_list_type', 'list'],
                 ['pretix_widget_disable_voucher', false],
                 ['pretix_widget_language', get_locale()],
                 ['pretix_widget_button_text', __('Buy Ticket!', $this->get_name())],

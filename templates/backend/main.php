@@ -11,19 +11,20 @@
 					<?php _e('<h2>Using the pretix widget Gutenberg block</h2>
 						<p>The pretix widget Gutenberg Block allows you to easily display pretix ticket widgets on your WordPress website using the Gutenberg editor. With this block, you can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.</p>
 						<h3>Adding the Block</h3>
-						<p>To add the pretix widget Block to your page or post, follow these steps:</p>
+						<p>To add the pretix widget block to your page or post, follow these steps:</p>
 						<ul>
 						  <li>Go to the page or post where you want to add the ticket widget.</li>
 						  <li>Click on the "+" icon to add a new block.</li>
 						  <li>Search for "pretix widget" in the block search bar and select it.</li>
-						  <li>The pretix widget Block will now be added to your content.</li>
+						  <li>The pretix widget block will now be added to your content.</li>
 						</ul>
 						<h3>Customizing the Block</h3>
-						<p>Once you\'ve added the pretix widget Block, you can customize its settings to display the tickets according to your preferences. Here are the available settings and their possible values:</p>
+						<p>Once you\'ve added the pretix widget block, you can customize its settings to display the tickets according to your preferences. Here are the available settings and their possible values:</p>
 						<ul>
-						  <li><strong>Display</strong>: Set the display type of the widget. Possible values: \'list\', \'table\', \'calendar\'.</li>
-						  <li><strong>Shop URL</strong>: The URL of your pretix shop. Example: \'https://example.com/pretix-shop\'</li>
-						  <li><strong>Subevent</strong>: The subevent you want to display tickets for. Example: \'subevent-1\'</li>
+						  <li><strong>Mode</strong>: Set the display type of the widget. Possible values: \'Widget\', \'Button\'. (Default: Widget)</li>
+						  <li><strong>List Type</strong>: Set the display type of the widget. Possible values: \'List\', \'Calendar Month\', \'Calendar Week\'.</li>
+						  <li><strong>Shop URL</strong>: The URL of your pretix shop. Example: \'https:\\pretix.eu/demo\'</li>
+						  <li><strong>Sub-Event</strong>:  A sub-event to be pre-selected. Example: \'democon\'</li>
 						  <li><strong>Items</strong>: Comma-separated list of item IDs to display. Example: \'1,2,3\'</li>
 						  <li><strong>Categories</strong>: Comma-separated list of category IDs to display. Example: \'4,5,6\'</li>
 						  <li><strong>Variations</strong>: Comma-separated list of variation IDs to display. Example: \'7,8,9\'</li>
@@ -38,7 +39,8 @@
 						  <li>Add the pretix widget Block to your page or post.</li>
 						  <li>In the Block settings, set the following attributes:</li>
 						  <ul>
-						    <li>Display: \'table\'</li>
+						    <li>Mode: \'button\'</li>
+						    <li>Display: \'list\'</li>
 						    <li>Shop URL: \'https://example.com/pretix-shop\'</li>
 						    <li>Language: \'en\'</li>
 						    <li>Button Text: \'Get Tickets Now\'</li>
@@ -63,9 +65,10 @@
 						<h3>Customizing the Widget</h3>
 						<p>You can customize the pretix ticket widget by adding various attributes to the shortcode. Here are the available attributes and their possible values:</p>
 						<ul>
-							<li><strong>display</strong> (string): Set the display type of the widget. Possible values: \'list\', \'table\', \'calendar\'.</li>
+							<li><strong>mode</strong> (string): Set the display type of the widget. Possible values: \'widget\', \'button\'. (Default: widget)</li>
+							<li><strong>list_type</strong> (string): Set the list type of the widget. Possible values: \'list\', \'calendar\', \'week\'.</li>
 							<li><strong>shop_url</strong> (string): The URL of your pretix shop. Example: \'https://pretix.eu/demo\'</li>
-							<li><strong>subevent</strong> (string): The subevent you want to display tickets for. Example: \'subevent-1\'</li>
+							<li><strong>subevent</strong> (string): A sub-event to be pre-selected. Example: \'democon\'</li>
 							<li><strong>items</strong> (string): Comma-separated list of item IDs to display. Example: \'1,2,3\'</li>
 							<li><strong>categories</strong> (string): Comma-separated list of category IDs to display. Example: \'4,5,6\'</li>
 							<li><strong>variations</strong> (string): Comma-separated list of variation IDs to display. Example: \'7,8,9\'</li>
@@ -76,7 +79,7 @@
 						</ul>
 						<h3>Example Usage</h3>
 						<p>Here\'s an example of how you can use the pretix widget shortcode with custom settings:</p>
-						<code>[pretix_widget display="table" shop_url="https://pretix.eu/demo" language="en" button_text="Get Tickets Now"]</code>
+						<code>[pretix_widget list_type="week" shop_url="https://pretix.eu/demo" language="en" button_text="Get Tickets Now"]</code>
 						<h3>Notes</h3>
 						<ul>
 							<li>The shortcode attributes are case-sensitive.</li>

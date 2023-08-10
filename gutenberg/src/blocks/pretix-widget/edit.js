@@ -64,7 +64,7 @@ export default function Edit(props) {
 		variations,
 		allocated_voucher,
 		// Settings which can be overwritten by defaults from the WP settings page on first insert
-		display = defaults.pretix_widget_display ?? 'list',
+		list_type = defaults.pretix_widget_list_type ?? 'list',
 		shop_url = defaults.pretix_widget_shop_url.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_shop_url : '',
 		disable_voucher = defaults.pretix_widget_disable_voucher ?? false,
 		language = defaults.pretix_widget_language ?? 'en',
@@ -215,12 +215,11 @@ export default function Edit(props) {
 						placeholder="https://pretix.eu/demo"
 						type="url"
 					/>
-					{subevent &&
-						<TextControl
-							label={__('Sub-Event', 'pretix-widget')}
-							value={subevent}
-							onChange={(value) => handleChange('subevent', value)}
-						/>}
+					<TextControl
+						label={__('Sub-Event', 'pretix-widget')}
+						value={subevent}
+						onChange={(value) => handleChange('subevent', value)}
+					/>
 					<TextControl
 						label={__('Items', 'pretix-widget')}
 						value={items}
@@ -246,15 +245,15 @@ export default function Edit(props) {
 					/>
 					
 					<SelectControl
-						label={__('Event selection mode', 'pretix-widget')}
-						value={display}
+						label={__('List Type', 'pretix-widget')}
+						value={list_type}
 						options={[
 							{ value: 'auto', label: __('Auto', 'pretix-widget') },
 							{ value: 'list', label: __('List', 'pretix-widget') },
 							{ value: 'week', label: __('Calendar Week', 'pretix-widget') },
 							{ value: 'calendar', label: __('Calendar Month', 'pretix-widget') },
 						]}
-						onChange={(value) => handleChange('display', value)}
+						onChange={(value) => handleChange('list_type', value)}
 					/>
 					<ToggleControl
 						label={__('Disable voucher input', 'pretix-widget')}

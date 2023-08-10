@@ -16,9 +16,9 @@
 						<input type="text" name="pretix_widget_shop_url" id="pretix_widget_shop_url" value="<?php echo esc_attr( get_option( 'pretix_widget_shop_url' ) ); ?>" class="regular-text">
 					</fieldset>
 					<fieldset>
-						<label for="pretix_widget_display"><?php _e('Event selection mode', $this->get_name()); ?></label>
-						<select name="pretix_widget_display" id="pretix_widget_display">
-		                    <?php $selected = get_option('pretix_widget_display', 'list'); ?>
+						<label for="pretix_widget_list_type"><?php _e('List Type', $this->get_name()); ?></label>
+						<select name="pretix_widget_list_type" id="pretix_widget_list_type">
+		                    <?php $selected = get_option('pretix_widget_list_type', 'list'); ?>
 							<option value="auto" <?php echo ($selected === 'auto') ? 'selected' : ''; ?>><?php _e('Auto', $this->get_name()); ?></option>
 							<option value="list" <?php echo ($selected === 'list') ? 'selected' : ''; ?>><?php _e('List', $this->get_name()); ?></option>
 							<option value="week" <?php echo ($selected === 'week') ? 'selected' : ''; ?>><?php _e('Calendar Week', $this->get_name()); ?></option>
