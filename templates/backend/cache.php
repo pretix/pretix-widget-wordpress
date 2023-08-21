@@ -8,7 +8,7 @@
     <div id="content">
         <?php
         // Check if the "Flush Cache" button is clicked
-        if (isset($_POST['flush_cache'])) {
+        if (is_admin() && isset($_POST['flush_cache'])) {
             // Perform the cache flushing here
             $response = $this->parent->cache->flush();
             if($response['status'] == 'success'){
@@ -46,7 +46,7 @@
 	                <form method="post" action="">
                         <?php
                         // Check if the "Flush Cache" button is clicked
-                        if (isset($_POST['set_max_cache_time'])) {
+                        if (is_admin() && isset($_POST['set_max_cache_time'])) {
                             // Perform the cache flushing here
                             $this->parent->cache->set_max_cache_time($_POST['set_max_cache_time']);
                         }
