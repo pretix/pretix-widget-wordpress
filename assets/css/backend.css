@@ -1,6 +1,3 @@
-
-
-
 @media(min-width:0){
 	:root {
 		--pretix-darkpurple: #3B1C4A;
@@ -111,6 +108,16 @@
 	.pretix-widget-admin-page-wrapper .container{
 		background:white;
 		padding:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper .container > h1:first-child,
+	.pretix-widget-admin-page-wrapper .container > h2:first-child,
+	.pretix-widget-admin-page-wrapper .container > h3:first-child,
+	.pretix-widget-admin-page-wrapper .container > h4:first-child,
+	.pretix-widget-admin-page-wrapper .container > h5:first-child,
+	.pretix-widget-admin-page-wrapper .container > h6:first-child
+	{
+		margin-top:0;
 	}
 	
 	.pretix-widget-admin-page-wrapper .file {

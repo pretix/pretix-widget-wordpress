@@ -37,12 +37,11 @@
             </div>
             <div class="right">
                 <div class="container">
-	                <div>
-		                <h2><?php _e('Set Max Cache Time', 'pretix-widget'); ?></h2>
-		                <p>
-                            <?php _e('You have the option to customize the maximum cache time for the pretix widget. By default, the cache time is set to 24 hours. Once this period elapses, the widget files will be automatically refreshed from the pretix server whenever a visitor accesses a page containing a pretix widget block or shortcode.', 'pretix-widget'); ?>
-		                </p>
-	                </div>
+	                <h2><?php _e('Set Max Cache Time', 'pretix-widget'); ?></h2>
+	                <p>
+                        <?php _e('You have the option to customize the maximum cache time for the pretix widget. By default, the cache time is set to 24 hours. Once this period elapses, the widget files will be automatically refreshed from the pretix server whenever a visitor accesses a page containing a pretix widget block or shortcode.', 'pretix-widget'); ?>
+	                </p>
+
 	                <form method="post" action="">
                         <?php
                         // Check if the "Flush Cache" button is clicked
@@ -57,12 +56,12 @@
 		                <input type="number" name="set_max_cache_time" min="0" max="8760" value="<?php echo $this->parent->cache->get_max_cache_time();?>"/>
 		                <button type="submit" name="set_max_cache_time_submit" class="button button-primary"><?php _e('Update', 'pretix-widget');?></button>
 	                </form>
-	                <div>
-		                <h2><?php _e('Cache', 'pretix-widget'); ?></h2>
-		                <p>
-                            <?php _e('Here you can delete all cached files at once and rebuild them. This feature is particularly useful if you have made changes to your pretix shop settings and want to ensure that the cached files are up-to-date.', 'pretix-widget'); ?>
-		                </p>
-	                </div>
+
+	                <h2><?php _e('Cache', 'pretix-widget'); ?></h2>
+	                <p>
+                        <?php _e('Here you can delete all cached files at once and rebuild them. This feature is particularly useful if you have made changes to your pretix shop settings and want to ensure that the cached files are up-to-date.', 'pretix-widget'); ?>
+	                </p>
+
 	                <form method="post" action="">
                         <button type="submit" name="flush_cache" class="button button-primary"><?php _e('Rebuild Cache', 'pretix-widget'); ?></button>
                     </form>

@@ -58,19 +58,17 @@
 			</div>
 			<div class="right">
 				<div class="container">
-					<div>
-						<h2><?php _e('Default Values for Block and Shortcode', 'pretix-widget'); ?></h2>
-						<p>
-                            <?php _e('On this page, you can set the default values for the block and shortcode used in the pretix widget. These default values will be applied when you use the pretix widget without specifying any custom parameters.', 'pretix-widget'); ?>
-						</p>
-						<h3><?php _e('Overriding Defaults with Parameters:', 'pretix-widget'); ?></h3>
-						<p>
-                            <?php _e('While these default values make it easy to maintain consistency across your website, you have the flexibility to override them whenever you need to. When inserting the pretix widget block or using the shortcode, you can pass specific parameters to customize the widget for that particular instance. For more information on how to use parameters, please refer to the documentation page.', 'pretix-widget'); ?>
-						</p>
-						<p>
-                            <?php _e('Please note that changes made here will apply to all instances of the pretix widget on your website unless you explicitly override them using parameters in the shortcode or block.', 'pretix-widget'); ?>
-						</p>
-					</div>
+					<h2><?php _e('Default Values for Block and Shortcode', 'pretix-widget'); ?></h2>
+					<p>
+                        <?php _e('On this page, you can set the default values for the block and shortcode used in the pretix widget. These default values will be applied when you use the pretix widget without specifying any custom parameters.', 'pretix-widget'); ?>
+					</p>
+					<h3><?php _e('Overriding Defaults with Parameters:', 'pretix-widget'); ?></h3>
+					<p>
+                        <?php _e('While these default values make it easy to maintain consistency across your website, you have the flexibility to override them whenever you need to. When inserting the pretix widget block or using the shortcode, you can pass specific parameters to customize the widget for that particular instance. For more information on how to use parameters, please refer to the documentation page.', 'pretix-widget'); ?>
+					</p>
+					<p>
+                        <?php _e('Please note that changes made here will apply to all instances of the pretix widget on your website unless you explicitly override them using parameters in the shortcode or block.', 'pretix-widget'); ?>
+					</p>
 				</div>
 			</div>
 		</div>

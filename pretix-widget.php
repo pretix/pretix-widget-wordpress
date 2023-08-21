@@ -43,6 +43,8 @@ function pretix_widget_load_text_domain() {
     load_plugin_textdomain('pretix-widget', false, basename(dirname(__FILE__)) . '/includes/languages');
 }
 
+add_action('init', 'pretix_widget_load_text_domain');
+
 // Initialize the Pretix Widget plugin.
 function pretix_widget_init() {
     $pretix_widget = new Pretix_Widget\Pretix_Widget();
