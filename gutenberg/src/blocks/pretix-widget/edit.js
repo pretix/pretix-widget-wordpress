@@ -65,10 +65,10 @@ export default function Edit(props) {
 		allocated_voucher,
 		// Settings which can be overwritten by defaults from the WP settings page on first insert
 		list_type = defaults.pretix_widget_list_type ?? 'list',
-		shop_url = defaults.pretix_widget_shop_url.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_shop_url : '',
+		shop_url = defaults.pretix_widget_shop_url && defaults.pretix_widget_shop_url.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_shop_url : '',
 		disable_voucher = defaults.pretix_widget_disable_voucher ?? false,
 		language = defaults.pretix_widget_language ?? 'en',
-		button_text = defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
+		button_text = defaults.pretix_widget_button_text && defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
 	} = attributes;
 	
 	// Use blockProps for block wrapper
