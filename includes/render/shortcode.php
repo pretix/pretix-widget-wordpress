@@ -100,7 +100,6 @@ class Shortcode extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
-        $language  = $this->get_short_locale($settings['language']);
         $arguments = $this->get_arguments_inline($settings);
 
         ob_start();

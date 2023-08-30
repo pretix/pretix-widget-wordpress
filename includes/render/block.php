@@ -68,7 +68,7 @@ class Block extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/block-' . $settings['mode'] . '.php');
-        $language  = $this->get_short_locale($settings['language']);
+
         $arguments = $this->get_arguments_inline($settings);
         ob_start();
         if ($this->validate_args($settings)) {
