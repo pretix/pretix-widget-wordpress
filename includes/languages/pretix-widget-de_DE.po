@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pretix widget\n"
-"POT-Creation-Date: 2023-08-21 18:30+0200\n"
-"PO-Revision-Date: 2023-08-21 19:08+0200\n"
+"POT-Creation-Date: 2023-08-30 16:25+0200\n"
+"PO-Revision-Date: 2023-08-30 16:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.3.2\n"
-"X-Poedit-Basepath: ..\n"
+"X-Poedit-Basepath: ../..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: pretix-widget.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "Cache geleert und neu aufgebaut!"
 msgid "Couldn't download files:"
 msgstr "Dateien konnten nicht heruntergeladen werden:"
 
-#: includes/render/block.php:160 includes/render/shortcode.php:192
+#: includes/render/block.php:167 includes/render/shortcode.php:193
 msgid "Shop URL missing."
 msgstr "Shop-URL fehlt."
 
@@ -43,11 +43,11 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: includes/settings.php:73 includes/settings.php:74
-#: templates/backend/cache.php:61
+#: templates/backend/cache.php:60
 msgid "Cache"
 msgstr "Cache"
 
-#: includes/settings.php:136
+#: includes/settings.php:138
 msgid "Buy Ticket!"
 msgstr "Ticket kaufen!"
 
@@ -59,11 +59,11 @@ msgstr "Keine Sorge, die alten Dateien befinden sich noch im Cache."
 msgid "Cached Files"
 msgstr "Zwischengespeicherte Dateien"
 
-#: templates/backend/cache.php:41
+#: templates/backend/cache.php:40
 msgid "Set Max Cache Time"
 msgstr "Maximale Cache-Zeit festlegen"
 
-#: templates/backend/cache.php:43
+#: templates/backend/cache.php:42
 msgid ""
 "You have the option to customize the maximum cache time for the pretix "
 "widget. By default, the cache time is set to 24 hours. Once this period "
@@ -77,15 +77,15 @@ msgstr ""
 "Server aktualisiert, wenn ein Besucher auf eine Seite zugreift, die einen "
 "pretix-Widget-Block oder Shortcode enthält."
 
-#: templates/backend/cache.php:55
+#: templates/backend/cache.php:54
 msgid "Max cache time in hours"
 msgstr "Maximale Cache-Zeit in Stunden"
 
-#: templates/backend/cache.php:58
+#: templates/backend/cache.php:57
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: templates/backend/cache.php:63
+#: templates/backend/cache.php:62
 msgid ""
 "Here you can delete all cached files at once and rebuild them. This feature "
 "is particularly useful if you have made changes to your pretix shop settings "
@@ -96,7 +96,7 @@ msgstr ""
 "Ihren pretix-Shop-Einstellungen vorgenommen haben und sicherstellen möchten, "
 "dass die zwischengespeicherten Dateien auf dem neuesten Stand sind."
 
-#: templates/backend/cache.php:67
+#: templates/backend/cache.php:66
 msgid "Rebuild Cache"
 msgstr "Cache neu aufbauen"
 
@@ -618,11 +618,11 @@ msgstr "Benutzerdefiniertes CSS"
 msgid "Debug skip SSL check"
 msgstr "Debug  SSL-Prüfung überspringen"
 
-#: templates/backend/settings.php:62
+#: templates/backend/settings.php:61
 msgid "Default Values for Block and Shortcode"
 msgstr "Standardwerte für Block und Shortcode"
 
-#: templates/backend/settings.php:64
+#: templates/backend/settings.php:63
 msgid ""
 "On this page, you can set the default values for the block and shortcode "
 "used in the pretix widget. These default values will be applied when you use "
@@ -633,11 +633,11 @@ msgstr ""
 "Standardwerte werden angewendet, wenn Sie das Pretix-Widget verwenden, ohne "
 "benutzerdefinierte Parameter anzugeben."
 
-#: templates/backend/settings.php:66
+#: templates/backend/settings.php:65
 msgid "Overriding Defaults with Parameters:"
 msgstr "Überschreiben von Standardwerten mit Parametern:"
 
-#: templates/backend/settings.php:68
+#: templates/backend/settings.php:67
 msgid ""
 "While these default values make it easy to maintain consistency across your "
 "website, you have the flexibility to override them whenever you need to. "
@@ -653,7 +653,7 @@ msgstr ""
 "diese bestimmte Instanz anzupassen. Weitere Informationen zur Verwendung von "
 "Parametern finden Sie auf der Dokumentationsseite."
 
-#: templates/backend/settings.php:71
+#: templates/backend/settings.php:70
 msgid ""
 "Please note that changes made here will apply to all instances of the pretix "
 "widget on your website unless you explicitly override them using parameters "
@@ -663,13 +663,18 @@ msgstr ""
 "Instanzen des pretix-Widgets auf Ihrer Website gelten, es sei denn, Sie "
 "überschreiben sie explizit mit Parametern im Shortcode oder Block."
 
-#: templates/frontend/error.php:3
-msgid "Error:"
-msgstr "Fehler:"
+#: templates/frontend/no-script.php:5
+#, php-format
+msgid ""
+"JavaScript is disabled in your browser. To access our ticket shop without "
+"JavaScript, please click %shere%s."
+msgstr ""
+"JavaScript ist in Ihrem Browser deaktiviert. Um auf unseren Ticket-Shop ohne "
+"JavaScript zuzugreifen, klicken Sie bitte %shier%s."
 
 #. Plugin Name of the plugin/theme
 msgid "pretix widget"
-msgstr "pretix-Widget"
+msgstr "pretix widget"
 
 #. Plugin URI of the plugin/theme
 msgid "https://pretix.eu/"
@@ -692,3 +697,6 @@ msgstr "straightvisions GmbH"
 #. Author URI of the plugin/theme
 msgid "https://straightvisions.com"
 msgstr "https://straightvisions.com"
+
+#~ msgid "Error:"
+#~ msgstr "Fehler:"
