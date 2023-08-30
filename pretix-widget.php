@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 1.0.00
+Version: 1.0.01
 Plugin Name: pretix widget
 Text Domain: pretix-widget
 Description: The pretix widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.
