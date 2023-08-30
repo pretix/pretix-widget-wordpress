@@ -68,7 +68,6 @@ class Block extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/block-' . $settings['mode'] . '.php');
-
         $arguments = $this->get_arguments_inline($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
@@ -144,9 +143,13 @@ class Block extends Base {
             $arguments['skip_ssl_check'] = 'skip-ssl-check';
         }
 
-        $arguments = implode(' ', $arguments);
+        // Gutenberg anchor support
+        if(isset($settings['anchor']) && !empty($settings['anchor'])) $arguments[] = 'id="'.$settings['anchor'].'"';
 
-        return $arguments;
+        // Gutenberg class support
+        $arguments[] = 'class="'.$this->get_class_names($settings).'"';
+
+        return implode(' ', $arguments);
     }
 
     /**
@@ -240,4 +243,21 @@ class Block extends Base {
             ) . '" async></script>';
     }
 
+    /**
+     * Create class list from block arguments and other settings.
+     *
+     * @param array $settings The settings for the pretix widget.
+     *
+     * @version 1.0.01
+     */
+    private function get_class_names($settings): string{
+        $cn = ['wp-block-pretix-widget'];
+
+        if(isset($settings['className']) && !empty($settings['className'])) $cn[] = $settings['className'];
+
+        // Gutenberg align support
+        if(isset($settings['align'])) $cn[] = 'align' . $settings['align'];
+
+        return implode(' ', $cn);
+    }
 }

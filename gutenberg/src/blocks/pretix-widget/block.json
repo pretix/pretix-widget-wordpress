@@ -25,6 +25,9 @@
 		"align": {
 			"type": "string"
 		},
+		"anchor": {
+			"type": "string"
+		},
 		"mode": {
 			"type": "string",
 			"default": "widget"
