@@ -104,6 +104,7 @@ class Shortcode extends Base {
 
         ob_start();
         if ($this->validate_args($settings)) {
+            require($this->get_path('templates/frontend/no-script.php'));
             file_exists($template) ? require $template : error_log('Template not found: ' . $template);
             $this->enqueue_assets($settings);
         } else {
