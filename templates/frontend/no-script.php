@@ -1,4 +1,12 @@
 <noscript>
-    <div class="pretix-widget-info-message">
-        JavaScript ist in Ihrem Browser deaktiviert. Um unseren Ticket-Shop ohne JavaScript aufzurufen, klicken Sie bitte <a target="_blank" rel="noopener" href="">hier</a>.</div>
+	<div class="pretix-widget-no-script">
+        <?php
+        $no_script_message = sprintf(
+            esc_html__('JavaScript is disabled in your browser. To access our ticket shop without JavaScript, please click %shere%s.', 'your-text-domain'),
+            '<a target="_blank" rel="noopener" href="' . esc_url($fallback_url) . '">',
+            '</a>'
+        );
+        echo wp_kses_post($no_script_message);
+        ?>
+	</div>
 </noscript>

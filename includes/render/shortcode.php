@@ -101,6 +101,7 @@ class Shortcode extends Base {
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
         $arguments = $this->get_arguments_inline($settings);
+        $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();
         if ($this->validate_args($settings)) {

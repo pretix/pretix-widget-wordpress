@@ -1,3 +1,17 @@
 .button.pretix-button:hover{
 	cursor:pointer;
 }
+
+.pretix-widget-no-script{
+	display:block;
+	max-width:800px;
+	margin:auto;
+	padding:10px;
+	border:1px solid #ccc;
+	font-size:14px;
+	text-align:center;
+}
+
+.pretix-widget-no-script a{
+	font-weight:bold;
+}
