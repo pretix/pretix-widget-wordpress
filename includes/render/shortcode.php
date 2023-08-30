@@ -109,7 +109,7 @@ class Shortcode extends Base {
             file_exists($template) ? require $template : error_log('Template not found: ' . $template);
             $this->enqueue_assets($settings);
         } else {
-            require $this->get_path('templates/frontend/error.php');
+            require $this->get_path('templates/frontend/placeholder.php');
         }
 
         return ob_get_clean();
