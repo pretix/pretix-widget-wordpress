@@ -77,6 +77,7 @@ class Languages extends Base {
      * Get the language data for the given locale.
      *
      * @param string $locale The locale to get the language data for.
+     * @hint WordPress locale for informal German is de_DE, but pretix uses de_DE_informal (reversed logic)
      *
      * @return mixed The language data as an associative array or null if not found.
      * @since 1.0.00
@@ -97,7 +98,29 @@ class Languages extends Base {
      * @return string The current language as a locale code.
      * @since 1.0.00
      */
-    public function get_current(): string {
+    public function get_current(): array {
+        $result = $this->get_by_locale(get_locale());
+        return $result ?: $this->get_fallback_language();
+    }
+
+    /**
+     * Get the current language.
+     *
+     * @return string The current language as a locale code.
+     * @since 1.0.00
+     */
+    public function get_locale(): string {
         return get_locale();
     }
+
+    /**
+     * Get the current language.
+     *
+     * @return string The the fallback language as a locale code.
+     * @since 1.0.01
+     */
+    public function get_fallback_language(): array{
+        return $this->get('en');
+    }
+
 }

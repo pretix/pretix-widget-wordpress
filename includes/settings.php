@@ -132,7 +132,9 @@ class Settings extends Base {
                 ['pretix_widget_shop_url', ''],
                 ['pretix_widget_list_type', 'list'],
                 ['pretix_widget_disable_voucher', false],
-                ['pretix_widget_language', get_locale()],
+                // will return "en" for not supported languages
+                ['pretix_widget_language', $this->languages->get_current()['code']],
+                // --------------------------------------------
                 ['pretix_widget_button_text', __('Buy Ticket!', $this->get_name())],
                 ['pretix_widget_debug_skip_ssl_check', false],
                 ['pretix_widget_custom_css', '']
