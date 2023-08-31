@@ -73,7 +73,7 @@ class Shortcode extends Base {
         $settings = shortcode_atts(
             array(
                 'mode'              => 'widget',
-                'list_type'           => isset($defaults['pretix_widget_list_type']) ? $defaults['pretix_widget_list_type'] : 'list',
+                'list_type'           => isset($defaults['pretix_widget_list_type']) ? $defaults['pretix_widget_list_type'] : 'auto',
                 'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim(
                     $defaults['pretix_widget_shop_url'],
                     '/'
@@ -128,7 +128,9 @@ class Shortcode extends Base {
     private function get_arguments_inline($settings) {
         $arguments = [];
 
-        $arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
+		if ($settings['list_type'] !== 'auto') {
+			$arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
+		}
         // URL -----------------------------------------------------------------
         $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/"';
         // URL -----------------------------------------------------------------

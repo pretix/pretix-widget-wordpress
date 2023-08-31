@@ -68,6 +68,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"list_type": {
+			"type": "string",
+			"default": "auto"
+		},
 		"button_text": {
 			"type": "string"
 		}
