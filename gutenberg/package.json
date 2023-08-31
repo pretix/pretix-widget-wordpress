@@ -4,7 +4,7 @@
 	"description": "The pretix widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.",
 	"main": "index.js",
 	"author": "straightvisions GmbH",
-	"license": "GPL-3.0-or-later",
+	"license": "Apache-2.0",
 	"scripts": {
 		"build": "webpack --mode production",
 		"dev": "webpack --mode development",

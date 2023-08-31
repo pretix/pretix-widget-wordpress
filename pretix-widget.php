@@ -8,8 +8,8 @@ Plugin URI: https://github.com/pretix/pretix-widget-wordpress
 Author: pretix.eu
 Author URI: https://pretix.eu
 Domain Path: /languages
-License: GPL-3.0-or-later
-License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+License: Apache-2.0
+License URI: https://www.apache.org/licenses/LICENSE-2.0
 */
 
 /**
