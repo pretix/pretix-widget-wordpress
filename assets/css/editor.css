@@ -1,0 +1,32 @@
+/* default look of the widget in the editor */
+.wp-block-pretix-widget pretix-widget{
+	min-height:100px;
+	display:flex;
+	border: 1px solid #ddd;
+}
+
+/* prevent clicks on the widget in the editor */
+.wp-block-pretix-widget *{pointer-events:none !important;}
+
+/* error block */
+.pretix-widget-placeholder{
+	display:flex;
+	gap:20px;
+	align-items:center;
+	margin:auto;
+	padding:10px;
+	border:1px solid #ccc;
+	font-size:14px;
+	text-align:center;
+}
+
+.pretix-widget-placeholder > img{
+	width: 150px;
+	max-width:150px;
+}
+
+.pretix-widget-placeholder > .message{}
+
+.pretix-widget-placeholder.error{
+	color:red;
+}

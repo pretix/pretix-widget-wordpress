@@ -1,0 +1,207 @@
+@media(min-width:0){
+	:root {
+		--pretix-darkpurple: #3B1C4A;
+		--pretix-lightpurple: #7F4A91;
+		--pretix-success: #50A167;
+		--pretix-warning: #FFB419;
+		--pretix-alert: #C44F4F;
+		--pretix-info: #5F9CD4;
+		--pretix-inactive: #CCCCCC;
+		--pretix-secondary: #999999;
+	}
+	
+	.pretix-widget-admin-page-wrapper{
+		padding:0;
+		margin-left:-20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper #header{
+		display:flex;
+		justify-content: flex-start;
+		align-items:center;
+		gap:20px;
+		background: white;
+		padding:20px;
+		border-bottom:1px solid var(--pretix-darkpurple);
+		flex-wrap:wrap;
+	}
+	
+	.pretix-widget-admin-page-wrapper #header .submit{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-right:0;
+		margin-left: auto;
+		width:100%;
+		padding:0;
+	}
+	
+	.pretix-widget-admin-page-wrapper #header .submit > input{
+		width:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content{
+		display:flex;
+		flex-direction: column;
+		gap:20px;
+		padding:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content form{
+		display:flex;
+		flex-direction: column;
+		gap:10px;
+		flex-basis:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset{
+		display:flex;
+		width:100%;
+		max-width:100%;
+		flex-direction: column;
+		justify-content: flex-start;
+		flex-wrap:wrap;
+		align-items: center;
+		gap:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > *:not([type="checkbox"]){
+		width:100%;
+		text-align:left;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > input[type="checkbox"]{
+		margin-left:0;
+		margin-right:auto;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > label{
+		font-weight:bold;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > .CodeMirror{
+		width:600px;
+		max-width:100%;
+		resize: vertical;
+	}
+	
+	.pretix-widget-admin-page-wrapper .full{
+		width:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex{
+		display:flex;
+		flex-direction:column;
+		gap:40px;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .left{
+		flex-basis:100%;
+		display:flex;
+		flex-direction:column;
+		gap:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .right{
+		flex-basis:100%;
+	}
+	
+	.pretix-widget-admin-page-wrapper .container{
+		background:white;
+		padding:20px;
+	}
+	
+	.pretix-widget-admin-page-wrapper .container > h1:first-child,
+	.pretix-widget-admin-page-wrapper .container > h2:first-child,
+	.pretix-widget-admin-page-wrapper .container > h3:first-child,
+	.pretix-widget-admin-page-wrapper .container > h4:first-child,
+	.pretix-widget-admin-page-wrapper .container > h5:first-child,
+	.pretix-widget-admin-page-wrapper .container > h6:first-child
+	{
+		margin-top:0;
+	}
+	
+	.pretix-widget-admin-page-wrapper .file {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction:column;
+		gap:10px;
+		align-items: center;
+		border: 1px solid #ccc;
+		padding: 10px;
+		min-width: 200px;
+		max-width: 600px;
+	}
+	
+	.pretix-widget-admin-page-wrapper .file+.file{
+		margin-top:10px;
+	}
+	
+	/* File name */
+	.pretix-widget-admin-page-wrapper .file-name {
+		font-weight: bold;
+		word-break: break-all;
+	}
+	
+	/* File size and date */
+	.pretix-widget-admin-page-wrapper .file-size,
+	.pretix-widget-admin-page-wrapper .file-date {
+		color: #666;
+	}
+	
+	.pretix-widget-admin-page-wrapper .notice{
+		max-width:calc(100% - 4px);
+		margin:0;
+		border-width:0;
+		border-left-width:4px;
+	}
+	
+}
+
+@media(min-width:768px){
+	.pretix-widget-admin-page-wrapper #header .submit{
+		width:auto;
+	}
+	
+	.pretix-widget-admin-page-wrapper #header .submit > input{
+		width:auto;
+	}
+	
+	.pretix-widget-admin-page-wrapper .flex{
+		flex-direction:row;
+		justify-content: space-between;
+	}
+	
+	.pretix-widget-admin-page-wrapper .flex > .right{
+		flex-basis:300px;
+	}
+	
+	.pretix-widget-admin-page-wrapper .file{
+		flex-direction:row;
+	}
+}
+
+@media(min-width:1024px){
+	.pretix-widget-admin-page-wrapper #content fieldset{
+		flex-direction: row;
+		
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > *:not([type="checkbox"]):not(.CodeMirror){
+		flex-basis:350px;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > label{
+		flex-basis:300px;
+	}
+	
+	.pretix-widget-admin-page-wrapper #content fieldset > .CodeMirror{
+		width:600px;
+		max-width:800px;
+		resize: both;
+	}
+	
+	.pretix-widget-admin-page-wrapper  .flex > .right{
+		flex-basis:500px;
+	}
+	
+}

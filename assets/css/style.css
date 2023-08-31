@@ -1,0 +1,40 @@
+.button.pretix-button:hover{
+	cursor:pointer;
+}
+
+.pretix-widget-placeholder{
+	display:flex;
+	gap:20px;
+	align-items:center;
+	max-width:800px;
+	margin:auto;
+	padding:10px;
+	border:1px solid #ccc;
+	font-size:14px;
+	text-align:center;
+}
+
+.pretix-widget-placeholder > img{
+	width: 150px;
+	max-width:150px;
+}
+
+.pretix-widget-placeholder > .message{}
+
+.pretix-widget-placeholder.error{
+	color:red;
+}
+
+.pretix-widget-no-script{
+	display:block;
+	max-width:800px;
+	margin:auto;
+	padding:10px;
+	border:1px solid #ccc;
+	font-size:14px;
+	text-align:center;
+}
+
+.pretix-widget-no-script a{
+	font-weight:bold;
+}

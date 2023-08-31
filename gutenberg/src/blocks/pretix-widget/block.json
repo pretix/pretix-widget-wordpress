@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "pretix/widget",
+	"title": "pretix Widget",
+	"description": "A widget for displaying a pretix ticket shop.",
+	"icon": "tickets-alt",
+	"category": "widgets",
+	"textdomain": "pretix-widget",
+	"editorScript": "pretix-widget-editor-script",
+	"editorStyle": "pretix-widget-editor-style",
+	"style": "pretix-widget-style",
+	"keywords": [
+		"tickets",
+		"ecommerce"
+	],
+	"supports": {
+		"anchor": true,
+		"align": [
+			"full",
+			"wide"
+		]
+	},
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+		"anchor": {
+			"type": "string"
+		},
+		"mode": {
+			"type": "string",
+			"default": "widget"
+		},
+		"subevent": {
+			"type": "string",
+			"default": ""
+		},
+		"display": {
+			"type": "string"
+		},
+		"shop_url": {
+			"type": "string"
+		},
+		"event": {
+			"type": "string",
+			"default": ""
+		},
+		"items": {
+			"type": "string",
+			"default": ""
+		},
+		"categories": {
+			"type": "string",
+			"default": ""
+		},
+		"variations": {
+			"type": "string",
+			"default": ""
+		},
+		"disable_voucher": {
+			"type": "boolean"
+		},
+		"language": {
+			"type": "string"
+		},
+		"allocated_voucher": {
+			"type": "string",
+			"default": ""
+		},
+		"button_text": {
+			"type": "string"
+		}
+	}
+}

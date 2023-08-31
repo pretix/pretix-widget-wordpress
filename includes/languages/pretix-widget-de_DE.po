@@ -1,0 +1,702 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pretix widget\n"
+"POT-Creation-Date: 2023-08-30 16:25+0200\n"
+"PO-Revision-Date: 2023-08-30 16:26+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: pretix-widget.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: gutenberg\n"
+"X-Poedit-SearchPathExcluded-2: assets\n"
+
+#: includes/cache.php:249
+msgid "Download failed for"
+msgstr "Download fehlgeschlagen für"
+
+#: includes/cache.php:255
+msgid "Cache flushed and rebuilt!"
+msgstr "Cache geleert und neu aufgebaut!"
+
+#: includes/cache.php:257
+msgid "Couldn't download files:"
+msgstr "Dateien konnten nicht heruntergeladen werden:"
+
+#: includes/render/block.php:167 includes/render/shortcode.php:193
+msgid "Shop URL missing."
+msgstr "Shop-URL fehlt."
+
+#: includes/settings.php:64 includes/settings.php:65
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/settings.php:73 includes/settings.php:74
+#: templates/backend/cache.php:60
+msgid "Cache"
+msgstr "Cache"
+
+#: includes/settings.php:138
+msgid "Buy Ticket!"
+msgstr "Ticket kaufen!"
+
+#: templates/backend/cache.php:20
+msgid "Don't worry, the old files are still in the cache."
+msgstr "Keine Sorge, die alten Dateien befinden sich noch im Cache."
+
+#: templates/backend/cache.php:28
+msgid "Cached Files"
+msgstr "Zwischengespeicherte Dateien"
+
+#: templates/backend/cache.php:40
+msgid "Set Max Cache Time"
+msgstr "Maximale Cache-Zeit festlegen"
+
+#: templates/backend/cache.php:42
+msgid ""
+"You have the option to customize the maximum cache time for the pretix "
+"widget. By default, the cache time is set to 24 hours. Once this period "
+"elapses, the widget files will be automatically refreshed from the pretix "
+"server whenever a visitor accesses a page containing a pretix widget block "
+"or shortcode."
+msgstr ""
+"Sie haben die Möglichkeit, die maximale Cache-Zeit für das Pretix-Widget "
+"anzupassen. Standardmäßig ist die Cache-Zeit auf 24 Stunden festgelegt. Nach "
+"Ablauf dieses Zeitraums werden die Widget-Dateien automatisch vom pretix-"
+"Server aktualisiert, wenn ein Besucher auf eine Seite zugreift, die einen "
+"pretix-Widget-Block oder Shortcode enthält."
+
+#: templates/backend/cache.php:54
+msgid "Max cache time in hours"
+msgstr "Maximale Cache-Zeit in Stunden"
+
+#: templates/backend/cache.php:57
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: templates/backend/cache.php:62
+msgid ""
+"Here you can delete all cached files at once and rebuild them. This feature "
+"is particularly useful if you have made changes to your pretix shop settings "
+"and want to ensure that the cached files are up-to-date."
+msgstr ""
+"Hier können Sie alle zwischengespeicherten Dateien auf einmal löschen und "
+"neu erstellen. Diese Funktion ist besonders nützlich, wenn Sie Änderungen an "
+"Ihren pretix-Shop-Einstellungen vorgenommen haben und sicherstellen möchten, "
+"dass die zwischengespeicherten Dateien auf dem neuesten Stand sind."
+
+#: templates/backend/cache.php:66
+msgid "Rebuild Cache"
+msgstr "Cache neu aufbauen"
+
+#: templates/backend/main.php:4 templates/backend/main.php:135
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: templates/backend/main.php:11
+msgid "Using the pretix widget Gutenberg block"
+msgstr "Verwendung des pretix-Widgets Gutenberg-Block"
+
+#: templates/backend/main.php:12
+msgid ""
+"The pretix widget Gutenberg Block allows you to easily display pretix ticket "
+"widgets on your WordPress website using the Gutenberg editor. With this "
+"block, you can customize the display of your pretix tickets and provide a "
+"seamless ticket booking experience for your users."
+msgstr ""
+"Mit dem pretix-Widget Gutenberg Block können Sie mit dem Gutenberg-Editor "
+"ganz einfach pretix-Ticket-Widgets auf Ihrer WordPress-Website anzeigen. Mit "
+"diesem Block können Sie die Anzeige Ihrer pretix-Tickets anpassen und Ihren "
+"Nutzern ein nahtloses Ticketbuchungserlebnis bieten."
+
+#: templates/backend/main.php:14
+msgid "Adding the Block"
+msgstr "Hinzufügen des Blocks"
+
+#: templates/backend/main.php:15
+msgid ""
+"To add the pretix widget block to your page or post, follow these steps:"
+msgstr ""
+"Gehen Sie folgendermaßen vor, um den pretix-Widget-Block zu Ihrer Seite oder "
+"Ihrem Beitrag hinzuzufügen:"
+
+#: templates/backend/main.php:17
+msgid "Go to the page or post where you want to add the ticket widget."
+msgstr ""
+"Rufen Sie die Seite oder den Beitrag auf, auf der Sie das Ticket-Widget "
+"hinzufügen möchten."
+
+#: templates/backend/main.php:18
+msgid "Click on the \"+\" icon to add a new block."
+msgstr "Klicken Sie auf das \"+\"-Symbol, um einen neuen Block hinzuzufügen."
+
+#: templates/backend/main.php:19
+msgid "Search for \"pretix widget\" in the block search bar and select it."
+msgstr ""
+"Suchen Sie in der Blocksuchleiste nach \"pretix widget\" und wählen Sie es "
+"aus."
+
+#: templates/backend/main.php:20
+msgid "The pretix widget block will now be added to your content."
+msgstr "Der pretix-Widget-Block wird nun zu Ihrem Inhalt hinzugefügt."
+
+#: templates/backend/main.php:23
+msgid "Customizing the Block"
+msgstr "Anpassen des Blocks"
+
+#: templates/backend/main.php:24
+msgid ""
+"Once you've added the pretix widget block, you can customize its settings to "
+"display the tickets according to your preferences. Here are the available "
+"settings and their possible values:"
+msgstr ""
+"Nachdem Sie den Pretix-Widget-Block hinzugefügt haben, können Sie seine "
+"Einstellungen anpassen, um die Tickets nach Ihren Wünschen anzuzeigen. Hier "
+"sind die verfügbaren Einstellungen und ihre möglichen Werte:"
+
+#: templates/backend/main.php:26
+#, php-format
+msgid ""
+"Mode: Set the display type of the widget. Possible values: %1$s, %2$s. "
+"(Default: %1$s)"
+msgstr ""
+"Modus: Legen Sie den Anzeigetyp des Widgets fest. Mögliche Werte: %1$s, "
+"%2$s. (Standardeinstellung: %1$s)"
+
+#: templates/backend/main.php:27
+#, php-format
+msgid ""
+"List Type: Set the display type of the widget. Possible values: %1$s, %2$s, "
+"%3$s."
+msgstr ""
+"Listentyp: Legen Sie den Anzeigetyp des Widgets fest. Mögliche Werte: %1$s, "
+"%2$s, %3$s."
+
+#: templates/backend/main.php:28
+msgid ""
+"Shop URL: The URL of your pretix shop. Example: 'https://pretix.eu/demo'"
+msgstr ""
+"Shop-URL: Die URL Ihres pretix-Shops. Beispiel: 'https://pretix.eu/demo'"
+
+#: templates/backend/main.php:29
+msgid "Sub-Event: A sub-event to be pre-selected. Example: 'democon'"
+msgstr ""
+"Sub-Event: Ein Sub-Event, das vorab ausgewählt werden soll. Beispiel: "
+"'democon'"
+
+#: templates/backend/main.php:30
+msgid "Items: Comma-separated list of item IDs to display. Example: '1,2,3'"
+msgstr ""
+"Elemente: Kommagetrennte Liste der anzuzeigenden Element-IDs. Beispiel: "
+"'1,2,3'"
+
+#: templates/backend/main.php:31
+msgid ""
+"Categories: Comma-separated list of category IDs to display. Example: '4,5,6'"
+msgstr ""
+"Kategorien: Kommagetrennte Liste der anzuzeigenden Kategorie-IDs. Beispiel: "
+"'4,5,6'"
+
+#: templates/backend/main.php:32
+msgid ""
+"Variations: Comma-separated list of variation IDs to display. Example: "
+"'7,8,9'"
+msgstr ""
+"Varianten: Kommagetrennte Liste der anzuzeigenden Varianten-IDs. Beispiel: "
+"'7,8,9'"
+
+#: templates/backend/main.php:33
+msgid "Disable Voucher: Set to 'true' to disable voucher selection."
+msgstr ""
+"Gutschein deaktivieren: Setzen Sie diese Option auf \"true\", um die "
+"Gutscheinauswahl zu deaktivieren."
+
+#: templates/backend/main.php:34
+msgid ""
+"Allocated Voucher: The voucher code to allocate to the ticket widget. "
+"Example: 'ABC123'"
+msgstr ""
+"Zugewiesener Gutschein: Der Gutscheincode, der dem Ticket-Widget zugewiesen "
+"werden soll. Beispiel: 'ABC123'"
+
+#: templates/backend/main.php:35
+msgid ""
+"Language: The language code for the widget. Example: 'en', 'de', 'fr', etc."
+msgstr ""
+"Sprache: Der Sprachcode für das Widget. Beispiel: 'en', 'de', 'fr' usw."
+
+#: templates/backend/main.php:36
+msgid "Button Text: Custom text for the ticket booking button."
+msgstr ""
+"Schaltflächentext: Benutzerdefinierter Text für die Schaltfläche für die "
+"Ticketbuchung."
+
+#: templates/backend/main.php:39 templates/backend/main.php:84
+msgid "Example Usage"
+msgstr "Beispiel für die Benutzung"
+
+#: templates/backend/main.php:40
+msgid ""
+"Here's an example of how you can use the pretix widget Block with custom "
+"settings:"
+msgstr ""
+"Hier ist ein Beispiel dafür, wie Sie das pretix-Widget Block mit "
+"benutzerdefinierten Einstellungen verwenden können:"
+
+#: templates/backend/main.php:42
+msgid "Add the pretix widget Block to your page or post."
+msgstr ""
+"Fügen Sie das pretix-Widget Block zu Ihrer Seite oder Ihrem Beitrag hinzu."
+
+#: templates/backend/main.php:43
+msgid "In the Block settings, set the following attributes:"
+msgstr "Legen Sie in den Blockeinstellungen die folgenden Attribute fest:"
+
+#: templates/backend/main.php:45
+msgid "Mode: 'button'"
+msgstr "Modus: 'Button'"
+
+#: templates/backend/main.php:46
+msgid "Display: 'list'"
+msgstr "Anzeige: 'Liste'"
+
+#: templates/backend/main.php:47
+msgid "Shop URL: 'https://example.com/pretix-shop'"
+msgstr "Shop-URL: 'https://example.com/pretix-shop'"
+
+#: templates/backend/main.php:48
+msgid "Language: 'en'"
+msgstr "Sprache: 'en'"
+
+#: templates/backend/main.php:49
+msgid "Button Text: 'Get Tickets Now'"
+msgstr "Button-Text: \"Jetzt Tickets sichern\""
+
+#: templates/backend/main.php:51
+msgid ""
+"The pretix ticket widget will now be displayed on your page with the "
+"specified settings."
+msgstr ""
+"Das pretix-Ticket-Widget wird nun mit den angegebenen Einstellungen auf "
+"Ihrer Seite angezeigt."
+
+#: templates/backend/main.php:54 templates/backend/main.php:88
+msgid "Notes"
+msgstr "Notizen"
+
+#: templates/backend/main.php:56 templates/backend/main.php:92
+msgid ""
+"Make sure to use a valid pretix shop URL and provide the correct language "
+"code for the widget to display the tickets correctly."
+msgstr ""
+"Stellen Sie sicher, dass Sie eine gültige pretix-Shop-URL verwenden und den "
+"richtigen Sprachcode für das Widget angeben, damit die Tickets korrekt "
+"angezeigt werden."
+
+#: templates/backend/main.php:57 templates/backend/main.php:93
+msgid ""
+"If you encounter any issues or have questions, feel free to contact the "
+"website administrator."
+msgstr ""
+"Wenn Sie auf Probleme stoßen oder Fragen haben, wenden Sie sich bitte an den "
+"Website-Administrator."
+
+#: templates/backend/main.php:59
+msgid ""
+"That's it! Now you can easily display pretix ticket widgets on your "
+"WordPress website using the pretix widget Gutenberg Block and customize the "
+"ticket display to suit your needs."
+msgstr ""
+"Das wars! Jetzt kannst du mit dem pretix-Widget Gutenberg Block ganz einfach "
+"pretix-Ticket-Widgets auf deiner WordPress-Website anzeigen und die Ticket-"
+"Anzeige an deine Bedürfnisse anpassen."
+
+#: templates/backend/main.php:62
+msgid "Using the pretix widget shortcode"
+msgstr "Verwenden des Pretix-Widget-Shortcodes"
+
+#: templates/backend/main.php:63
+msgid ""
+"The pretix widget shortcode allows you to easily display pretix ticket "
+"widgets on your website. With this shortcode, you can customize the display "
+"of your pretix tickets and provide a seamless ticket booking experience for "
+"your users."
+msgstr ""
+"Mit dem pretix-Widget-Shortcode können Sie pretix-Ticket-Widgets einfach auf "
+"Ihrer Website anzeigen. Mit diesem Shortcode können Sie die Anzeige Ihrer "
+"pretix-Tickets anpassen und Ihren Benutzern ein nahtloses "
+"Ticketbuchungserlebnis bieten."
+
+#: templates/backend/main.php:64
+msgid "Basic Usage"
+msgstr "Grundlagen"
+
+#: templates/backend/main.php:65
+msgid ""
+"To use the pretix widget shortcode, simply add the following shortcode to "
+"any post or page where you want to display the ticket widget:"
+msgstr ""
+"Um den Pretix-Widget-Shortcode zu verwenden, fügen Sie einfach den folgenden "
+"Shortcode zu jedem Beitrag oder jeder Seite hinzu, auf der Sie das Ticket-"
+"Widget anzeigen möchten:"
+
+#: templates/backend/main.php:68
+msgid "Customizing the Widget"
+msgstr "Anpassen des Widgets"
+
+#: templates/backend/main.php:69
+msgid ""
+"You can customize the pretix ticket widget by adding various attributes to "
+"the shortcode. Here are the available attributes and their possible values:"
+msgstr ""
+"Sie können das Pretix-Ticket-Widget anpassen, indem Sie dem Shortcode "
+"verschiedene Attribute hinzufügen. Hier sind die verfügbaren Attribute und "
+"ihre möglichen Werte:"
+
+#: templates/backend/main.php:71
+#, php-format
+msgid ""
+"mode (string): Set the display type of the widget. Possible values: %1$s, "
+"%2$s. (Default: %1$s)"
+msgstr ""
+"mode (String): Legen Sie den Anzeigetyp des Widgets fest. Mögliche Werte: "
+"%1$s, %2$s. (Standardeinstellung: %1$s)"
+
+#: templates/backend/main.php:72
+#, php-format
+msgid ""
+"list_type (string): Set the list type of the widget. Possible values: %1$s, "
+"%2$s, %3$s."
+msgstr ""
+"list_type (String): Legen Sie den Listentyp des Widgets fest. Mögliche "
+"Werte: %1$s, %2$s, %3$s."
+
+#: templates/backend/main.php:73
+msgid ""
+"shop_url (string): The URL of your pretix shop. Example: 'https://pretix.eu/"
+"demo'"
+msgstr ""
+"shop_url (String): Die URL Ihres pretix-Shops. Beispiel: 'https://pretix.eu/"
+"demo'"
+
+#: templates/backend/main.php:74
+msgid "subevent (string): A sub-event to be pre-selected. Example: 'democon'"
+msgstr ""
+"subevent (String): Ein Unterereignis, das vorab ausgewählt werden soll. "
+"Beispiel: 'democon'"
+
+#: templates/backend/main.php:75
+msgid ""
+"items (string): Comma-separated list of item IDs to display. Example: '1,2,3'"
+msgstr ""
+"items (String): Kommagetrennte Liste der anzuzeigenden Element-IDs. "
+"Beispiel: '1,2,3'"
+
+#: templates/backend/main.php:76
+msgid ""
+"categories (string): Comma-separated list of category IDs to display. "
+"Example: '4,5,6'"
+msgstr ""
+"categories (String): Kommagetrennte Liste der anzuzeigenden Kategorie-IDs. "
+"Beispiel: '4,5,6'"
+
+#: templates/backend/main.php:77
+msgid ""
+"variations (string): Comma-separated list of variation IDs to display. "
+"Example: '7,8,9'"
+msgstr ""
+"variations (String): Kommagetrennte Liste der anzuzeigenden Varianten-IDs. "
+"Beispiel: '7,8,9'"
+
+#: templates/backend/main.php:78
+msgid "disable_voucher (boolean): Set to 'true' to disable voucher selection."
+msgstr ""
+"disable_voucher (boolescher Wert): Wird auf 'true' gesetzt, um die "
+"Gutscheinauswahl zu deaktivieren."
+
+#: templates/backend/main.php:79
+msgid ""
+"allocated_voucher (string): The voucher code to allocate to the ticket "
+"widget. Example: 'ABC123'"
+msgstr ""
+"allocated_voucher (String): Der Gutscheincode, der dem Ticket-Widget "
+"zugewiesen werden soll. Beispiel: 'ABC123'"
+
+#: templates/backend/main.php:80
+#, php-format
+msgid ""
+"language (string): The language code for the widget. Example: %1$s, %2$s, "
+"%3$s, etc."
+msgstr ""
+"language (String): Der Sprachcode für das Widget. Beispiel: %1$s, %2$s, %3$s "
+"usw."
+
+#: templates/backend/main.php:81
+msgid "button_text (string): Custom text for the ticket booking button."
+msgstr ""
+"button_text (String): Benutzerdefinierter Text für die Schaltfläche "
+"\"Ticketbuchung\"."
+
+#: templates/backend/main.php:85
+msgid ""
+"Here's an example of how you can use the pretix widget shortcode with custom "
+"settings:"
+msgstr ""
+"Hier ist ein Beispiel dafür, wie Sie den Pretix-Widget-Shortcode mit "
+"benutzerdefinierten Einstellungen verwenden können:"
+
+#: templates/backend/main.php:90
+msgid "The shortcode attributes are case-sensitive."
+msgstr ""
+"Bei den Shortcode-Attributen wird zwischen Groß- und Kleinschreibung "
+"unterschieden."
+
+#: templates/backend/main.php:91
+msgid ""
+"If an attribute is not provided, the shortcode will use the default values "
+"defined in the plugin settings."
+msgstr ""
+"Wenn kein Attribut angegeben wird, verwendet der Shortcode die "
+"Standardwerte, die in den Plugin-Einstellungen definiert sind."
+
+#: templates/backend/main.php:95
+msgid ""
+"That's it! Now you can easily display pretix ticket widgets on your website "
+"using the [pretix_widget] shortcode and customize the ticket display to suit "
+"your needs."
+msgstr ""
+"Das wars! Jetzt können Sie mit dem Shortcode [pretix_widget] ganz einfach "
+"pretix-Ticket-Widgets auf Ihrer Website anzeigen und die Ticketanzeige an "
+"Ihre Bedürfnisse anpassen."
+
+#: templates/backend/main.php:103
+msgid "Links"
+msgstr "Links"
+
+#: templates/backend/main.php:105
+msgid "Visit pretix.eu"
+msgstr "Besuchen Sie pretix.eu"
+
+#: templates/backend/main.php:106
+msgid "Pricing"
+msgstr "Preise"
+
+#: templates/backend/main.php:107
+msgid "Terms of Service"
+msgstr "Nutzungsbedingungen"
+
+#: templates/backend/main.php:108
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: templates/backend/main.php:113 templates/backend/main.php:115
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: templates/backend/main.php:114
+msgid "Manage your events and tickets:"
+msgstr "Verwalten Sie Ihre Veranstaltungen und Tickets:"
+
+#: templates/backend/main.php:119
+msgid "Social Links"
+msgstr "Social Links"
+
+#: templates/backend/main.php:121
+msgid "Twitter"
+msgstr "Twitter"
+
+#: templates/backend/main.php:122
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: templates/backend/main.php:123
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: templates/backend/main.php:124
+msgid "YouTube"
+msgstr "YouTube"
+
+#: templates/backend/main.php:125
+msgid "Instagram"
+msgstr "Instagram"
+
+#: templates/backend/main.php:126
+msgid "GitHub"
+msgstr "GitHub"
+
+#: templates/backend/main.php:131
+msgid "Tech Links"
+msgstr "Technische Links"
+
+#: templates/backend/main.php:133
+msgid "System Status"
+msgstr "Systemstatus"
+
+#: templates/backend/main.php:134
+msgid "REST API"
+msgstr "Rest-API"
+
+#: templates/backend/main.php:136
+msgid "Security"
+msgstr "Sicherheit"
+
+#: templates/backend/main.php:141
+msgid "Support"
+msgstr "Support"
+
+#: templates/backend/main.php:142
+msgid "Contact our support team for any questions or assistance:"
+msgstr ""
+"Wenden Sie sich an unser Support-Team, wenn Sie Fragen haben oder "
+"Unterstützung benötigen:"
+
+#: templates/backend/main.php:144
+msgid "Email: support@pretix.eu"
+msgstr "E-Mail: support@pretix.eu"
+
+#: templates/backend/main.php:145
+msgid "Phone: +49 6221 32177-50"
+msgstr "Telefon: +49 6221 32177-50"
+
+#: templates/backend/settings.php:5
+msgid "Änderungen speichern"
+msgstr "Änderungen speichern"
+
+#: templates/backend/settings.php:15
+msgid "Shop URL"
+msgstr "Shop URL"
+
+#: templates/backend/settings.php:19
+msgid "List Type"
+msgstr "Kategorie Typ"
+
+#: templates/backend/settings.php:22
+msgid "Auto"
+msgstr "Auto"
+
+#: templates/backend/settings.php:23
+msgid "List"
+msgstr "Liste"
+
+#: templates/backend/settings.php:24
+msgid "Calendar Week"
+msgstr "Kalenderwoche"
+
+#: templates/backend/settings.php:25
+msgid "Calendar Month"
+msgstr "Kalendermonat"
+
+#: templates/backend/settings.php:29
+msgid "Disable voucher input"
+msgstr "Gutschein deaktivieren"
+
+#: templates/backend/settings.php:33
+msgid "Default language"
+msgstr "Standardsprache"
+
+#: templates/backend/settings.php:43
+msgid "Button text"
+msgstr "Button-Text"
+
+#: templates/backend/settings.php:47
+msgid "Custom CSS"
+msgstr "Benutzerdefiniertes CSS"
+
+#: templates/backend/settings.php:53
+msgid "Debug skip SSL check"
+msgstr "Debug  SSL-Prüfung überspringen"
+
+#: templates/backend/settings.php:61
+msgid "Default Values for Block and Shortcode"
+msgstr "Standardwerte für Block und Shortcode"
+
+#: templates/backend/settings.php:63
+msgid ""
+"On this page, you can set the default values for the block and shortcode "
+"used in the pretix widget. These default values will be applied when you use "
+"the pretix widget without specifying any custom parameters."
+msgstr ""
+"Auf dieser Seite können Sie die Standardwerte für den Block und den "
+"Shortcode festlegen, die im pretix-Widget verwendet werden. Diese "
+"Standardwerte werden angewendet, wenn Sie das Pretix-Widget verwenden, ohne "
+"benutzerdefinierte Parameter anzugeben."
+
+#: templates/backend/settings.php:65
+msgid "Overriding Defaults with Parameters:"
+msgstr "Überschreiben von Standardwerten mit Parametern:"
+
+#: templates/backend/settings.php:67
+msgid ""
+"While these default values make it easy to maintain consistency across your "
+"website, you have the flexibility to override them whenever you need to. "
+"When inserting the pretix widget block or using the shortcode, you can pass "
+"specific parameters to customize the widget for that particular instance. "
+"For more information on how to use parameters, please refer to the "
+"documentation page."
+msgstr ""
+"Während diese Standardwerte es einfach machen, die Konsistenz auf Ihrer "
+"Website aufrechtzuerhalten, haben Sie die Flexibilität, sie bei Bedarf zu "
+"überschreiben. Beim Einfügen des pretix-Widget-Blocks oder bei Verwendung "
+"des Shortcodes können Sie bestimmte Parameter übergeben, um das Widget für "
+"diese bestimmte Instanz anzupassen. Weitere Informationen zur Verwendung von "
+"Parametern finden Sie auf der Dokumentationsseite."
+
+#: templates/backend/settings.php:70
+msgid ""
+"Please note that changes made here will apply to all instances of the pretix "
+"widget on your website unless you explicitly override them using parameters "
+"in the shortcode or block."
+msgstr ""
+"Bitte beachten Sie, dass die hier vorgenommenen Änderungen für alle "
+"Instanzen des pretix-Widgets auf Ihrer Website gelten, es sei denn, Sie "
+"überschreiben sie explizit mit Parametern im Shortcode oder Block."
+
+#: templates/frontend/no-script.php:5
+#, php-format
+msgid ""
+"JavaScript is disabled in your browser. To access our ticket shop without "
+"JavaScript, please click %shere%s."
+msgstr ""
+"JavaScript ist in Ihrem Browser deaktiviert. Um auf unseren Ticket-Shop ohne "
+"JavaScript zuzugreifen, klicken Sie bitte %shier%s."
+
+#. Plugin Name of the plugin/theme
+msgid "pretix widget"
+msgstr "pretix widget"
+
+#. Plugin URI of the plugin/theme
+msgid "https://pretix.eu/"
+msgstr "https://pretix.eu/"
+
+#. Description of the plugin/theme
+msgid ""
+"The pretix widget allows you to easily display pretix ticket widgets on your "
+"website. You can customize the display of your pretix tickets and provide a "
+"seamless ticket booking experience for your users."
+msgstr ""
+"Mit dem pretix-Widget können Sie pretix-Ticket-Widgets ganz einfach auf "
+"Ihrer Website anzeigen. Sie können die Anzeige Ihrer pretix-Tickets anpassen "
+"und Ihren Benutzern ein nahtloses Ticketbuchungserlebnis bieten."
+
+#. Author of the plugin/theme
+msgid "straightvisions GmbH"
+msgstr "straightvisions GmbH"
+
+#. Author URI of the plugin/theme
+msgid "https://straightvisions.com"
+msgstr "https://straightvisions.com"
+
+#~ msgid "Error:"
+#~ msgstr "Fehler:"
