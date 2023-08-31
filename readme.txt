@@ -1,6 +1,5 @@
 === pretix widget ===
-Contributors: matthias-reuter, matthiasbathke, dennisheiden
-Donate link: https://straightvisions.com
+Contributors: matthias-reuter, matthiasbathke, dennisheiden, pretixeu
 Tags: gutenberg, navigation, modal
 Requires PHP: 7.3
 Requires at least: 6.1.1
