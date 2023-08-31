@@ -18,9 +18,9 @@ The <a href="https://pretix.eu/">pretix</a> widget allows you to easily display 
 
 == Installation ==
 
-This plugin is build to work out-of-the-box. Installation is quite simple.
+This plugin is built to work out-of-the-box. You can install it like this:
 
-1. Upload plugin-directory to the `/wp-content/plugins/` directory
+1. Upload plugin directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to Settings -> pretix widget and enter your pretix.eu shop url
 4. Insert Widget via Shortcode or Gutenberg Block anywhere you like and adjust settings
@@ -28,15 +28,19 @@ This plugin is build to work out-of-the-box. Installation is quite simple.
 
 == Changelog ==
 
-= 1.0.00 =
+= 1.0.1 =
+Bugfixes during initialization
+
+= 1.0.0 =
 Initial Release
 
 == Upgrade Notice ==
 Initial Release
 
 == Frequently Asked Questions ==
-= Is this plugin for free? =
-Yes, but you need an active subcription of <a href="https://pretix.eu/">pretix</a> or a self-hosted installation of <a href="https://github.com/pretix/pretix">pretix</a> to use it.^M
+
+= Is this plugin free? =
+Yes, but you need an active subcription of <a href="https://pretix.eu/">pretix</a> or a self-hosted installation of <a href="https://github.com/pretix/pretix">pretix</a> to use it.
 
 == Credits ==
 
