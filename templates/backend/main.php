@@ -25,9 +25,9 @@
 					<ul>
 						<li><?php printf(__('Mode: Set the display type of the widget. Possible values: %1$s, %2$s. (Default: %1$s)', 'pretix-widget'), 'Widget', 'Button'); ?></li>
 						<li><?php printf(__('List Type: Set the display type of the widget. Possible values: %1$s, %2$s, %3$s.', 'pretix-widget'), 'List', 'Calendar Month', 'Calendar Week'); ?></li>
-						<li><?php _e('Shop URL: The URL of your pretix shop. Example: \'https://pretix.eu/demo\'', 'pretix-widget'); ?></li>
-						<li><?php _e('Sub-Event: A sub-event to be pre-selected. Example: \'democon\'', 'pretix-widget'); ?></li>
-						<li><?php _e('Items: Comma-separated list of item IDs to display. Example: \'1,2,3\'', 'pretix-widget'); ?></li>
+						<li><?php _e('Shop URL: The URL of your pretix shop. Example: \'https://pretix.eu/demo/\'', 'pretix-widget'); ?></li>
+						<li><?php _e('Date (Sub-Event): A date within an event series to be pre-selected. Example: \'125\'', 'pretix-widget'); ?></li>
+						<li><?php _e('Products: Comma-separated list of product IDs to display. Example: \'1,2,3\'', 'pretix-widget'); ?></li>
 						<li><?php _e('Categories: Comma-separated list of category IDs to display. Example: \'4,5,6\'', 'pretix-widget'); ?></li>
 						<li><?php _e('Variations: Comma-separated list of variation IDs to display. Example: \'7,8,9\'', 'pretix-widget'); ?></li>
 						<li><?php _e('Disable Voucher: Set to \'true\' to disable voucher selection.', 'pretix-widget'); ?></li>
@@ -44,7 +44,7 @@
 						<ul>
 							<li><?php _e('Mode: \'button\'', 'pretix-widget'); ?></li>
 							<li><?php _e('Display: \'list\'', 'pretix-widget'); ?></li>
-							<li><?php _e('Shop URL: \'https://example.com/pretix-shop\'', 'pretix-widget'); ?></li>
+							<li><?php _e('Shop URL: \'https://example.com/pretix-shop/\'', 'pretix-widget'); ?></li>
 							<li><?php _e('Language: \'en\'', 'pretix-widget'); ?></li>
 							<li><?php _e('Button Text: \'Get Tickets Now\'', 'pretix-widget'); ?></li>
 						</ul>

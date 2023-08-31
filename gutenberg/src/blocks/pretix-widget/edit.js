@@ -216,50 +216,58 @@ export default function Edit(props) {
 						type="url"
 					/>
 					<TextControl
-						label={__('Sub-Event', 'pretix-widget')}
+						label={__('Date (Sub-Event)', 'pretix-widget')}
 						value={subevent}
 						onChange={(value) => handleChange('subevent', value)}
 					/>
 					<TextControl
-						label={__('Items', 'pretix-widget')}
+						label={__('Products', 'pretix-widget')}
 						value={items}
 						onChange={(value) => handleChange('items', value)}
-						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+						help={mode === 'button' ? __('Use syntax item_ITEMID=2,variation_ITEMID_VARID=4', 'pretix-widget') : __('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
 					/>
-					<TextControl
-						label={__('Categories', 'pretix-widget')}
-						value={categories}
-						onChange={(value) => handleChange('categories', value)}
-						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
-					/>
-					<TextControl
-						label={__('Variations', 'pretix-widget')}
-						value={variations}
-						onChange={(value) => handleChange('variations', value)}
-						help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
-					/>
+					{mode !== 'button' && (
+						<TextControl
+							label={__('Categories', 'pretix-widget')}
+							value={categories}
+							onChange={(value) => handleChange('categories', value)}
+							help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+						/>
+					)}
+					{mode !== 'button' && (
+						<TextControl
+							label={__('Variations', 'pretix-widget')}
+							value={variations}
+							onChange={(value) => handleChange('variations', value)}
+							help={__('Enter a comma-separated list of ID numbers.', 'pretix-widget')}
+						/>
+					)}
 					<TextControl
 						label={__('Pre-selected voucher', 'pretix-widget')}
 						value={allocated_voucher}
 						onChange={(value) => handleChange('allocated_voucher', value)}
 					/>
 					
-					<SelectControl
-						label={__('List Type', 'pretix-widget')}
-						value={list_type}
-						options={[
-							{ value: 'auto', label: __('Auto', 'pretix-widget') },
-							{ value: 'list', label: __('List', 'pretix-widget') },
-							{ value: 'week', label: __('Calendar Week', 'pretix-widget') },
-							{ value: 'calendar', label: __('Calendar Month', 'pretix-widget') },
-						]}
-						onChange={(value) => handleChange('list_type', value)}
-					/>
-					<ToggleControl
-						label={__('Disable voucher input', 'pretix-widget')}
-						checked={disable_voucher}
-						onChange={(value) => handleChange('disable_voucher', value)}
-					/>
+					{mode !== 'button' && (
+						<SelectControl
+							label={__('List Type', 'pretix-widget')}
+							value={list_type}
+							options={[
+								{ value: 'auto', label: __('Auto', 'pretix-widget') },
+								{ value: 'list', label: __('List', 'pretix-widget') },
+								{ value: 'week', label: __('Calendar Week', 'pretix-widget') },
+								{ value: 'calendar', label: __('Calendar Month', 'pretix-widget') },
+							]}
+							onChange={(value) => handleChange('list_type', value)}
+						/>
+					)}
+					{mode !== 'button' && (
+						<ToggleControl
+							label={__('Disable voucher input', 'pretix-widget')}
+							checked={disable_voucher}
+							onChange={(value) => handleChange('disable_voucher', value)}
+						/>
+					)}
 					<SelectControl
 						label={__('Language', 'pretix-widget')}
 						value={language}

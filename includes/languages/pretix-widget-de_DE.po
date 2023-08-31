@@ -185,20 +185,20 @@ msgstr ""
 
 #: templates/backend/main.php:28
 msgid ""
-"Shop URL: The URL of your pretix shop. Example: 'https://pretix.eu/demo'"
+"Shop URL: The URL of your pretix shop. Example: 'https://pretix.eu/demo/'"
 msgstr ""
-"Shop-URL: Die URL Ihres pretix-Shops. Beispiel: 'https://pretix.eu/demo'"
+"Shop-URL: Die URL Ihres pretix-Shops. Beispiel: 'https://pretix.eu/demo/'"
 
 #: templates/backend/main.php:29
-msgid "Sub-Event: A sub-event to be pre-selected. Example: 'democon'"
+msgid "Date (Sub-Event): A date within an event series to be pre-selected. Example: '125'"
 msgstr ""
-"Sub-Event: Ein Sub-Event, das vorab ausgewählt werden soll. Beispiel: "
-"'democon'"
+"Termin (Sub-Event): Ein Termin einer Veranstaltungsreihe, der vorab ausgewählt werden soll. Beispiel: "
+"'125'"
 
 #: templates/backend/main.php:30
-msgid "Items: Comma-separated list of item IDs to display. Example: '1,2,3'"
+msgid "Products: Comma-separated list of product IDs to display. Example: '1,2,3'"
 msgstr ""
-"Elemente: Kommagetrennte Liste der anzuzeigenden Element-IDs. Beispiel: "
+"Produkte: Kommagetrennte Liste der anzuzeigenden Produkt-IDs. Beispiel: "
 "'1,2,3'"
 
 #: templates/backend/main.php:31
@@ -272,8 +272,8 @@ msgid "Display: 'list'"
 msgstr "Anzeige: 'Liste'"
 
 #: templates/backend/main.php:47
-msgid "Shop URL: 'https://example.com/pretix-shop'"
-msgstr "Shop-URL: 'https://example.com/pretix-shop'"
+msgid "Shop URL: 'https://example.com/pretix-shop/'"
+msgstr "Shop-URL: 'https://example.com/pretix-shop/'"
 
 #: templates/backend/main.php:48
 msgid "Language: 'en'"
