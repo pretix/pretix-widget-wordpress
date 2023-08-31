@@ -4,7 +4,7 @@ Donate link: https://straightvisions.com
 Tags: gutenberg, navigation, modal
 Requires PHP: 7.3
 Requires at least: 6.1.1
-Tested up to: 6.2.2
+Tested up to: 6.3.1
 Stable tag: 1.0.00
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
@@ -37,7 +37,7 @@ Initial Release
 
 == Frequently Asked Questions ==
 = Is this plugin for free? =
-Yes, but you need an active subcription of <a href="https://pretix.eu/">pretix</a> to use it.
+Yes, but you need an active subcription of <a href="https://pretix.eu/">pretix</a> or a self-hosted installation of <a href="https://github.com/pretix/pretix">pretix</a> to use it.^M
 
 == Credits ==
 
