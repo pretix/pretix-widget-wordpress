@@ -4,9 +4,9 @@ Version: 1.0.1
 Plugin Name: pretix widget
 Text Domain: pretix-widget
 Description: The pretix widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.
-Plugin URI: https://pretix.eu/
-Author: straightvisions GmbH
-Author URI: https://straightvisions.com
+Plugin URI: https://github.com/pretix/pretix-widget-wordpress
+Author: pretix.eu
+Author URI: https://pretix.eu
 Domain Path: /languages
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0-standalone.html
