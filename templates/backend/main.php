@@ -100,19 +100,14 @@
 				<div class="container">
 					<img width=128" src="<?php echo $this->get_url('assets/images/pretix-logo.svg'); ?>" />
 					<div class="pretix-widget-info-box">
-						<h3><?php _e('Links', 'pretix-widget'); ?></h3>
+						<h3><?php _e('pretix Hosted', 'pretix-widget'); ?></h3>
 						<ul>
 							<li><a href="https://pretix.eu" target="_blank"><?php _e('Visit pretix.eu', 'pretix-widget'); ?></a></li>
-							<li><a href="https://pretix.eu/pricing" target="_blank"><?php _e('Pricing', 'pretix-widget'); ?></a></li>
-							<li><a href="https://pretix.eu/terms" target="_blank"><?php _e('Terms of Service', 'pretix-widget'); ?></a></li>
-							<li><a href="https://pretix.eu/privacy" target="_blank"><?php _e('Privacy Policy', 'pretix-widget'); ?></a></li>
+							<li><a href="https://pretix.eu/about/en/pricing" target="_blank"><?php _e('Pricing', 'pretix-widget'); ?></a></li>
+							<li><a href="https://pretix.eu/about/en/terms" target="_blank"><?php _e('Terms of Service', 'pretix-widget'); ?></a></li>
+							<li><a href="https://pretix.eu/about/en/privacy" target="_blank"><?php _e('Privacy Policy', 'pretix-widget'); ?></a></li>
 						</ul>
-					</div>
-
-					<div class="pretix-widget-info-box">
-						<h3><?php _e('Sign in', 'pretix-widget'); ?></h3>
-						<p><?php _e('Manage your events and tickets:', 'pretix-widget'); ?></p>
-						<a href="https://pretix.eu/control/login" target="_blank" class="button"><?php _e('Sign in', 'pretix-widget'); ?></a>
+						<p><a href="https://pretix.eu/control/login" target="_blank" class="button"><?php _e('Sign in', 'pretix-widget'); ?></a></p>
 					</div>
 
 					<div class="pretix-widget-info-box">
@@ -130,10 +125,8 @@
 					<div class="pretix-widget-info-box">
 						<h3><?php _e('Tech Links', 'pretix-widget'); ?></h3>
 						<ul>
-							<li><a href="https://status.pretix.eu/" target="_blank"><?php _e('System Status', 'pretix-widget'); ?></a></li>
-							<li><a href="https://docs.pretix.eu/en/latest/api/index.html" target="_blank"><?php _e('REST API', 'pretix-widget'); ?></a></li>
+							<li><a href="https://docs.pretix.eu/en/latest/user/events/widget.html" target="_blank"><?php _e('Widget documentation', 'pretix-widget'); ?></a></li>
 							<li><a href="https://docs.pretix.eu/" target="_blank"><?php _e('Documentation', 'pretix-widget'); ?></a></li>
-							<li><a href="https://pretix.eu/about/de/security" target="_blank"><?php _e('Security', 'pretix-widget'); ?></a></li>
 						</ul>
 					</div>
 
