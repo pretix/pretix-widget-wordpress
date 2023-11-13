@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pretix widget\n"
-"POT-Creation-Date: 2023-08-30 16:25+0200\n"
-"PO-Revision-Date: 2023-08-30 16:26+0200\n"
+"POT-Creation-Date: 2023-11-13 13:18+0100\n"
+"PO-Revision-Date: 2023-11-13 13:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -34,7 +34,7 @@ msgstr "Cache geleert und neu aufgebaut!"
 msgid "Couldn't download files:"
 msgstr "Dateien konnten nicht heruntergeladen werden:"
 
-#: includes/render/block.php:167 includes/render/shortcode.php:193
+#: includes/render/block.php:169 includes/render/shortcode.php:195
 msgid "Shop URL missing."
 msgstr "Shop-URL fehlt."
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Rebuild Cache"
 msgstr "Cache neu aufbauen"
 
-#: templates/backend/main.php:4 templates/backend/main.php:135
+#: templates/backend/main.php:4 templates/backend/main.php:129
 msgid "Documentation"
 msgstr "Dokumentation"
 
@@ -190,13 +190,16 @@ msgstr ""
 "Shop-URL: Die URL Ihres pretix-Shops. Beispiel: 'https://pretix.eu/demo/'"
 
 #: templates/backend/main.php:29
-msgid "Date (Sub-Event): A date within an event series to be pre-selected. Example: '125'"
-msgstr ""
-"Termin (Sub-Event): Ein Termin einer Veranstaltungsreihe, der vorab ausgewählt werden soll. Beispiel: "
+msgid ""
+"Date (Sub-Event): A date within an event series to be pre-selected. Example: "
 "'125'"
+msgstr ""
+"Termin (Sub-Event): Ein Termin einer Veranstaltungsreihe, der vorab "
+"ausgewählt werden soll. Beispiel: '125'"
 
 #: templates/backend/main.php:30
-msgid "Products: Comma-separated list of product IDs to display. Example: '1,2,3'"
+msgid ""
+"Products: Comma-separated list of product IDs to display. Example: '1,2,3'"
 msgstr ""
 "Produkte: Kommagetrennte Liste der anzuzeigenden Produkt-IDs. Beispiel: "
 "'1,2,3'"
@@ -481,8 +484,8 @@ msgstr ""
 "Ihre Bedürfnisse anpassen."
 
 #: templates/backend/main.php:103
-msgid "Links"
-msgstr "Links"
+msgid "pretix Hosted"
+msgstr "pretix Hosted"
 
 #: templates/backend/main.php:105
 msgid "Visit pretix.eu"
@@ -500,73 +503,61 @@ msgstr "Nutzungsbedingungen"
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: templates/backend/main.php:113 templates/backend/main.php:115
+#: templates/backend/main.php:110
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: templates/backend/main.php:114
-msgid "Manage your events and tickets:"
-msgstr "Verwalten Sie Ihre Veranstaltungen und Tickets:"
-
-#: templates/backend/main.php:119
 msgid "Social Links"
 msgstr "Social Links"
 
-#: templates/backend/main.php:121
+#: templates/backend/main.php:116
 msgid "Twitter"
 msgstr "Twitter"
 
-#: templates/backend/main.php:122
+#: templates/backend/main.php:117
 msgid "Mastodon"
 msgstr "Mastodon"
 
-#: templates/backend/main.php:123
+#: templates/backend/main.php:118
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: templates/backend/main.php:124
+#: templates/backend/main.php:119
 msgid "YouTube"
 msgstr "YouTube"
 
-#: templates/backend/main.php:125
+#: templates/backend/main.php:120
 msgid "Instagram"
 msgstr "Instagram"
 
-#: templates/backend/main.php:126
+#: templates/backend/main.php:121
 msgid "GitHub"
 msgstr "GitHub"
 
-#: templates/backend/main.php:131
+#: templates/backend/main.php:126
 msgid "Tech Links"
 msgstr "Technische Links"
 
-#: templates/backend/main.php:133
-msgid "System Status"
-msgstr "Systemstatus"
+#: templates/backend/main.php:128
+msgid "Widget documentation"
+msgstr "Widget-Dokumentation"
 
 #: templates/backend/main.php:134
-msgid "REST API"
-msgstr "Rest-API"
-
-#: templates/backend/main.php:136
-msgid "Security"
-msgstr "Sicherheit"
-
-#: templates/backend/main.php:141
 msgid "Support"
 msgstr "Support"
 
-#: templates/backend/main.php:142
+#: templates/backend/main.php:135
 msgid "Contact our support team for any questions or assistance:"
 msgstr ""
 "Wenden Sie sich an unser Support-Team, wenn Sie Fragen haben oder "
 "Unterstützung benötigen:"
 
-#: templates/backend/main.php:144
+#: templates/backend/main.php:137
 msgid "Email: support@pretix.eu"
 msgstr "E-Mail: support@pretix.eu"
 
-#: templates/backend/main.php:145
+#: templates/backend/main.php:138
 msgid "Phone: +49 6221 32177-50"
 msgstr "Telefon: +49 6221 32177-50"
 
@@ -672,31 +663,38 @@ msgstr ""
 "JavaScript ist in Ihrem Browser deaktiviert. Um auf unseren Ticket-Shop ohne "
 "JavaScript zuzugreifen, klicken Sie bitte %shier%s."
 
-#. Plugin Name of the plugin/theme
-msgid "pretix widget"
-msgstr "pretix widget"
+#~ msgid "Links"
+#~ msgstr "Links"
 
-#. Plugin URI of the plugin/theme
-msgid "https://pretix.eu/"
-msgstr "https://pretix.eu/"
+#~ msgid "Manage your events and tickets:"
+#~ msgstr "Verwalten Sie Ihre Veranstaltungen und Tickets:"
 
-#. Description of the plugin/theme
-msgid ""
-"The pretix widget allows you to easily display pretix ticket widgets on your "
-"website. You can customize the display of your pretix tickets and provide a "
-"seamless ticket booking experience for your users."
-msgstr ""
-"Mit dem pretix-Widget können Sie pretix-Ticket-Widgets ganz einfach auf "
-"Ihrer Website anzeigen. Sie können die Anzeige Ihrer pretix-Tickets anpassen "
-"und Ihren Benutzern ein nahtloses Ticketbuchungserlebnis bieten."
+#~ msgid "System Status"
+#~ msgstr "Systemstatus"
 
-#. Author of the plugin/theme
-msgid "straightvisions GmbH"
-msgstr "straightvisions GmbH"
+#~ msgid "REST API"
+#~ msgstr "Rest-API"
 
-#. Author URI of the plugin/theme
-msgid "https://straightvisions.com"
-msgstr "https://straightvisions.com"
+#~ msgid "Security"
+#~ msgstr "Sicherheit"
+
+#~ msgid "https://pretix.eu/"
+#~ msgstr "https://pretix.eu/"
+
+#~ msgid ""
+#~ "The pretix widget allows you to easily display pretix ticket widgets on "
+#~ "your website. You can customize the display of your pretix tickets and "
+#~ "provide a seamless ticket booking experience for your users."
+#~ msgstr ""
+#~ "Mit dem pretix-Widget können Sie pretix-Ticket-Widgets ganz einfach auf "
+#~ "Ihrer Website anzeigen. Sie können die Anzeige Ihrer pretix-Tickets "
+#~ "anpassen und Ihren Benutzern ein nahtloses Ticketbuchungserlebnis bieten."
+
+#~ msgid "straightvisions GmbH"
+#~ msgstr "straightvisions GmbH"
+
+#~ msgid "https://straightvisions.com"
+#~ msgstr "https://straightvisions.com"
 
 #~ msgid "Error:"
 #~ msgstr "Fehler:"
