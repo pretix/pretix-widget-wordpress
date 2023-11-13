@@ -3,8 +3,8 @@ Contributors: matthias-reuter, matthiasbathke, dennisheiden, pretixeu
 Tags: gutenberg, navigation, modal
 Requires PHP: 7.3
 Requires at least: 6.1.1
-Tested up to: 6.3.1
-Stable tag: 1.0.00
+Tested up to: 6.4.1
+Stable tag: 1.0.2
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -28,6 +28,9 @@ This plugin is built to work out-of-the-box. You can install it like this:
 
 == Changelog ==
 
+= 1.0.2 =
+Style and safety changes
+
 = 1.0.1 =
 Bugfixes during initialization
 
@@ -40,7 +43,7 @@ Initial Release
 == Frequently Asked Questions ==
 
 = Is this plugin free? =
-Yes, but you need an active subcription of <a href="https://pretix.eu/">pretix</a> or a self-hosted installation of <a href="https://github.com/pretix/pretix">pretix</a> to use it.
+Yes, but you need an active subscription of <a href="https://pretix.eu/">pretix</a> or a self-hosted installation of <a href="https://github.com/pretix/pretix">pretix</a> to use it.
 
 == Credits ==
 
