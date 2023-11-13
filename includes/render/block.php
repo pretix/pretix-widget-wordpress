@@ -98,9 +98,9 @@ class Block extends Base {
     private function get_arguments_inline($settings) {
         $arguments = [];
 
-		if ($settings['list_type'] !== 'auto') {
-			$arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
-		}
+        if ($settings['list_type'] !== 'auto') {
+            $arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
+        }
         // URL -----------------------------------------------------------------
         $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/"';
         // URL -----------------------------------------------------------------
