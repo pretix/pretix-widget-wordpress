@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="pretix_widget_options" class="pretix-widget-admin-page-wrapper">
     <div id="header">
         <img width=128" src="<?php echo $this->get_url('assets/images/pretix-logo.svg'); ?>" />

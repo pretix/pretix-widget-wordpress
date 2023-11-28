@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <noscript>
 	<div class="pretix-widget-no-script">
         <?php
