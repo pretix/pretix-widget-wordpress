@@ -47,7 +47,8 @@
                         // Check if the "Flush Cache" button is clicked
                         if (is_admin() && isset($_POST['set_max_cache_time'])) {
                             // Perform the cache flushing here
-							$this->parent->cache->set_max_cache_time(intval($_POST['set_max_cache_time']));
+	                        $cache_time = intval(sanitize_text_field($_POST['set_max_cache_time']));
+							$this->parent->cache->set_max_cache_time($cache_time);
 						}
                         ?>
 		                <label for="set_max_cache_time">

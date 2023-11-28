@@ -120,8 +120,10 @@ final class Pretix_Widget extends Base {
      * @since 1.0.00
      */
     public function enqueue_backend_assets() {
-        if (isset($_GET['page']) && str_contains($_GET['page'], 'pretix_widget')) {
-            if ($_GET['page'] === 'pretix_widget_settings') {
+		$page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+
+        if (str_contains($page, 'pretix_widget')) {
+            if ($page === 'pretix_widget_settings') {
                 $settings = wp_enqueue_code_editor(array('type' => 'text/html'));
 
                 wp_add_inline_script(
