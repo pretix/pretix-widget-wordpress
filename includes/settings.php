@@ -124,6 +124,7 @@ class Settings extends Base {
      * @since 1.0.00
      */
     private function get_settings_map() {
+
         return empty($this->map) ? [
             // settings group
             'defaults' => [
@@ -135,7 +136,7 @@ class Settings extends Base {
                 // will return "en" for not supported languages
                 ['pretix_widget_language', $this->languages->get_current()['code']],
                 // --------------------------------------------
-                ['pretix_widget_button_text', __('Buy Ticket!', $this->get_name())],
+                ['pretix_widget_button_text', __('Buy Ticket!', 'pretix-widget')],
                 ['pretix_widget_debug_skip_ssl_check', false],
                 ['pretix_widget_custom_css', '']
             ]
