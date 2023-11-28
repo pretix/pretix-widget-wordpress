@@ -256,19 +256,4 @@ class Shortcode extends Base {
         }
     }
 
-    // validator
-
-    /**
-     * Enqueues the shop CSS and JS files for the Pretix widget as inline assets.
-     *
-     * @param array $settings The settings for the Pretix widget.
-     *
-     * @version 1.0.00
-     */
-    private function enqueue_assets_inline($settings) {
-        echo '<link rel="stylesheet" type="text/css" href="' . $this->get_url('assets/css/widget.v1.css') . '">';
-        echo '<script type="text/javascript" src="' . $this->get_url(
-                'assets/js/widget.v1.' . $settings['language'] . '.js'
-            ) . '" async></script>';
-    }
 }
