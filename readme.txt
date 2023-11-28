@@ -1,7 +1,7 @@
 === pretix widget ===
 Contributors: matthias-reuter, matthiasbathke, dennisheiden, pretixeu
 Tags: gutenberg, navigation, modal
-Requires PHP: 7.3
+Requires PHP: 8.1.26
 Requires at least: 6.1.1
 Tested up to: 6.4.1
 Stable tag: 1.0.2
