@@ -15,8 +15,8 @@ use Exception;
 class Cache extends Base {
     public $debug = false;
     private $parent;
-    private $cache_path = '/pretix-widget/cache/';
-    private $cache_url = '/pretix-widget/cache/';
+    private $cache_path = '/pretix-widget/cache/'; // Relative to wp_upload_dir()['basedir']
+    private $cache_url = '/pretix-widget/cache/'; // Relative to wp_upload_dir()['basedir']
     private $cache_time_max = 24 * 60 * 60;
 
     /**
@@ -145,9 +145,7 @@ class Cache extends Base {
             $file_data = wp_remote_get($url);
 
             if ( ! is_wp_error($file_data) && $file_data['response']['code'] === 200) {
-                // Save the downloaded file to the cache folder
-
-                // Move the downloaded file to the cache folder
+                // Save the downloaded file to the cache folder relative to wp_upload_dir()['basedir']
                 $cached_file = trailingslashit($this->cache_path) . $file;
                 file_put_contents($cached_file, $file_data['body']);
 
