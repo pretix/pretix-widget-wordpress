@@ -10,17 +10,50 @@
         <?php
         // Check if the "Flush Cache" button is clicked
         if (is_admin() && isset($_POST['flush_cache'])) {
-            // Perform the cache flushing here
-            $response = $this->parent->cache->flush();
-            if($response['status'] == 'success'){
-                echo '<div class="notice notice-success"><h2>'.$response['message'].'</h2></div>';
-            }else{
-                echo '<div class="notice notice-error">';
-                echo '<h2>'.$response['message'].'</h2>';
-                echo '<p>'.implode('<br/>', $response['errors']).'</p>';
-                echo '<p><strong>'.__('Don\'t worry, the old files are still in the cache.','pretix-widget').'</strong></p>';
-                echo '</div>';
-            }
+	        // Verify the nonce
+	        if (isset($_POST['flush_cache_nonce_field']) && wp_verify_nonce($_POST['flush_cache_nonce_field'], 'flush_cache_nonce')) {
+		        // Nonce is valid, proceed with cache flushing
+		        $response = $this->parent->cache->flush();
+		        if ($response['status'] == 'success') {
+			        echo '<div class="notice notice-success"><h2>' . $response['message'] . '</h2></div>';
+		        } else {
+			        echo '<div class="notice notice-error">';
+			        echo '<h2>' . $response['message'] . '</h2>';
+			        echo '<p>' . implode('<br/>', $response['errors']) . '</p>';
+			        echo '<p><strong>' . __('Don\'t worry, the old files are still in the cache.', 'pretix-widget') . '</strong></p>';
+			        echo '</div>';
+		        }
+	        } else {
+		        // Nonce is not valid, handle it as desired (e.g., display an error message)
+		        echo '<div class="notice notice-error"><h2>' . __('Security check failed. Please try again.', 'pretix-widget') . '</h2></div>';
+	        }
+        }
+
+
+        // Check if the "Updatee" button is clicked
+        if (is_admin() && isset($_POST['set_max_cache_time'])) {
+	        if (isset($_POST['set_max_cache_time_nonce_field']) && wp_verify_nonce(
+			        $_POST['set_max_cache_time_nonce_field'],
+			        'set_max_cache_time_nonce'
+		        )) {
+		        // Perform the cache time update
+		        $cache_time = intval(sanitize_text_field($_POST['set_max_cache_time']));
+		        $response   = $this->parent->cache->set_max_cache_time($cache_time);
+
+		        if ($response['status'] == 'success') {
+			        echo '<div class="notice notice-success"><h2>' . $response['message'] . '</h2></div>';
+		        } else {
+			        echo '<div class="notice notice-error"><h2>' . $response['message'] . '</h2></div>';
+		        }
+
+
+	        } else {
+		        // Nonce is not valid, handle it as desired (e.g., display an error message)
+		        echo '<div class="notice notice-error"><h2>' . __(
+				        'Security check failed. Please try again.',
+				        'pretix-widget'
+			        ) . '</h2></div>';
+	        }
         }
         ?>
         <div class="flex full">
@@ -44,18 +77,11 @@
 	                </p>
 
 	                <form method="post" action="">
-                        <?php
-                        // Check if the "Flush Cache" button is clicked
-                        if (is_admin() && isset($_POST['set_max_cache_time'])) {
-                            // Perform the cache flushing here
-	                        $cache_time = intval(sanitize_text_field($_POST['set_max_cache_time']));
-							$this->parent->cache->set_max_cache_time($cache_time);
-						}
-                        ?>
 		                <label for="set_max_cache_time">
 			                <strong><?php _e('Max cache time in hours', 'pretix-widget'); ?></strong>
 		                </label>
 		                <input type="number" name="set_max_cache_time" min="0" max="8760" value="<?php echo $this->parent->cache->get_max_cache_time();?>"/>
+		                <?php wp_nonce_field('set_max_cache_time_nonce', 'set_max_cache_time_nonce_field'); ?>
 		                <button type="submit" name="set_max_cache_time_submit" class="button button-primary"><?php _e('Update', 'pretix-widget');?></button>
 	                </form>
 
@@ -65,7 +91,8 @@
 	                </p>
 
 	                <form method="post" action="">
-                        <button type="submit" name="flush_cache" class="button button-primary"><?php _e('Rebuild Cache', 'pretix-widget'); ?></button>
+		                <?php wp_nonce_field('flush_cache_nonce', 'flush_cache_nonce_field'); ?>
+		                <button type="submit" name="flush_cache" class="button button-primary"><?php _e('Rebuild Cache', 'pretix-widget'); ?></button>
                     </form>
                 </div>
             </div>

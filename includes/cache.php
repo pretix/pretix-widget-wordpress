@@ -230,7 +230,7 @@ class Cache extends Base {
      * @return array An array with status and message indicating the success or failure of the cache flush.
      * @since 1.0.00
      */
-    public function flush() {
+    public function flush(): array {
         $cache_dir = $this->get_cache_path();
         $errors    = [];
 
@@ -262,7 +262,8 @@ class Cache extends Base {
      *
      * @since 1.0.00
      */
-    public function set_max_cache_time(mixed $number) {
+    public function set_max_cache_time(mixed $number): array {
+		$errors = [];
         // allow reset with empty value
         if (empty($number)) {
             $number = 24;
@@ -275,6 +276,11 @@ class Cache extends Base {
         $new_max_cache_time = $number <= 0 ? 0 : $number * 60 * 60;
         update_option('pretix_widget_cache_time_max', $new_max_cache_time);
         $this->cache_time_max = $new_max_cache_time;
+
+	    return empty($errors) ? ['status'  => 'success',
+	                             'message' => __('Cache time changed!', 'pretix-widget')
+	    ] :
+		    ['status' => 'error', 'message' => __('Couldn\'t change cache time!', 'pretix-widget'), 'errors' => $errors];
     }
 
     /**
