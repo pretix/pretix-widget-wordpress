@@ -99,14 +99,14 @@ class Block extends Base {
         $arguments = [];
 
         if ($settings['list_type'] !== 'auto') {
-            $arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
+            $arguments['list'] = 'list-type="' . esc_attr($settings['list_type']) . '"';
         }
         // URL -----------------------------------------------------------------
-        $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/"';
+        $arguments['url'] = 'event="' . esc_attr(rtrim($settings['shop_url'], '/')) . '/"';
         // URL -----------------------------------------------------------------
 
         if ( ! empty($settings['subevent'])) {
-            $arguments['subevent'] = 'subevent="' . $settings['subevent'] . '"';
+            $arguments['subevent'] = 'subevent="' . esc_attr($settings['subevent']) . '"';
         }
 
         if ( ! empty($settings['items'])) {
@@ -115,25 +115,25 @@ class Block extends Base {
             $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace(
                 '/[^0-9,]/',
                 '',
-                $settings['items']
-            ) : $settings['items'];
+	            esc_attr($settings['items'])
+            ) : esc_attr($settings['items']);
             $arguments['items'] .= '"';
         }
 
         if ( ! empty($settings['categories'])) {
             $arguments['categories'] = 'categories="';
-            $arguments['categories'] .= preg_replace('/[^0-9,]/', '', $settings['categories']);
+            $arguments['categories'] .= preg_replace('/[^0-9,]/', '', esc_attr($settings['categories']));
             $arguments['categories'] .= '"';
         }
 
         if ( ! empty($settings['variations'])) {
             $arguments['variations'] = 'variations="';
-            $arguments['variations'] .= preg_replace('/[^0-9,]/', '', $settings['variations']);
+            $arguments['variations'] .= preg_replace('/[^0-9,]/', '', esc_attr($settings['variations']));
             $arguments['variations'] .= '"';
         }
 
         if ($settings['allocated_voucher']) {
-            $arguments['allocated_voucher'] = 'voucher="' . $settings['allocated_voucher'] . '"';
+            $arguments['allocated_voucher'] = 'voucher="' . esc_attr($settings['allocated_voucher']) . '"';
         }
 
         if ($settings['disable_voucher']) {
@@ -146,10 +146,10 @@ class Block extends Base {
         }
 
         // Gutenberg anchor support
-        if(isset($settings['anchor']) && !empty($settings['anchor'])) $arguments[] = 'id="'.$settings['anchor'].'"';
+        if(isset($settings['anchor']) && !empty($settings['anchor'])) $arguments[] = 'id="'.esc_attr($settings['anchor']).'"';
 
         // Gutenberg class support
-        $arguments[] = 'class="'.$this->get_class_names($settings).'"';
+        $arguments[] = 'class="'.esc_attr($this->get_class_names($settings)).'"';
 
         return implode(' ', $arguments);
     }

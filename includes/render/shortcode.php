@@ -129,14 +129,14 @@ class Shortcode extends Base {
         $arguments = [];
 
         if ($settings['list_type'] !== 'auto') {
-            $arguments['list'] = 'list-type="' . $settings['list_type'] . '"';
+            $arguments['list'] = 'list-type="' . esc_attr($settings['list_type']) . '"';
         }
         // URL -----------------------------------------------------------------
-        $arguments['url'] = 'event="' . rtrim($settings['shop_url'], '/') . '/"';
+        $arguments['url'] = 'event="' . esc_attr(rtrim($settings['shop_url'], '/')) . '/"';
         // URL -----------------------------------------------------------------
 
         if ( ! empty($settings['subevent'])) {
-            $arguments['subevent'] = 'subevent="' . $settings['subevent'] . '"';
+            $arguments['subevent'] = 'subevent="' . esc_attr($settings['subevent']) . '"';
         }
 
         if ( ! empty($settings['items'])) {
@@ -145,25 +145,25 @@ class Shortcode extends Base {
             $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace(
                 '/[^0-9,]/',
                 '',
-                $settings['items']
-            ) : $settings['items'];
+	            esc_attr($settings['items'])
+            ) : esc_attr($settings['items']);
             $arguments['items'] .= '"';
         }
 
         if ( ! empty($settings['categories'])) {
             $arguments['categories'] = 'categories="';
-            $arguments['categories'] .= preg_replace('/[^0-9,]/', '', $settings['categories']);
+            $arguments['categories'] .= preg_replace('/[^0-9,]/', '', esc_attr($settings['categories']));
             $arguments['categories'] .= '"';
         }
 
         if ( ! empty($settings['variations'])) {
             $arguments['variations'] = 'variations="';
-            $arguments['variations'] .= preg_replace('/[^0-9,]/', '', $settings['variations']);
+            $arguments['variations'] .= preg_replace('/[^0-9,]/', '', esc_attr($settings['variations']));
             $arguments['variations'] .= '"';
         }
 
         if ($settings['allocated_voucher']) {
-            $arguments['allocated_voucher'] = 'voucher="' . $settings['allocated_voucher'] . '"';
+            $arguments['allocated_voucher'] = 'voucher="' . esc_attr($settings['allocated_voucher']) . '"';
         }
 
         if ($settings['disable_voucher']) {
@@ -192,7 +192,7 @@ class Shortcode extends Base {
         $error = [];
 
         if ( ! isset($args['shop_url']) || ! $this->validate_shop_url($args['shop_url'])) {
-            $this->set_error(__('Shop URL missing.', 'pretix-widget'));
+            $this->set_error(esc_html(__('Shop URL missing.', 'pretix-widget')));
         }
 
         return empty($this->get_errors()) ? true : false;
