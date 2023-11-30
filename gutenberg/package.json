@@ -1,6 +1,6 @@
 {
 	"name": "pretix-widget",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "The pretix widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.",
 	"main": "index.js",
 	"author": "straightvisions GmbH",
