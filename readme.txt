@@ -4,7 +4,7 @@ Tags: gutenberg, navigation, modal
 Requires PHP: 8.1.26
 Requires at least: 6.1.1
 Tested up to: 6.4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
