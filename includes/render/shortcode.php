@@ -100,13 +100,13 @@ class Shortcode extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
-        $arguments = $this->get_arguments_inline($settings);
+	    $arguments_escaped = $this->get_arguments_inline($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();
         if ($this->validate_args($settings)) {
             require($this->get_path('templates/frontend/no-script.php'));
-            file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+            file_exists($template) ? require $template : error_log('Template not found: ' . esc_url($template));
             $this->enqueue_assets($settings);
         } else {
             require $this->get_path('templates/frontend/placeholder.php');
@@ -226,7 +226,7 @@ class Shortcode extends Base {
      */
     private function enqueue_assets($settings) {
         // get cached shop css file
-        $file = $this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/v1.css');
+        $file = esc_url($this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/v1.css'));
         wp_enqueue_style(
             'pretix-widget-frontend',
             $file,
@@ -235,7 +235,7 @@ class Shortcode extends Base {
         );
 
         // get cached shop js file
-        $parsedUrl = parse_url($settings['shop_url']);
+        $parsedUrl = parse_url(esc_url($settings['shop_url']));
         $domain    = rtrim($parsedUrl['host'], '/');
         $file      = $this->parent->cache->get(
             'https://' . $domain . '/widget/v1.' . str_replace('_', '-', $settings['language']) . '.js'

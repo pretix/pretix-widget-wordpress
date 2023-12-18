@@ -1,2 +1,2 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<pretix-widget <?php echo $arguments; ?>></pretix-widget>
+<pretix-widget <?php echo $arguments_escaped; ?>></pretix-widget>

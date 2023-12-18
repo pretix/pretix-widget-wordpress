@@ -61,8 +61,8 @@ class Settings extends Base {
     public function add_settings_page() {
         add_submenu_page(
             'pretix_widget',
-            __('Settings', 'pretix-widget'),
-            __('Settings', 'pretix-widget'),
+           esc_html__('Settings', 'pretix-widget'),
+           esc_html__('Settings', 'pretix-widget'),
             'manage_options',
             'pretix_widget_settings',
             array($this, 'render_settings_page')
@@ -70,8 +70,8 @@ class Settings extends Base {
 
         add_submenu_page(
             'pretix_widget',
-            __('Cache', 'pretix-widget'),
-            __('Cache', 'pretix-widget'),
+           esc_html__('Cache', 'pretix-widget'),
+           esc_html__('Cache', 'pretix-widget'),
             'manage_options',
             'pretix_widget_cache',
             array($this, 'render_cache_page')

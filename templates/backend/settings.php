@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="pretix_widget_options" class="pretix-widget-admin-page-wrapper">
     <div id="header">
-	    <img width=128" src="<?php echo $this->get_url('assets/images/pretix-logo.svg'); ?>" />
+	    <img width=128" src="<?php echo esc_url($this->get_url('assets/images/pretix-logo.svg')); ?>" />
 	    <h1>Widget Settings</h1>
 	    <p class="submit"><input onclick="pretix_widget_submit_form('pretix-widget-default-settings')" type="button" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e('Änderungen speichern', 'pretix-widget');?>"></p>
     </div>
@@ -19,7 +19,7 @@
 					<fieldset>
 						<label for="pretix_widget_list_type"><?php esc_html_e('List Type', 'pretix-widget'); ?></label>
 						<select name="pretix_widget_list_type" id="pretix_widget_list_type">
-		                    <?php $selected = get_option('pretix_widget_list_type', 'list'); ?>
+		                    <?php $selected = esc_html(get_option('pretix_widget_list_type', 'list')); ?>
 							<option value="auto" <?php echo ($selected === 'auto') ? 'selected' : ''; ?>><?php esc_html_e('Auto', 'pretix-widget'); ?></option>
 							<option value="list" <?php echo ($selected === 'list') ? 'selected' : ''; ?>><?php esc_html_e('List', 'pretix-widget'); ?></option>
 							<option value="week" <?php echo ($selected === 'week') ? 'selected' : ''; ?>><?php esc_html_e('Calendar Week', 'pretix-widget'); ?></option>
