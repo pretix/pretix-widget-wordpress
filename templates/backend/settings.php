@@ -36,7 +36,8 @@
 		                    <?php $selected = get_option('pretix_widget_language', 'de'); ?>
 							<?php
 		                    foreach($languages as $lang){
-								echo '<option value="' . esc_html($lang['code']) . '"' . ($selected === $lang['code'] ? ' selected' : '') . '>' . esc_html(__($lang['name'], 'pretix-widget')) . '</option>';
+								$name = isset($lang_names[$lang['code']]) ? $lang_names[$lang['code']] : $lang['name'];
+			                    echo '<option value="' . esc_html($lang['code']) . '"' . ($selected === $lang['code'] ? ' selected' : '') . '>'. esc_html($name) .'</option>';
 							}?>
 						</select>
 					</fieldset>
