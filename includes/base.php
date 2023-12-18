@@ -121,4 +121,29 @@ class Base {
     public function get_errors() {
         return $this->errors;
     }
+
+	/**
+	 * POST / GET escaping wrapper function.
+	 *
+	 * @param mixed $value The value to escape.
+	 *
+	 * @return mixed The escaped value.
+	 * @since 1.0.4
+	 */
+	public function _escape_request(mixed $value) {
+		return sanitize_text_field( wp_unslash ( $value ) );
+	}
+
+	/**
+	 * Wrapper with escaping for wp_verify_nonce().
+	 *
+	 * @param string $nonce The nonce to verify.
+	 * @param mixed $action Should give context to what is taking place and be the same when nonce was created.
+	 *
+	 * @return string The escaped value.
+	 * @since 1.0.4
+	 */
+	public function _verify_nonce(string $nonce, mixed $action = -1) {
+		return wp_verify_nonce( $this->_escape_request ( $nonce ) , $action );
+	}
 }

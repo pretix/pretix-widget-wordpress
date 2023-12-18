@@ -68,13 +68,13 @@ class Block extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/block-' . $settings['mode'] . '.php');
-        $arguments = $this->get_arguments_inline($settings);
+	    $arguments_escaped = $this->get_arguments_inline($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();
         if ($this->validate_args($settings)) {
             require($this->get_path('templates/frontend/no-script.php'));
-            file_exists($template) ? require $template : error_log('Template not found: ' . $template);
+            file_exists($template) ? require $template : error_log('Template not found: ' . esc_url($template));
             if ( ! defined('REST_REQUEST')) {
                 // Frontend
 

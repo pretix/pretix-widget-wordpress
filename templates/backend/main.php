@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div id="pretix_widget_options" class="pretix-widget-admin-page-wrapper">
     <div id="header">
-        <img width=128" src="<?php echo $this->get_url('assets/images/pretix-logo.svg'); ?>" />
+        <img width=128" src="<?php echo esc_url($this->get_url('assets/images/pretix-logo.svg')); ?>" />
         <h1><?php esc_html_e('Documentation', 'pretix-widget'); ?></h1>
     </div>
     <nav id="navigation"></nav>
@@ -24,8 +24,8 @@
 					<h3><?php esc_html_e('Customizing the Block', 'pretix-widget'); ?></h3>
 					<p><?php esc_html_e('Once you\'ve added the pretix widget block, you can customize its settings to display the tickets according to your preferences. Here are the available settings and their possible values:', 'pretix-widget'); ?></p>
 					<ul>
-						<li><?php printf(__('Mode: Set the display type of the widget. Possible values: %1$s, %2$s. (Default: %1$s)', 'pretix-widget'), 'Widget', 'Button'); ?></li>
-						<li><?php printf(__('List Type: Set the display type of the widget. Possible values: %1$s, %2$s, %3$s.', 'pretix-widget'), 'List', 'Calendar Month', 'Calendar Week'); ?></li>
+						<li><?php printf(esc_html__('Mode: Set the display type of the widget. Possible values: %1$s, %2$s. (Default: %1$s)', 'pretix-widget'), 'Widget', 'Button'); ?></li>
+						<li><?php printf(esc_html__('List Type: Set the display type of the widget. Possible values: %1$s, %2$s, %3$s.', 'pretix-widget'), 'List', 'Calendar Month', 'Calendar Week'); ?></li>
 						<li><?php esc_html_e('Shop URL: The URL of your pretix shop. Example: \'https://pretix.eu/demo/\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Date (Sub-Event): A date within an event series to be pre-selected. Example: \'125\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Products: Comma-separated list of product IDs to display. Example: \'1,2,3\'', 'pretix-widget'); ?></li>
@@ -69,8 +69,8 @@
 					<h3><?php esc_html_e('Customizing the Widget', 'pretix-widget'); ?></h3>
 					<p><?php esc_html_e('You can customize the pretix ticket widget by adding various attributes to the shortcode. Here are the available attributes and their possible values:', 'pretix-widget'); ?></p>
 					<ul>
-						<li><?php printf(__('mode (string): Set the display type of the widget. Possible values: %1$s, %2$s. (Default: %1$s)', 'pretix-widget'), 'widget', 'button'); ?></li>
-						<li><?php printf(__('list_type (string): Set the list type of the widget. Possible values: %1$s, %2$s, %3$s.', 'pretix-widget'), 'list', 'calendar', 'week'); ?></li>
+						<li><?php printf(esc_html__('mode (string): Set the display type of the widget. Possible values: %1$s, %2$s. (Default: %1$s)', 'pretix-widget'), 'widget', 'button'); ?></li>
+						<li><?php printf(esc_html__('list_type (string): Set the list type of the widget. Possible values: %1$s, %2$s, %3$s.', 'pretix-widget'), 'list', 'calendar', 'week'); ?></li>
 						<li><?php esc_html_e('shop_url (string): The URL of your pretix shop. Example: \'https://pretix.eu/demo\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('subevent (string): A sub-event to be pre-selected. Example: \'democon\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('items (string): Comma-separated list of item IDs to display. Example: \'1,2,3\'', 'pretix-widget'); ?></li>
@@ -78,7 +78,7 @@
 						<li><?php esc_html_e('variations (string): Comma-separated list of variation IDs to display. Example: \'7,8,9\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('disable_voucher (boolean): Set to \'true\' to disable voucher selection.', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('allocated_voucher (string): The voucher code to allocate to the ticket widget. Example: \'ABC123\'', 'pretix-widget'); ?></li>
-						<li><?php printf(__('language (string): The language code for the widget. Example: %1$s, %2$s, %3$s, etc.', 'pretix-widget'), 'en', 'de', 'fr'); ?></li>
+						<li><?php printf(esc_html__('language (string): The language code for the widget. Example: %1$s, %2$s, %3$s, etc.', 'pretix-widget'), 'en', 'de', 'fr'); ?></li>
 						<li><?php esc_html_e('button_text (string): Custom text for the ticket booking button.', 'pretix-widget'); ?></li>
 					</ul>
 
