@@ -100,7 +100,7 @@ class Shortcode extends Base {
         }
 
         $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
-	    $arguments_escaped = $this->get_arguments_inline($settings);
+	    $arguments_escaped = $this->get_arguments_inline_safe($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();
@@ -125,7 +125,7 @@ class Shortcode extends Base {
      * @return string The formatted inline arguments for the Pretix widget.
      * @version 1.0.00
      */
-    private function get_arguments_inline($settings) {
+    private function get_arguments_inline_safe($settings) {
         $arguments = [];
 
         if ($settings['list_type'] !== 'auto') {
