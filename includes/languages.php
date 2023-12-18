@@ -123,4 +123,17 @@ class Languages extends Base {
         return $this->get('en');
     }
 
+	/**
+	 * Get a translated list of name strings.
+	 *
+	 * @return array keyed and translated list of language names.
+	 * @since 1.0.4
+	 */
+	public function get_name_strings(): array{
+		$strings = [];
+		$file = $this->get_path('includes/languages/strings.php');
+		if(file_exists($file)) require $file;
+		return $strings;
+	}
+
 }

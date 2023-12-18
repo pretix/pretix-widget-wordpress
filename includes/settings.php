@@ -218,6 +218,7 @@ class Settings extends Base {
      */
     public function render_settings_page() {
         $languages = $this->languages->get_list();
+		$lang_names = $this->languages->get_name_strings();
         require_once($this->get_path('templates/backend/settings.php'));
     }
 
