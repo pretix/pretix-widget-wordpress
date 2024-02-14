@@ -35,6 +35,19 @@ class Render extends Base {
         $this->_block     = new Render\Block($this);
     }
 
+	/**
+	 * Render the shortcode with the given settings and type.
+	 *
+	 * @param array $settings The settings to render the shortcode.
+	 * @param string $type The type of shortcode to render (widget or button).
+	 *
+	 * @return string The rendered shortcode.
+	 * @since 1.0.00
+	 */
+	public function shortcode(array $settings = [], string $type = 'widget'): string {
+		return $this->_shortcode->render($settings, $type);
+	}
+
     /**
      * Render the widget shortcode with the given settings.
      *
@@ -43,21 +56,9 @@ class Render extends Base {
      * @return string The rendered widget shortcode.
      * @since 1.0.00
      */
-    public function shortcode_widget(array $settings = []): string {
+    public function shortcode_widget($settings = []): string {
+		$settings = !is_array($settings) ? [] : $settings;
         return $this->shortcode($settings, 'widget');
-    }
-
-    /**
-     * Render the shortcode with the given settings and type.
-     *
-     * @param array $settings The settings to render the shortcode.
-     * @param string $type The type of shortcode to render (widget or button).
-     *
-     * @return string The rendered shortcode.
-     * @since 1.0.00
-     */
-    public function shortcode(array $settings = [], string $type = 'widget'): string {
-        return $this->_shortcode->render($settings, $type);
     }
 
     /**
@@ -68,7 +69,8 @@ class Render extends Base {
      * @return string The rendered button shortcode.
      * @since 1.0.00
      */
-    public function shortcode_button(array $settings = []): string {
+    public function shortcode_button($settings = []): string {
+	    $settings = !is_array($settings) ? [] : $settings;
         return $this->shortcode($settings, 'button');
     }
 
