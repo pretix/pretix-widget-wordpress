@@ -8,7 +8,11 @@ Stable tag: 1.0.6
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
-Sell tickets easily via your own website!
+The <a href="https://pretix.eu/">pretix</a> widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.
+
+== Description ==
+
+= Sell tickets easily via your own website! =
 
 One of the most popular features of the <a href="https://pretix.eu/">pretix</a>  ticketing software is the embeddable widget which allows you to integrate your ticket shop directly into your website with minimal effort.
 This plugin allows the same seamless integration into your WordPress site. Plus, you can easily customize the widget to fit seamlessly into the design of your website.
