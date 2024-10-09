@@ -47,10 +47,38 @@ class Base {
      * @since 1.0.00
      */
     public function get_path(string $sub = '') {
-        $path = $this->path ? $this->path : plugin_dir_path(__DIR__);
-        $sub  = trim($sub, '/');
+        // Base path of the plugin
+        $base_path = $this->path ? $this->path : plugin_dir_path(__DIR__);
 
-        return $sub !== '' ? $path . $sub : $path;
+        // Sanitize the sub-path: remove dangerous characters
+        $sub = str_replace(['..', '\\', chr(0)], '', $sub);
+        $sub = trim($sub, '/');
+
+        // If a sub-path is provided, construct the full path
+        if ($sub !== '') {
+            $full_path = $base_path . $sub;
+
+            // Use realpath to validate path security, but check if the file exists separately
+            $real_base_path = realpath($base_path); // Resolve base path first
+
+            // Make sure that the base path exists and is resolved correctly
+            if ($real_base_path === false) {
+                throw new \Exception('Invalid base path');
+            }
+
+            // Build a safe absolute path (even if the target doesn't exist)
+            $safe_path = $real_base_path . DIRECTORY_SEPARATOR . $sub;
+
+            // Check if the resolved safe path starts with the base directory to avoid traversal
+            if (strpos($safe_path, $real_base_path) !== 0) {
+                throw new \Exception('Invalid path access');
+            }
+
+            return $safe_path; // Return the safe path, even if the file doesn't exist
+        }
+
+        // Return the base path if no sub-path is provided
+        return $base_path;
     }
 
     /**
@@ -122,28 +150,28 @@ class Base {
         return $this->errors;
     }
 
-	/**
-	 * POST / GET escaping wrapper function.
-	 *
-	 * @param mixed $value The value to escape.
-	 *
-	 * @return mixed The escaped value.
-	 * @since 1.0.4
-	 */
-	public function _escape_request(mixed $value) {
-		return sanitize_text_field( wp_unslash ( $value ) );
-	}
+    /**
+     * POST / GET escaping wrapper function.
+     *
+     * @param mixed $value The value to escape.
+     *
+     * @return mixed The escaped value.
+     * @since 1.0.4
+     */
+    public function _escape_request(mixed $value) {
+        return sanitize_text_field( wp_unslash ( $value ) );
+    }
 
-	/**
-	 * Wrapper with escaping for wp_verify_nonce().
-	 *
-	 * @param string $nonce The nonce to verify.
-	 * @param mixed $action Should give context to what is taking place and be the same when nonce was created.
-	 *
-	 * @return string The escaped value.
-	 * @since 1.0.4
-	 */
-	public function _verify_nonce(string $nonce, mixed $action = -1) {
-		return wp_verify_nonce( $this->_escape_request ( $nonce ) , $action );
-	}
+    /**
+     * Wrapper with escaping for wp_verify_nonce().
+     *
+     * @param string $nonce The nonce to verify.
+     * @param mixed $action Should give context to what is taking place and be the same when nonce was created.
+     *
+     * @return string The escaped value.
+     * @since 1.0.4
+     */
+    public function _verify_nonce(string $nonce, mixed $action = -1) {
+        return wp_verify_nonce( $this->_escape_request ( $nonce ) , $action );
+    }
 }
