@@ -99,8 +99,13 @@ class Shortcode extends Base {
             $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
         }
 
-        $template  = $this->get_path('templates/frontend/shortcode-' . $settings['mode'] . '.php');
-	    $arguments_escaped = $this->get_arguments_inline_safe($settings);
+        $mode = 'widget';
+        if ($settings['mode'] == 'button') {
+            $mode = $settings['mode'];
+        }
+
+        $template  = $this->get_path('templates/frontend/shortcode-' . $mode . '.php');
+        $arguments_escaped = $this->get_arguments_inline_safe($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();

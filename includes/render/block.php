@@ -67,8 +67,13 @@ class Block extends Base {
             $settings['skip_ssl_check'] = isset($defaults['pretix_widget_debug_skip_ssl_check']) ? $defaults['pretix_widget_debug_skip_ssl_check'] : false;
         }
 
-        $template  = $this->get_path('templates/frontend/block-' . $settings['mode'] . '.php');
-	    $arguments_escaped = $this->get_arguments_inline_safe($settings);
+        $mode = 'widget';
+        if ($settings['mode'] == 'button') {
+            $mode = $settings['mode'];
+        }
+
+        $template  = $this->get_path('templates/frontend/block-' . $mode . '.php');
+        $arguments_escaped = $this->get_arguments_inline_safe($settings);
         $fallback_url = trailingslashit(trailingslashit($settings['shop_url']) . trailingslashit($settings['subevent']));
 
         ob_start();
@@ -115,7 +120,7 @@ class Block extends Base {
             $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace(
                 '/[^0-9,]/',
                 '',
-	            esc_attr($settings['items'])
+                esc_attr($settings['items'])
             ) : esc_attr($settings['items']);
             $arguments['items'] .= '"';
         }
