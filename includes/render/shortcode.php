@@ -139,7 +139,11 @@ class Shortcode extends Base {
             $arguments['list'] = 'list-type="' . esc_attr($settings['list_type']) . '"';
         }
         // URL -----------------------------------------------------------------
-        $arguments['url'] = 'event="' . esc_attr(rtrim($settings['shop_url'], '/')) . '/"';
+        $shop_url = rtrim($settings['shop_url'], '/');
+        if (strpos($shop_url, '://') === false) {
+            $shop_url = "https://" . $shop_url;
+        }
+        $arguments['url'] = 'event="' . esc_attr($shop_url) . '/"';
         // URL -----------------------------------------------------------------
 
         if ( ! empty($settings['subevent'])) {
@@ -152,7 +156,7 @@ class Shortcode extends Base {
             $arguments['items'] .= $settings['mode'] === 'widget' ? preg_replace(
                 '/[^0-9,]/',
                 '',
-	            esc_attr($settings['items'])
+                esc_attr($settings['items'])
             ) : esc_attr($settings['items']);
             $arguments['items'] .= '"';
         }
@@ -222,6 +226,9 @@ class Shortcode extends Base {
      * @version 1.0.00
      */
     private function validate_shop_url(string $value): bool {
+        if (strpos($value, '://') === false) {
+            $value = "https://" . $value;
+        }
         if ( ! filter_var($value, FILTER_VALIDATE_URL)) {
             return false;
         }
