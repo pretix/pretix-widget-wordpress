@@ -6,7 +6,7 @@ Description: The pretix widget allows you to easily display pretix ticket widget
 Plugin URI: https://github.com/pretix/pretix-widget-wordpress
 Author: pretix.eu
 Author URI: https://pretix.eu
-Version: 1.0.5
+Version: 1.0.6
 Requires at least: 6.1.1
 Requires PHP:      8.0.26
 Domain Path: /includes/languages
