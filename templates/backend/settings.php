@@ -31,6 +31,10 @@
 						<input type="checkbox" name="pretix_widget_disable_voucher" id="pretix_widget_disable_voucher" <?php checked( 'on', get_option( 'pretix_widget_disable_voucher' ) ); ?>>
 					</fieldset>
 					<fieldset>
+						<label for="pretix_widget_disable_filter"><?php esc_html_e('Disable UI filters', 'pretix-widget'); ?></label>
+						<input type="checkbox" name="pretix_widget_disable_filter" id="pretix_widget_disable_filter" <?php checked( 'on', get_option( 'pretix_widget_disable_filter' ) ); ?>>
+					</fieldset>
+					<fieldset>
 						<label for="pretix_widget_language"><?php esc_html_e('Default language', 'pretix-widget'); ?></label>
 						<select name="pretix_widget_language" id="pretix_widget_language">
 		                    <?php $selected = get_option('pretix_widget_language', 'de'); ?>

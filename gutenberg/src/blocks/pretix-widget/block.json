@@ -68,6 +68,13 @@
 			"type": "string",
 			"default": ""
 		},
+		"filter": {
+			"type": "string",
+			"default": ""
+		},
+		"disable_filter": {
+			"type": "boolean"
+		},
 		"list_type": {
 			"type": "string",
 			"default": "auto"

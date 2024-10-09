@@ -69,6 +69,8 @@ export default function Edit(props) {
 		disable_voucher = defaults.pretix_widget_disable_voucher ?? false,
 		language = defaults.pretix_widget_language ?? 'en',
 		button_text = defaults.pretix_widget_button_text && defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
+		filter = defaults.pretix_widget_filter ?? '',
+		disable_filter = defaults.pretix_widget_disable_filter ?? false,
 	} = attributes;
 	
 	// Use blockProps for block wrapper
@@ -266,6 +268,21 @@ export default function Edit(props) {
 							label={__('Disable voucher input', 'pretix-widget')}
 							checked={disable_voucher}
 							onChange={(value) => handleChange('disable_voucher', value)}
+						/>
+					)}
+					{mode !== 'button' && (
+						<TextControl
+							label={__('Date filter', 'pretix-widget')}
+							value={filter}
+							onChange={(value) => handleChange('filter', value)}
+							help={__('Enter a filter query like attr[Featured]=Yes.', 'pretix-widget')}
+						/>
+					)}
+					{mode !== 'button' && (
+						<ToggleControl
+							label={__('Disable UI filters', 'pretix-widget')}
+							checked={disable_filter}
+							onChange={(value) => handleChange('disable_filter', value)}
 						/>
 					)}
 					<SelectControl

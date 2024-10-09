@@ -87,6 +87,8 @@ class Shortcode extends Base {
                 'variations'        => isset($defaults['pretix_widget_filter_by_variation_id']) ? $defaults['pretix_widget_filter_by_variation_id'] : '',
                 'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
                 'allocated_voucher' => isset($defaults['pretix_widget_allocated_voucher']) ? $defaults['pretix_widget_allocated_voucher'] : '',
+                'disable_filter'    => isset($defaults['pretix_widget_disable_filter']) ? $defaults['pretix_widget_disable_filter'] : '',
+                'filter'            => isset($defaults['pretix_widget_filter']) ? $defaults['pretix_widget_filter'] : '',
                 'language'          => isset($defaults['pretix_widget_language']) ? $defaults['pretix_widget_language'] : '',
                 'button_text'       => isset($defaults['pretix_widget_button_text']) ? $defaults['pretix_widget_button_text'] : '',
             ),
@@ -173,6 +175,14 @@ class Shortcode extends Base {
 
         if ($settings['disable_voucher']) {
             $arguments['disable_voucher'] = 'disable-vouchers';
+        }
+
+        if ($settings['filter']) {
+            $arguments['filter'] = 'filter="' . esc_attr($settings['filter']) . '"';
+        }
+
+        if ($settings['disable_filter']) {
+            $arguments['disable_filter'] = 'disable-filters';
         }
 
         // add debug flags
