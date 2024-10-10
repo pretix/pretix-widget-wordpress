@@ -12,14 +12,14 @@ The <a href="https://pretix.eu/">pretix</a> widget allows you to easily display 
 
 == Description ==
 
-= Sell tickets easily via your own website! =
+## Sell tickets easily via your own website!
 
 One of the most popular features of the <a href="https://pretix.eu/">pretix</a>  ticketing software is the embeddable widget which allows you to integrate your ticket shop directly into your website with minimal effort.
 This plugin allows the same seamless integration into your WordPress site. Plus, you can easily customize the widget to fit seamlessly into the design of your website.
 
 The <a href="https://pretix.eu/">pretix</a> widget allows you to easily display pretix ticket widgets on your website. You can customize the display of your pretix tickets and provide a seamless ticket booking experience for your users.
 
-**Highlights**
+## Highlights
 
 ✔️ provide a seamless customer journey by buying tickets directly on your website
 
@@ -34,6 +34,14 @@ The <a href="https://pretix.eu/">pretix</a> widget allows you to easily display 
 ✔️ customizable to perfectly fit into your website
 
 ✔️ > 20 payment service providers, e.g. Paypal, Stripe, Mollie and many more
+
+## Security policy
+
+If you discover a vulnerability with our software, please report it to us in private. Do not to attempt to harm our users, customer's data or our system's availability when looking for vulneratbilities.
+
+Please contact us at security@pretix.eu with full details and steps to reproduce and allow reasonable time for us to resolve the issue before publishing your findings. If you wish to encrypt your email, you can find our GPG key [here](https://pretix.eu/.well-known/security@pretix.eu.asc).
+
+We're not large enough to run a formal bug bounty program, but if you find a serious vulnerability in our service, we will find a way to show our gratitude.
 
 == Screenshots ==
 1. About
