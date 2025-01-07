@@ -33,6 +33,11 @@ class Cache extends Base {
         $this->cache_path = wp_upload_dir()['basedir'] . $this->cache_path;
         $this->cache_url  = wp_upload_dir()['baseurl'] . $this->cache_url;
 
+	// Workaround to deal with https-instances that have site_url set to http... (Z#23177854)
+        if (is_ssl()) {
+            $this->cache_url = str_replace('http://', 'https://', $this->cache_url);
+        }
+
         if ( ! file_exists($this->cache_path)) {
             mkdir($this->cache_path, 0755, true);
         }
