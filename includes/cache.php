@@ -31,8 +31,7 @@ class Cache extends Base {
         $this->debug  = $this->parent->debug;
 
         $this->cache_path = wp_upload_dir()['basedir'] . $this->cache_path;
-        $this->cache_url  = wp_upload_dir()['baseurl'] . $this->cache_url;
-
+        $this->cache_url  = set_url_scheme(wp_upload_dir()['baseurl'] . $this->cache_url);
         if ( ! file_exists($this->cache_path)) {
             mkdir($this->cache_path, 0755, true);
         }
