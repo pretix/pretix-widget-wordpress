@@ -2,21 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pretix widget\n"
 "POT-Creation-Date: 2023-12-18 11:06+0100\n"
-"PO-Revision-Date: 2023-12-18 11:07+0100\n"
+"PO-Revision-Date: 2025-02-23 19:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: pretix-widget.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: gutenberg\n"
@@ -36,11 +35,11 @@ msgstr "Dateien konnten nicht heruntergeladen werden:"
 
 #: includes/cache.php:281
 msgid "Cache time changed!"
-msgstr ""
+msgstr "Cache-Zeit geändert!"
 
 #: includes/cache.php:283
 msgid "Couldn't change cache time!"
-msgstr ""
+msgstr "Konnte Cache-Zeit nicht ändern!"
 
 #: includes/languages/strings.php:3
 msgid "English"
@@ -247,7 +246,7 @@ msgid ""
 "server whenever a visitor accesses a page containing a pretix widget block "
 "or shortcode."
 msgstr ""
-"Sie haben die Möglichkeit, die maximale Cache-Zeit für das Pretix-Widget "
+"Sie haben die Möglichkeit, die maximale Cache-Zeit für das pretix-Widget "
 "anzupassen. Standardmäßig ist die Cache-Zeit auf 24 Stunden festgelegt. Nach "
 "Ablauf dieses Zeitraums werden die Widget-Dateien automatisch vom pretix-"
 "Server aktualisiert, wenn ein Besucher auf eine Seite zugreift, die einen "
@@ -337,7 +336,7 @@ msgid ""
 "display the tickets according to your preferences. Here are the available "
 "settings and their possible values:"
 msgstr ""
-"Nachdem Sie den Pretix-Widget-Block hinzugefügt haben, können Sie seine "
+"Nachdem Sie den pretix-Widget-Block hinzugefügt haben, können Sie seine "
 "Einstellungen anpassen, um die Tickets nach Ihren Wünschen anzuzeigen. Hier "
 "sind die verfügbaren Einstellungen und ihre möglichen Werte:"
 
@@ -503,7 +502,7 @@ msgstr ""
 
 #: templates/backend/main.php:63
 msgid "Using the pretix widget shortcode"
-msgstr "Verwenden des Pretix-Widget-Shortcodes"
+msgstr "Verwenden des pretix-Widget-Shortcodes"
 
 #: templates/backend/main.php:64
 msgid ""
@@ -526,7 +525,7 @@ msgid ""
 "To use the pretix widget shortcode, simply add the following shortcode to "
 "any post or page where you want to display the ticket widget:"
 msgstr ""
-"Um den Pretix-Widget-Shortcode zu verwenden, fügen Sie einfach den folgenden "
+"Um den pretix-Widget-Shortcode zu verwenden, fügen Sie einfach den folgenden "
 "Shortcode zu jedem Beitrag oder jeder Seite hinzu, auf der Sie das Ticket-"
 "Widget anzeigen möchten:"
 
@@ -539,7 +538,7 @@ msgid ""
 "You can customize the pretix ticket widget by adding various attributes to "
 "the shortcode. Here are the available attributes and their possible values:"
 msgstr ""
-"Sie können das Pretix-Ticket-Widget anpassen, indem Sie dem Shortcode "
+"Sie können das pretix-Ticket-Widget anpassen, indem Sie dem Shortcode "
 "verschiedene Attribute hinzufügen. Hier sind die verfügbaren Attribute und "
 "ihre möglichen Werte:"
 
@@ -632,7 +631,7 @@ msgid ""
 "Here's an example of how you can use the pretix widget shortcode with custom "
 "settings:"
 msgstr ""
-"Hier ist ein Beispiel dafür, wie Sie den Pretix-Widget-Shortcode mit "
+"Hier ist ein Beispiel dafür, wie Sie den pretix-Widget-Shortcode mit "
 "benutzerdefinierten Einstellungen verwenden können:"
 
 #: templates/backend/main.php:91
@@ -797,7 +796,7 @@ msgid ""
 msgstr ""
 "Auf dieser Seite können Sie die Standardwerte für den Block und den "
 "Shortcode festlegen, die im pretix-Widget verwendet werden. Diese "
-"Standardwerte werden angewendet, wenn Sie das Pretix-Widget verwenden, ohne "
+"Standardwerte werden angewendet, wenn Sie das pretix-Widget verwenden, ohne "
 "benutzerdefinierte Parameter anzugeben."
 
 #: templates/backend/settings.php:67
@@ -845,7 +844,7 @@ msgstr "pretix widget"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/pretix/pretix-widget-wordpress"
-msgstr ""
+msgstr "https://github.com/pretix/pretix-widget-wordpress"
 
 #. Description of the plugin/theme
 msgid ""
@@ -859,11 +858,11 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "pretix.eu"
-msgstr ""
+msgstr "pretix.eu"
 
 #. Author URI of the plugin/theme
 msgid "https://pretix.eu"
-msgstr ""
+msgstr "https://pretix.eu"
 
 #~ msgid "Links"
 #~ msgstr "Links"
