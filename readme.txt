@@ -98,6 +98,10 @@ The plugin itself does not store any data and only adds one external connection 
 
 Yes, sure! You can customize the pretix ticketing widget for for seamless integration into your website and your brand's identity.
 
+== Security ==
+
+If you discover a security issue, please contact us at security@pretix.eu and see our [Responsible Disclosure Policy](https://docs.pretix.eu/trust/security/disclosure/) further information.
+
 == Credits ==
 
 * Developed by <a href="https://straightvisions.com">straightvisions GmbH</a>
