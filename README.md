@@ -46,6 +46,10 @@ The following options from the [Widget docs](https://docs.pretix.eu/en/latest/us
 - Passing user data
 - Integration with Google Analytics
 
+## Security
+
+If you discover a security issue, please contact us at security@pretix.eu and see our [Responsible Disclosure Policy](https://docs.pretix.eu/trust/security/disclosure/) further information.
+
 ## Credit
 
 Developed by <a href="https://straightvisions.com">straightvisions GmbH</a>
