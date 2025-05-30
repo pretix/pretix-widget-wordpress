@@ -17,6 +17,15 @@
 						<input type="text" name="pretix_widget_shop_url" id="pretix_widget_shop_url" value="<?php echo esc_attr( get_option( 'pretix_widget_shop_url' ) ); ?>" class="regular-text">
 					</fieldset>
 					<fieldset>
+						<label for="pretix_widget_widget_version"><?php esc_html_e('Widget version', 'pretix-widget'); ?></label>
+						<select name="pretix_widget_version" id="pretix_widget_version">
+		                    <?php $selected = esc_html(get_option('pretix_widget_version', 'latest')); ?>
+							<option value="latest" <?php echo ($selected === 'latest') ? 'selected' : ''; ?>><?php esc_html_e('latest', 'pretix-widget'); ?></option>
+							<option value="v2" <?php echo ($selected === 'v2') ? 'selected' : ''; ?>>v2</option>
+							<option value="v1" <?php echo ($selected === 'v1') ? 'selected' : ''; ?>>v1</option>
+						</select>
+					</fieldset>
+					<fieldset>
 						<label for="pretix_widget_list_type"><?php esc_html_e('List Type', 'pretix-widget'); ?></label>
 						<select name="pretix_widget_list_type" id="pretix_widget_list_type">
 		                    <?php $selected = esc_html(get_option('pretix_widget_list_type', 'list')); ?>

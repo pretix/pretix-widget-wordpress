@@ -16,6 +16,7 @@ const {
 
 // Inject defaults from PHP
 const defaults = {};
+const latest_version = "v2";
 
 if (pretixWidgetDefaults) {
 	for (const key in pretixWidgetDefaults) {
@@ -123,7 +124,11 @@ export default function Edit(props) {
 			const url = new URL(shop_url);
 			const _url = url.hostname;
 			const filename = language.replace('_', '-');
-			script.src = `https://${_url}/widget/v1.${filename}.js?timestamp=${Date.now()}`;
+			let version = defaults.pretix_widget_version
+			if (version === "latest") {
+				version = latest_version
+			}
+			script.src = `https://${_url}/widget/${version}.${filename}.js?timestamp=${Date.now()}`;
 			script.async = true;
 			script.onload = () => {
 				window.PretixWidget.buildWidgets();
@@ -148,7 +153,11 @@ export default function Edit(props) {
 			link.rel = "stylesheet";
 			const url = new URL(shop_url);
 			const _url = url.hostname + url.pathname.replace(/\/$/, '')
-			link.href = `https://${_url}/widget/v1.css?timestamp=${Date.now()}`;
+			let version = defaults.pretix_widget_version
+			if (version === "latest") {
+				version = latest_version
+			}
+			link.href = `https://${_url}/widget/${version}.css?timestamp=${Date.now()}`;
 			document.head.appendChild(link);
 		}
 	}

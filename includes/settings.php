@@ -131,6 +131,7 @@ class Settings extends Base {
                 // settings of that group
                 // 0 = name, 1 = default value, ...
                 ['pretix_widget_shop_url', ''],
+                ['pretix_widget_version', 'latest'],
                 ['pretix_widget_list_type', 'list'],
                 ['pretix_widget_disable_voucher', false],
                 ['pretix_widget_disable_filter', false],

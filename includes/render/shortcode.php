@@ -78,6 +78,7 @@ class Shortcode extends Base {
                     $defaults['pretix_widget_shop_url'],
                     '/'
                 ) : '',
+                'version'          => isset($defaults['pretix_widget_version']) ? $defaults['pretix_widget_version'] : 'latest',
                 'subevent'          => isset($defaults['pretix_widget_subevent']) ? rtrim(
                     $defaults['pretix_widget_subevent'],
                     '/'
@@ -247,8 +248,11 @@ class Shortcode extends Base {
      * @version 1.0.00
      */
     private function enqueue_assets($settings) {
+        $version = $settings['version'];
+        if ($version === 'latest') $version = $this->latest_version;
+
         // get cached shop css file
-        $file = esc_url($this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/v1.css'));
+        $file = esc_url($this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/'. $version .'.css'));
         wp_enqueue_style(
             'pretix-widget-frontend',
             $file,
@@ -260,7 +264,7 @@ class Shortcode extends Base {
         $parsedUrl = parse_url(esc_url($settings['shop_url']));
         $domain    = rtrim($parsedUrl['host'], '/');
         $file      = $this->parent->cache->get(
-            'https://' . $domain . '/widget/v1.' . str_replace('_', '-', $settings['language']) . '.js'
+            'https://' . $domain . '/widget/'. $version .'.' . str_replace('_', '-', $settings['language']) . '.js'
         );
 
         wp_enqueue_script(

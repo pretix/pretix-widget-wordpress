@@ -15,6 +15,7 @@ class Base {
     private $path;
     private $url;
     private $errors = [];
+    protected $latest_version = "v2";
 
     /**
      * Get the plugin name in snake_case.

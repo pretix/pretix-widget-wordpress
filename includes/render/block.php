@@ -41,7 +41,8 @@ class Block extends Base {
 
         $settings = array_merge(array(
             'mode'              => 'widget',
-            'list_type'           => isset($defaults['pretix_widget_list_type']) ? $defaults['pretix_widget_list_type'] : 'auto',
+            'list_type'         => isset($defaults['pretix_widget_list_type']) ? $defaults['pretix_widget_list_type'] : 'auto',
+            'version'           => isset($defaults['pretix_widget_version']) ? $defaults['pretix_widget_version'] : 'latest',
             'shop_url'          => isset($defaults['pretix_widget_shop_url']) ? rtrim(
                 $defaults['pretix_widget_shop_url'],
                 '/'
@@ -221,8 +222,11 @@ class Block extends Base {
      * @version 1.0.00
      */
     private function enqueue_assets($settings) {
+        $version = $settings['version'];
+        if ($version === 'latest') $version = $this->latest_version;
+
         // Get cached shop CSS file
-        $file = $this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/v1.css');
+        $file = $this->parent->cache->get(rtrim($settings['shop_url'], '/') . '/widget/' . $version . '.css');
 
         wp_enqueue_style(
             'pretix-widget-frontend',
@@ -235,7 +239,7 @@ class Block extends Base {
         $parsedUrl = parse_url($settings['shop_url']);
         $domain    = rtrim($parsedUrl['host'], '/');
         $file      = $this->parent->cache->get(
-            'https://' . $domain . '/widget/v1.' . str_replace('_', '-', $settings['language']) . '.js'
+            'https://' . $domain . '/widget/'. $version .'.' . str_replace('_', '-', $settings['language']) . '.js'
         );
 
         wp_enqueue_script(
