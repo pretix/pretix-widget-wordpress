@@ -118,7 +118,6 @@
 					<div class="pretix-widget-info-box">
 						<h3><?php esc_html_e('Social Links', 'pretix-widget'); ?></h3>
 						<ul>
-							<li><a href="https://twitter.com/pretixeu" target="_blank"><?php esc_html_e('Twitter', 'pretix-widget'); ?></a></li>
 							<li><a href="https://pretix.social/@pretix" target="_blank"><?php esc_html_e('Mastodon', 'pretix-widget'); ?></a></li>
 							<li><a href="https://www.linkedin.com/company/pretix/" target="_blank"><?php esc_html_e('LinkedIn', 'pretix-widget'); ?></a></li>
 							<li><a href="https://www.youtube.com/channel/UCG1Og1YUpgIJD4geAZLAp5g" target="_blank"><?php esc_html_e('YouTube', 'pretix-widget'); ?></a></li>
