@@ -3,8 +3,8 @@ Contributors: matthias-reuter, matthiasbathke, dennisheiden, pretixeu
 Tags: gutenberg, navigation, modal
 Requires PHP: 8.1.26
 Requires at least: 6.1.1
-Tested up to: 6.6.2
-Stable tag: 1.1.0
+Tested up to: 7.0.2
+Stable tag: 1.1.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
