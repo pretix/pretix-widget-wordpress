@@ -29,6 +29,7 @@ The plugin allows embedding a pretix Widget with the following options:
 - Pre-selecting a voucher
 - Changing the display type (list, month calendar, week calendar)
 - Disabling voucher input
+- Disabling iframe (force checkout in new tab)
 - Language selection
 - Custom CSS
 

@@ -135,6 +135,7 @@ class Settings extends Base {
                 ['pretix_widget_list_type', 'list'],
                 ['pretix_widget_disable_voucher', false],
                 ['pretix_widget_disable_filter', false],
+                ['pretix_widget_disable_iframe', false],
                 // will return "en" for not supported languages
                 ['pretix_widget_language', $this->languages->get_current()['code']],
                 // --------------------------------------------

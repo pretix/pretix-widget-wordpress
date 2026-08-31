@@ -72,6 +72,7 @@ export default function Edit(props) {
 		button_text = defaults.pretix_widget_button_text && defaults.pretix_widget_button_text.replace(/\s/g, '').length > 0 ? defaults.pretix_widget_button_text : 'Buy Ticket!',
 		filter = defaults.pretix_widget_filter ?? '',
 		disable_filter = defaults.pretix_widget_disable_filter ?? false,
+		disable_iframe = defaults.pretix_widget_disable_iframe ?? false,
 	} = attributes;
 	
 	// Use blockProps for block wrapper
@@ -294,6 +295,11 @@ export default function Edit(props) {
 							onChange={(value) => handleChange('disable_filter', value)}
 						/>
 					)}
+					<ToggleControl
+						label={__('Disable iframe', 'pretix-widget')}
+						checked={disable_iframe}
+						onChange={(value) => handleChange('disable_iframe', value)}
+					/>
 					<SelectControl
 						label={__('Language', 'pretix-widget')}
 						value={language}

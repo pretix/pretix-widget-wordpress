@@ -57,6 +57,7 @@ class Block extends Base {
             'disable_voucher'   => isset($defaults['pretix_widget_disable_voucher']) ? $defaults['pretix_widget_disable_voucher'] : '',
             'allocated_voucher' => isset($defaults['pretix_widget_allocated_voucher']) ? $defaults['pretix_widget_allocated_voucher'] : '',
             'disable_filter'    => isset($defaults['pretix_widget_disable_filter']) ? $defaults['pretix_widget_disable_filter'] : '',
+            'disable_iframe'    => isset($defaults['pretix_widget_disable_iframe']) ? $defaults['pretix_widget_disable_iframe'] : '',
             'filter'            => isset($defaults['pretix_widget_filter']) ? $defaults['pretix_widget_filter'] : '',
             'language'          => isset($defaults['pretix_widget_language']) ? $defaults['pretix_widget_language'] : '',
             'button_text'       => isset($defaults['pretix_widget_button_text']) ? $defaults['pretix_widget_button_text'] : '',
@@ -158,6 +159,10 @@ class Block extends Base {
 
         if ($settings['disable_filter']) {
             $arguments['disable_filter'] = 'disable-filters';
+        }
+
+        if ($settings['disable_iframe']) {
+            $arguments['disable_iframe'] = 'disable-iframe';
         }
 
         // Add debug flags

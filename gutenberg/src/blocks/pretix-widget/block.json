@@ -75,6 +75,9 @@
 		"disable_filter": {
 			"type": "boolean"
 		},
+		"disable_iframe": {
+			"type": "boolean"
+		},
 		"list_type": {
 			"type": "string",
 			"default": "auto"

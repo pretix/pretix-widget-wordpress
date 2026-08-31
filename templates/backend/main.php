@@ -35,6 +35,7 @@
 						<li><?php esc_html_e('Allocated Voucher: The voucher code to allocate to the ticket widget. Example: \'ABC123\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Date filter: Query to filter date selection. Example: \'attr[Featured]=Yes&attr[Language]=EN\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Disable Filter: Set to \'true\' to disable filter UI (if activated for organizer).', 'pretix-widget'); ?></li>
+						<li><?php esc_html_e('Disable iframe: Set to \'true\' to always open the checkout in a new tab instead of an iframe.', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Language: The language code for the widget. Example: \'en\', \'de\', \'fr\', etc.', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('Button Text: Custom text for the ticket booking button.', 'pretix-widget'); ?></li>
 					</ul>
@@ -82,6 +83,7 @@
 						<li><?php esc_html_e('allocated_voucher (string): The voucher code to allocate to the ticket widget. Example: \'ABC123\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('date_filter (string): Query to filter date selection. Example: \'attr[Featured]=Yes&attr[Language]=EN\'', 'pretix-widget'); ?></li>
 						<li><?php esc_html_e('disable_filter (boolean): Set to \'true\' to disable filter UI (if activated for organizer).', 'pretix-widget'); ?></li>
+						<li><?php esc_html_e('disable_iframe (boolean): Set to \'true\' to always open the checkout in a new tab instead of an iframe.', 'pretix-widget'); ?></li>
 						<li><?php printf(esc_html__('language (string): The language code for the widget. Example: %1$s, %2$s, %3$s, etc.', 'pretix-widget'), 'en', 'de', 'fr'); ?></li>
 						<li><?php esc_html_e('button_text (string): Custom text for the ticket booking button.', 'pretix-widget'); ?></li>
 					</ul>
