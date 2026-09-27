@@ -14,6 +14,8 @@ class Render extends Base {
     public $settings = [];
     public $debug = false;
     public $cache = null;
+	public $_shortcode;
+	public $_block;	
     private $parent;
     private $errors = [];
 
